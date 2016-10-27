@@ -24,6 +24,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using Sql.Tests;
 using Xunit;
 
 namespace Sql2.Tests.ScenarioTests
@@ -66,7 +67,6 @@ namespace Sql2.Tests.ScenarioTests
 
                 // Constants for Azure SQL standard database creation.
                 var standardDefaultDatabaseSize = 1L * 1024L * 1024L * 1024L; // 1 GB
-                Guid dbSloS0 = new Guid("f1173c43-91bd-4aaa-973c-54e79e15235b "); // S0
                 var standardDatabaseName = TestUtilities.GenerateName("csm-sql-backup-db");
                 string standardDatabaseEdition = "Standard";
 
@@ -120,7 +120,7 @@ namespace Sql2.Tests.ScenarioTests
                         {
                             MaxSizeBytes = standardDefaultDatabaseSize,
                             Edition = standardDatabaseEdition,
-                            RequestedServiceObjectiveId = dbSloS0,
+                            RequestedServiceObjectiveId = SqlConstants.DbSloS0,
                         },
                     });
 
@@ -182,7 +182,6 @@ namespace Sql2.Tests.ScenarioTests
                 string adminPass = "NotYukon!9";
                 string version = "12.0";
                 var standardDefaultDatabaseSize = 1L * 1024L * 1024L * 1024L; // 1 GB
-                Guid dbSloS0 = new Guid("f1173c43-91bd-4aaa-973c-54e79e15235b "); // S0
                 string standardDatabaseEdition = "Standard";
 
                 // Create the resource group.
@@ -209,7 +208,7 @@ namespace Sql2.Tests.ScenarioTests
                     {
                         MaxSizeBytes = standardDefaultDatabaseSize,
                         Edition = standardDatabaseEdition,
-                        RequestedServiceObjectiveId = dbSloS0,
+                        RequestedServiceObjectiveId = SqlConstants.DbSloS0,
                     },
                 });
 
@@ -258,7 +257,6 @@ namespace Sql2.Tests.ScenarioTests
 
                 // Constants for Azure SQL standard database creation.
                 var standardDefaultDatabaseSize = 1L * 1024L * 1024L * 1024L; // 1 GB
-                Guid dbSloS0 = new Guid("f1173c43-91bd-4aaa-973c-54e79e15235b "); // S0
                 var standardDatabaseName = "csm-sql-backup-db31415";
                 string standardDatabaseEdition = "Standard";
 
@@ -293,7 +291,7 @@ namespace Sql2.Tests.ScenarioTests
                     {
                         MaxSizeBytes = standardDefaultDatabaseSize,
                         Edition = standardDatabaseEdition,
-                        RequestedServiceObjectiveId = dbSloS0,
+                        RequestedServiceObjectiveId = SqlConstants.DbSloS0,
                     },
                 });
 
@@ -449,6 +447,71 @@ namespace Sql2.Tests.ScenarioTests
                 });
 
                 TestUtilities.ValidateOperationResponse(restoreDbResponse, HttpStatusCode.Created);
+            }
+        }
+
+        /// <summary>
+        /// Test for Azure SQL Database Geo Backup Policy operations
+        /// </summary>
+        [Fact]
+        public void GeoBackupPolicyTest()
+        {
+            // Test params
+            string resourceGroupName = "TestRG";
+            string serverName = "testsvr-alazad";
+            string databaseName = "testdwdb";
+            string serverLocation = "North Europe";
+            string geoBackupPolicyName = "Default";
+
+            var handler = new BasicDelegatingHandler();
+
+            using (UndoContext context = UndoContext.Current)
+            {
+                context.Start();
+
+                // Management Clients
+                var sqlClient = Sql2ScenarioHelper.GetSqlClient(handler);
+                var resClient = Sql2ScenarioHelper.GetResourceClient(handler);
+
+                // Retrieve current state of the policy
+                GeoBackupPolicyGetResponse resp = sqlClient.DatabaseBackup.GetGeoBackupPolicy(resourceGroupName, serverName, databaseName, geoBackupPolicyName);
+                GeoBackupPolicy initialGeoBackupPolicy = resp.GeoBackupPolicy;
+                Assert.NotNull(initialGeoBackupPolicy);
+
+                // Disable policy
+                sqlClient.DatabaseBackup.CreateOrUpdateGeoBackupPolicy(resourceGroupName, serverName, databaseName, geoBackupPolicyName, new GeoBackupPolicyCreateOrUpdateParameters
+                {
+                    Location = serverLocation,
+                    Properties = new GeoBackupPolicyProperties()
+                    {
+                        State = "Disabled",
+                    }
+                });
+
+                // Verify policy is Disabled
+                resp = sqlClient.DatabaseBackup.GetGeoBackupPolicy(resourceGroupName, serverName, databaseName, geoBackupPolicyName);
+                Assert.Equal("Disabled", resp.GeoBackupPolicy.Properties.State);
+
+                // Enable policy
+                sqlClient.DatabaseBackup.CreateOrUpdateGeoBackupPolicy(resourceGroupName, serverName, databaseName, geoBackupPolicyName, new GeoBackupPolicyCreateOrUpdateParameters
+                {
+                    Location = serverLocation,
+                    Properties = new GeoBackupPolicyProperties()
+                    {
+                        State = "Enabled",
+                    }
+                });
+
+                // Verify policy is Enabled
+                resp = sqlClient.DatabaseBackup.GetGeoBackupPolicy(resourceGroupName, serverName, databaseName, geoBackupPolicyName);
+                Assert.Equal("Enabled", resp.GeoBackupPolicy.Properties.State);
+
+                // Reset policy to its original value
+                sqlClient.DatabaseBackup.CreateOrUpdateGeoBackupPolicy(resourceGroupName, serverName, databaseName, geoBackupPolicyName, new GeoBackupPolicyCreateOrUpdateParameters
+                {
+                    Location = serverLocation,
+                    Properties = initialGeoBackupPolicy.Properties,
+                });
             }
         }
 
