@@ -96,10 +96,6 @@ namespace Microsoft.Azure.Management.KeyVault
             {
                 throw new ArgumentNullException("parameters");
             }
-            if (parameters.Location == null)
-            {
-                throw new ArgumentNullException("parameters.Location");
-            }
             if (parameters.Properties == null)
             {
                 throw new ArgumentNullException("parameters.Properties");
@@ -209,7 +205,10 @@ namespace Microsoft.Azure.Management.KeyVault
                             
                             accessPolicyEntryValue["tenantId"] = accessPoliciesItem.TenantId.ToString();
                             
-                            accessPolicyEntryValue["objectId"] = accessPoliciesItem.ObjectId.ToString();
+                            if (accessPoliciesItem.ObjectId != null)
+                            {
+                                accessPolicyEntryValue["objectId"] = accessPoliciesItem.ObjectId;
+                            }
                             
                             if (accessPoliciesItem.ApplicationId != null)
                             {
@@ -237,7 +236,10 @@ namespace Microsoft.Azure.Management.KeyVault
                     propertiesValue["enabledForTemplateDeployment"] = parameters.Properties.EnabledForTemplateDeployment.Value;
                 }
                 
-                vaultCreateOrUpdateParametersValue["location"] = parameters.Location;
+                if (parameters.Location != null)
+                {
+                    vaultCreateOrUpdateParametersValue["location"] = parameters.Location;
+                }
                 
                 if (parameters.Tags != null)
                 {
@@ -359,7 +361,7 @@ namespace Microsoft.Azure.Management.KeyVault
                                         JToken objectIdValue = accessPoliciesValue["objectId"];
                                         if (objectIdValue != null && objectIdValue.Type != JTokenType.Null)
                                         {
-                                            Guid objectIdInstance = Guid.Parse(((string)objectIdValue));
+                                            string objectIdInstance = ((string)objectIdValue);
                                             accessPolicyEntryInstance.ObjectId = objectIdInstance;
                                         }
                                         
@@ -804,7 +806,7 @@ namespace Microsoft.Azure.Management.KeyVault
                                         JToken objectIdValue = accessPoliciesValue["objectId"];
                                         if (objectIdValue != null && objectIdValue.Type != JTokenType.Null)
                                         {
-                                            Guid objectIdInstance = Guid.Parse(((string)objectIdValue));
+                                            string objectIdInstance = ((string)objectIdValue);
                                             accessPolicyEntryInstance.ObjectId = objectIdInstance;
                                         }
                                         
@@ -1112,7 +1114,7 @@ namespace Microsoft.Azure.Management.KeyVault
                                                 JToken objectIdValue = accessPoliciesValue["objectId"];
                                                 if (objectIdValue != null && objectIdValue.Type != JTokenType.Null)
                                                 {
-                                                    Guid objectIdInstance = Guid.Parse(((string)objectIdValue));
+                                                    string objectIdInstance = ((string)objectIdValue);
                                                     accessPolicyEntryInstance.ObjectId = objectIdInstance;
                                                 }
                                                 
@@ -1394,7 +1396,7 @@ namespace Microsoft.Azure.Management.KeyVault
                                                 JToken objectIdValue = accessPoliciesValue["objectId"];
                                                 if (objectIdValue != null && objectIdValue.Type != JTokenType.Null)
                                                 {
-                                                    Guid objectIdInstance = Guid.Parse(((string)objectIdValue));
+                                                    string objectIdInstance = ((string)objectIdValue);
                                                     accessPolicyEntryInstance.ObjectId = objectIdInstance;
                                                 }
                                                 
