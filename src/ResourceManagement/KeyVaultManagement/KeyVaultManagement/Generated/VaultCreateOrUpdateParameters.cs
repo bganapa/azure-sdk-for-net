@@ -54,14 +54,20 @@ namespace Microsoft.Azure.Management.KeyVault
         /// Initializes a new instance of the VaultCreateOrUpdateParameters
         /// class with required arguments.
         /// </summary>
-        public VaultCreateOrUpdateParameters(VaultProperties properties)
+        public VaultCreateOrUpdateParameters(VaultProperties properties, string location)
             : this()
         {
             if (properties == null)
             {
                 throw new ArgumentNullException("properties");
             }
+            if (location == null)    
+            {    
+                throw new ArgumentNullException("location");    
+            }  
+
             this.Properties = properties;
+            this.Location = location;
         }
     }
 }

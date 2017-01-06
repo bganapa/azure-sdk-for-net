@@ -48,5 +48,20 @@ namespace Microsoft.Azure.Management.KeyVault
         public Vault()
         {
         }
+
+        /// <summary>    
+        /// Initializes a new instance of the Vault class with required    
+        /// arguments.    
+        /// </summary>    
+        public Vault(string location)    
+        : this()    
+        {    
+            if (location == null)    
+            {    
+                throw new ArgumentNullException("location");    
+            }    
+
+            this.Location = location;    
+        }  
     }
 }

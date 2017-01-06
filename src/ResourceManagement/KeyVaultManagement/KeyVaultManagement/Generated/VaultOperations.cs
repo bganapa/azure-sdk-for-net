@@ -96,6 +96,10 @@ namespace Microsoft.Azure.Management.KeyVault
             {
                 throw new ArgumentNullException("parameters");
             }
+            if (parameters.Location == null)    
+            {    
+                throw new ArgumentNullException("parameters.Location");    
+            }  
             if (parameters.Properties == null)
             {
                 throw new ArgumentNullException("parameters.Properties");
