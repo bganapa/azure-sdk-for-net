@@ -21,13 +21,14 @@
 
 using System;
 using System.Linq;
+using Microsoft.AzureStack.Management.Models;
 
 namespace Microsoft.AzureStack.Management.Models
 {
     /// <summary>
     /// The resource provider extension.
     /// </summary>
-    public partial class Extension
+    public partial class ExtensionDefinition
     {
         private string _name;
         
@@ -38,6 +39,17 @@ namespace Microsoft.AzureStack.Management.Models
         {
             get { return this._name; }
             set { this._name = value; }
+        }
+        
+        private ExtensionPropertiesDefinition _properties;
+        
+        /// <summary>
+        /// Optional. Gets or sets the extension properties.
+        /// </summary>
+        public ExtensionPropertiesDefinition Properties
+        {
+            get { return this._properties; }
+            set { this._properties = value; }
         }
         
         private string _uri;
@@ -52,9 +64,9 @@ namespace Microsoft.AzureStack.Management.Models
         }
         
         /// <summary>
-        /// Initializes a new instance of the Extension class.
+        /// Initializes a new instance of the ExtensionDefinition class.
         /// </summary>
-        public Extension()
+        public ExtensionDefinition()
         {
         }
     }

@@ -47,13 +47,22 @@ namespace AzureStackAdmin.Tests
                         'namespace': 'Microsoft.Sql.Admin',
                         'providerLocation': 'local',
                         'providerType': 'NotSpecified',
-                        'routingResourceManagerType': 'Default',
-                        'extensions': [
+                        'extensionCollection':
                             {
-                                'name': 'SqlAdminExtension',
-                                'uri': 'https://azstack:13002/'
+                                'version' : '0.1.0.0',
+                                'extensions': [
+                                    {
+                                        'name': 'SqlAdminExtension',
+                                        'uri': 'https://azstack:13002/',
+                                        'properties':
+                                            {
+                                                'quotaCreateBladeName': 'addSqlQuotaBlade',
+                                                'resourceProviderDashboardBladeName': 'addSqlServerBlade'
+                                            }
+                                    }
+                                ]
                             }
-                        ],
+                        ,
                         'resourceTypes': [
                             {
                                 'name': 'hostingservers',
@@ -82,7 +91,7 @@ namespace AzureStackAdmin.Tests
             var client = this.GetAzureStackAdminClient(handler);
 
             var result = client.ProviderRegistrations.Get("TestRG", "Microsoft.Sql.Admin");
-            
+
             // Validate Headers
             Assert.Equal(HttpMethod.Get, handler.Method);
             Assert.NotNull(handler.RequestHeaders.GetValues("Authorization"));
@@ -93,16 +102,18 @@ namespace AzureStackAdmin.Tests
             Assert.Equal("Microsoft.Sql.Admin", result.ProviderRegistration.Properties.Namespace);
             Assert.Equal("local", result.ProviderRegistration.Properties.ProviderLocation);
             Assert.Equal("hostingservers", result.ProviderRegistration.Properties.ResourceTypes[0].Name);
-            Assert.Equal("SqlAdminExtension", result.ProviderRegistration.Properties.Extensions[0].Name);
+            Assert.Equal("0.1.0.0", result.ProviderRegistration.Properties.ExtensionCollection.Version);
+            Assert.Equal("SqlAdminExtension", result.ProviderRegistration.Properties.ExtensionCollection.Extensions[0].Name);
+            Assert.Equal("https://azstack:13002/", result.ProviderRegistration.Properties.ExtensionCollection.Extensions[0].Uri);
+            Assert.Equal("addSqlQuotaBlade", result.ProviderRegistration.Properties.ExtensionCollection.Extensions[0].Properties.QuotaCreateBladeName);
             Assert.Equal("2014-04-01-preview", result.ProviderRegistration.Properties.ResourceTypes[0].Endpoints[0].ApiVersions[0]);
-            Assert.Equal(ResourceManagerType.Default, result.ProviderRegistration.Properties.RoutingResourceManagerType);
             Assert.Equal("https://azstack:30010", result.ProviderRegistration.Properties.ResourceTypes[0].Endpoints[0].EndpointUri);
             Assert.Equal(new TimeSpan(0, 0, 0), result.ProviderRegistration.Properties.ResourceTypes[0].Endpoints[0].Timeout);
             Assert.Equal(true, result.ProviderRegistration.Properties.ResourceTypes[0].Endpoints[0].Enabled);
             Assert.Equal(RoutingType.Default, result.ProviderRegistration.Properties.ResourceTypes[0].RoutingType);
             Assert.Equal(ResourceDeletionPolicy.NotSpecified, result.ProviderRegistration.Properties.ResourceTypes[0].ResourceDeletionPolicy);
             Assert.Equal(MarketplaceType.NotSpecified, result.ProviderRegistration.Properties.ResourceTypes[0].MarketplaceType);
-            // Assert.Equal(ProvisioningState.Succeeded, result.ProviderRegistration.Properties.ProvisioningState);
+            Assert.Equal("Succeeded", result.ProviderRegistration.Properties.ProvisioningState);
         }
 
         [Fact]
@@ -120,13 +131,22 @@ namespace AzureStackAdmin.Tests
                         'namespace': 'Microsoft.Sql.Admin',
                         'providerLocation': 'local',
                         'providerType': 'NotSpecified',
-                        'routingResourceManagerType': 'Admin',
-                        'extensions': [
+                        'extensionCollection':
                             {
-                                'name': 'SqlAdminExtension',
-                                'uri': 'https://azstack:13002/'
+                                'version' : '0.1.0.0',
+                                'extensions': [
+                                    {
+                                        'name': 'SqlAdminExtension',
+                                        'uri': 'https://azstack:13002/',
+                                        'properties':
+                                            {
+                                                'quotaCreateBladeName': 'addSqlQuotaBlade',
+                                                'resourceProviderDashboardBladeName': 'addSqlServerBlade'
+                                            }
+                                    }
+                                ]
                             }
-                        ],
+                        ,
                         'resourceTypes': [
                             {
                                 'name': 'hostingservers',
@@ -162,16 +182,10 @@ namespace AzureStackAdmin.Tests
                         Location = "local",
                         Name = "Microsoft.Sql.Admin",
                         Properties = new ManifestPropertiesDefinition()
-                                     {
-                                         DisplayName = "Microsoft.Sql.Admin",
-                                         ExtensionName = "Microsoft.Sql.Admin",
-                                         Enabled = true,
-                                         RoutingResourceManagerType = ResourceManagerType.Admin,
-                                         Extensions = new Extension[]
-                                                      {
-                                                          new Extension() {Name = "SqlAdminExtension", Uri = "https://azstack:13002/"}
-                                                      },
-                                         ResourceTypes = new ResourceType[]
+                        {
+                            DisplayName = "Microsoft.Sql.Admin",
+                            Enabled = true,
+                            ResourceTypes = new ResourceType[]
                                                          {
                                                              new ResourceType()
                                                              {
@@ -186,11 +200,27 @@ namespace AzureStackAdmin.Tests
                                                                                      EndpointUri = "https://azstack:30010",
                                                                                  }
                                                                              }
-
                                                              }
                                                          },
-                                         ProvisioningState = "Succeeded"
-                                     }
+                            ExtensionCollection = new ExtensionCollectionDefinition()
+                            {
+                                Version = "0.1.0.0",
+                                Extensions = new ExtensionDefinition[]
+                                                                                {
+                                                                                    new ExtensionDefinition()
+                                                                                    {
+                                                                                        Name = "SqlAdminExtenstion",
+                                                                                        Uri = "https://azstack:30011",
+                                                                                        Properties = new ExtensionPropertiesDefinition()
+                                                                                                     {
+                                                                                                         QuotaCreateBladeName = "addSqlQuotaBlade",
+                                                                                                         ResourceProviderDashboardBladeName = "addSqlServerBlade"
+                                                                                                     }
+                                                                                    }
+                                                                                }
+                            },
+                            ProvisioningState = "Succeeded"
+                        }
                     }
                     ));
 
@@ -203,9 +233,12 @@ namespace AzureStackAdmin.Tests
             Assert.Equal("local", result.ProviderRegistration.Location);
             Assert.Equal("Microsoft.Sql.Admin", result.ProviderRegistration.Properties.Namespace);
             Assert.Equal("local", result.ProviderRegistration.Properties.ProviderLocation);
-            Assert.Equal(ResourceManagerType.Admin, result.ProviderRegistration.Properties.RoutingResourceManagerType);
             Assert.Equal("hostingservers", result.ProviderRegistration.Properties.ResourceTypes[0].Name);
-            Assert.Equal("SqlAdminExtension", result.ProviderRegistration.Properties.Extensions[0].Name);
+            Assert.Equal("0.1.0.0", result.ProviderRegistration.Properties.ExtensionCollection.Version);
+            Assert.Equal("SqlAdminExtension", result.ProviderRegistration.Properties.ExtensionCollection.Extensions[0].Name);
+            Assert.Equal("https://azstack:13002/", result.ProviderRegistration.Properties.ExtensionCollection.Extensions[0].Uri);
+            Assert.Equal("addSqlQuotaBlade", result.ProviderRegistration.Properties.ExtensionCollection.Extensions[0].Properties.QuotaCreateBladeName);
+            Assert.Equal("addSqlServerBlade", result.ProviderRegistration.Properties.ExtensionCollection.Extensions[0].Properties.ResourceProviderDashboardBladeName);
             Assert.Equal("2014-04-01-preview", result.ProviderRegistration.Properties.ResourceTypes[0].Endpoints[0].ApiVersions[0]);
             Assert.Equal("https://azstack:30010", result.ProviderRegistration.Properties.ResourceTypes[0].Endpoints[0].EndpointUri);
             Assert.Equal(new TimeSpan(0, 0, 0), result.ProviderRegistration.Properties.ResourceTypes[0].Endpoints[0].Timeout);
