@@ -16,18 +16,8 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
     /// </summary>
     public static class PlanLink
     {
-        /// <summary>
-        /// The plan link type is not specified or is unknown.
-        /// </summary>
-        public const string None = "0";
-        /// <summary>
-        /// The plan is linked to the base collection of the subscribed offer.
-        /// </summary>
-        public const string Base = "1";
-        /// <summary>
-        /// The plan is linked to the add-on collection of the subscribed
-        /// offer.
-        /// </summary>
-        public const string Addon = "2";
+        public const string None = "None";
+        public const string Base = "Base";
+        public const string Addon = "Addon";
     }
 }

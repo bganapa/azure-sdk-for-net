@@ -125,7 +125,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         IResellerOffersOperations ResellerOffers { get; }
 
         /// <summary>
-        /// Get the list of offers.
+        /// Get the list of subscriptions.
         /// </summary>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -136,7 +136,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         Task<AzureOperationResponse<OperationList>> ListOperationsWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// Get the list of offers.
+        /// Get the list of subscriptions.
         /// </summary>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -147,7 +147,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         Task<AzureOperationResponse> UpdateEncryptionWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// Get the list of offers.
+        /// Get the list of subscriptions.
         /// </summary>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

@@ -16,29 +16,11 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
     /// </summary>
     public static class SubscriptionState
     {
-        /// <summary>
-        /// The subscription state is unknown.
-        /// </summary>
-        public const string NotDefined = "0";
-        /// <summary>
-        /// The subscription is enabled.
-        /// </summary>
-        public const string Enabled = "1";
-        /// <summary>
-        /// The subscription has been warned.
-        /// </summary>
-        public const string Warned = "2";
-        /// <summary>
-        /// The subscription is past due.
-        /// </summary>
-        public const string PastDue = "3";
-        /// <summary>
-        /// The subscription is disabled.
-        /// </summary>
-        public const string Disabled = "4";
-        /// <summary>
-        /// The subscription is deleted.
-        /// </summary>
-        public const string Deleted = "5";
+        public const string NotDefined = "NotDefined";
+        public const string Enabled = "Enabled";
+        public const string Warned = "Warned";
+        public const string PastDue = "PastDue";
+        public const string Disabled = "Disabled";
+        public const string Deleted = "Deleted";
     }
 }

@@ -4,4 +4,4 @@
 ::
 
 @echo off
-call %~dp0..\..\..\..\tools\generate.cmd azsadmin/resource-manager/subscriptions latest deathly809 azs.subscriptions.admin azure-rest-api-specs %CD%
+call %~dp0..\..\..\..\tools\generate.cmd azsadmin/resource-manager/subscriptions latest bganapa stack-admin azure-rest-api-specs %CD% --directive={R2022}

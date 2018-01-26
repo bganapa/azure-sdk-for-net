@@ -24,7 +24,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
     public static partial class SubscriptionsOperationsExtensions
     {
             /// <summary>
-            /// Get the list of offers.
+            /// Get the list of subscriptions.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -35,7 +35,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             }
 
             /// <summary>
-            /// Get the list of offers.
+            /// Get the list of subscriptions.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -52,7 +52,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             }
 
             /// <summary>
-            /// Get the list of offers.
+            /// Get the list of subscriptions.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -66,7 +66,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             }
 
             /// <summary>
-            /// Get the list of offers.
+            /// Get the list of subscriptions.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -83,7 +83,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             }
 
             /// <summary>
-            /// Get the list of offers.
+            /// Get the list of subscriptions.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -100,7 +100,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             }
 
             /// <summary>
-            /// Get the list of offers.
+            /// Get the list of subscriptions.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -123,7 +123,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             }
 
             /// <summary>
-            /// Get the list of offers.
+            /// Get the list of subscriptions.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -137,7 +137,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             }
 
             /// <summary>
-            /// Get the list of offers.
+            /// Get the list of subscriptions.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.

@@ -93,14 +93,14 @@ namespace Subscriptions.Tests
                 var plan = client.Plans.ListAll().First();
                 var offer = new Offer()
                 {
-                    Description = "This is a test plan",
-                    DisplayName = "Test plan",
+                    Description = "This is a test Offer",
+                    DisplayName = "Test Offer",
                     MaxSubscriptionsPerAccount = 100,
                     BasePlanIds = new System.Collections.Generic.List<string>() {plan.Id}
                 };
                 
-                var result = client.Offers.CreateOrUpdate("jeff", offerName, offer);
-                client.Offers.Delete("jeff" , offerName);
+                var result = client.Offers.CreateOrUpdate("TestOffer", offerName, offer);
+                client.Offers.Delete("TestOffer", offerName);
 
                 
             });

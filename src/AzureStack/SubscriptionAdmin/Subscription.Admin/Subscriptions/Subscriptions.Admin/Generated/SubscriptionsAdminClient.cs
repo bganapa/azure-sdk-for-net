@@ -374,7 +374,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             DeserializationSettings.Converters.Add(new CloudErrorJsonConverter());
         }
         /// <summary>
-        /// Get the list of offers.
+        /// Get the list of subscriptions.
         /// </summary>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -547,7 +547,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         }
 
         /// <summary>
-        /// Get the list of offers.
+        /// Get the list of subscriptions.
         /// </summary>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -704,7 +704,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         }
 
         /// <summary>
-        /// Get the list of offers.
+        /// Get the list of subscriptions.
         /// </summary>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.

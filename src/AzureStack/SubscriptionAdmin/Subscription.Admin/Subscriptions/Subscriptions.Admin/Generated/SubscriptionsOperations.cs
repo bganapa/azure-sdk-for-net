@@ -51,7 +51,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         public SubscriptionsAdminClient Client { get; private set; }
 
         /// <summary>
-        /// Get the list of offers.
+        /// Get the list of subscriptions.
         /// </summary>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -229,7 +229,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         }
 
         /// <summary>
-        /// Get the list of offers.
+        /// Get the list of subscriptions.
         /// </summary>
         /// <param name='subscription'>
         /// Subscription parameter.
@@ -395,7 +395,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         }
 
         /// <summary>
-        /// Get the list of offers.
+        /// Get the list of subscriptions.
         /// </summary>
         /// <param name='subscription'>
         /// Subscription parameter.
@@ -596,7 +596,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         }
 
         /// <summary>
-        /// Get the list of offers.
+        /// Get the list of subscriptions.
         /// </summary>
         /// <param name='subscription'>
         /// Subscription parameter.

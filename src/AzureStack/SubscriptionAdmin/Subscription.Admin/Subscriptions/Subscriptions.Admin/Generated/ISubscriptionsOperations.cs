@@ -24,7 +24,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
     public partial interface ISubscriptionsOperations
     {
         /// <summary>
-        /// Get the list of offers.
+        /// Get the list of subscriptions.
         /// </summary>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -43,7 +43,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// </exception>
         Task<AzureOperationResponse<IEnumerable<Subscription>>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Get the list of offers.
+        /// Get the list of subscriptions.
         /// </summary>
         /// <param name='subscription'>
         /// Subscription parameter.
@@ -62,7 +62,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// </exception>
         Task<AzureOperationResponse> GetWithHttpMessagesAsync(string subscription, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Get the list of offers.
+        /// Get the list of subscriptions.
         /// </summary>
         /// <param name='subscription'>
         /// Subscription parameter.
@@ -87,7 +87,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// </exception>
         Task<AzureOperationResponse<Subscription>> CreateOrUpdateWithHttpMessagesAsync(string subscription, Subscription newSubscription, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Get the list of offers.
+        /// Get the list of subscriptions.
         /// </summary>
         /// <param name='subscription'>
         /// Subscription parameter.

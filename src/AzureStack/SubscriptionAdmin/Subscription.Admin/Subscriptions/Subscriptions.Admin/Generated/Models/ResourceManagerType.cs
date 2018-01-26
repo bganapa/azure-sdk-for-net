@@ -16,13 +16,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
     /// </summary>
     public static class ResourceManagerType
     {
-        /// <summary>
-        /// The default/user-facing resource manager.
-        /// </summary>
-        public const string Default = "0";
-        /// <summary>
-        /// The admin resource manager.
-        /// </summary>
-        public const string Admin = "1";
+        public const string Default = "Default";
+        public const string Admin = "Admin";
     }
 }
