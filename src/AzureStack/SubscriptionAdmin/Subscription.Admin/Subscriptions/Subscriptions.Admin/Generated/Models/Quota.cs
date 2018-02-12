@@ -18,7 +18,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
     using System.Linq;
 
     /// <summary>
-    /// Quotas for resellers.
+    /// Quotas for DelegatedProviders.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class Quota : Resource
@@ -38,7 +38,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
         /// <param name="name">Name of the resource.</param>
         /// <param name="type">Type of resource.</param>
         /// <param name="location">Location where resource is location.</param>
-        /// <param name="tags">List of key value pairs.</param>
+        /// <param name="tags">List of key-value pairs.</param>
         /// <param name="allowCustomPortalBranding">Value indicating whether
         /// custom portal branding is allowed.</param>
         public Quota(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), bool? allowCustomPortalBranding = default(bool?))

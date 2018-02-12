@@ -17,11 +17,11 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
     public static class AccessibilityState
     {
         /// <summary>
-        /// The offer or plan is private. Only Admin can see and manage it.
+        /// The offer or plan is private. Only an Admin can see and manage it.
         /// </summary>
         public const string Private = "Private";
         /// <summary>
-        /// The offer or plan is public. Tenants can see and self-subscribe to
+        /// The offer or plan is public. Users can see and self-subscribe to
         /// it.
         /// </summary>
         public const string Public = "Public";

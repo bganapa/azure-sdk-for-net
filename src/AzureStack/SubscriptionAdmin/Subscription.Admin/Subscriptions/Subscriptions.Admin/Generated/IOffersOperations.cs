@@ -43,7 +43,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// </exception>
         Task<AzureOperationResponse<IPage<Offer>>> ListAllWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Get the list of offers.
+        /// Get the list of offers under a resource group.
         /// </summary>
         /// <param name='resourceGroup'>
         /// The resource group the resource is located under.
@@ -65,7 +65,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// </exception>
         Task<AzureOperationResponse<IPage<Offer>>> ListWithHttpMessagesAsync(string resourceGroup, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Get the list of offers.
+        /// Get the specified offer.
         /// </summary>
         /// <param name='resourceGroup'>
         /// The resource group the resource is located under.
@@ -90,7 +90,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// </exception>
         Task<AzureOperationResponse<Offer>> GetWithHttpMessagesAsync(string resourceGroup, string offer, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Get the list of offers.
+        /// Create or update the offer.
         /// </summary>
         /// <param name='resourceGroup'>
         /// The resource group the resource is located under.
@@ -118,7 +118,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// </exception>
         Task<AzureOperationResponse<Offer>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroup, string offer, Offer newOffer, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Get the list of offers.
+        /// Delete the specified offer.
         /// </summary>
         /// <param name='resourceGroup'>
         /// The resource group the resource is located under.
@@ -140,7 +140,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// </exception>
         Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroup, string offer, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Get subscription metrics.
+        /// Get the offer metrics.
         /// </summary>
         /// <param name='resourceGroup'>
         /// The resource group the resource is located under.
@@ -165,7 +165,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// </exception>
         Task<AzureOperationResponse<MetricList>> ListMetricsWithHttpMessagesAsync(string resourceGroup, string offer, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Get the list of offers.
+        /// Get the metric definitions.
         /// </summary>
         /// <param name='resourceGroup'>
         /// The resource group the resource is located under.
@@ -190,7 +190,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// </exception>
         Task<AzureOperationResponse<MetricDefinitionList>> ListMetricDefinitionsWithHttpMessagesAsync(string resourceGroup, string offer, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Get the list of offers.
+        /// Links a plan to an offer.
         /// </summary>
         /// <param name='resourceGroup'>
         /// The resource group the resource is located under.
@@ -215,7 +215,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// </exception>
         Task<AzureOperationResponse> LinkWithHttpMessagesAsync(string resourceGroup, string offer, string planLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Get the list of offers.
+        /// Unlink a plan from an offer.
         /// </summary>
         /// <param name='resourceGroup'>
         /// The resource group the resource is located under.
@@ -262,7 +262,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// </exception>
         Task<AzureOperationResponse<IPage<Offer>>> ListAllNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Get the list of offers.
+        /// Get the list of offers under a resource group.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

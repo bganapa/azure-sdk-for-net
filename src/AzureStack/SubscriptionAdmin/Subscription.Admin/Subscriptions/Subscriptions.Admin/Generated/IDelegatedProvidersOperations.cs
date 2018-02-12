@@ -43,10 +43,10 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// </exception>
         Task<AzureOperationResponse<IEnumerable<Subscription>>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Get the list of delegatedProviders.
+        /// Get the list of delegated providers.
         /// </summary>
         /// <param name='delegatedProvider'>
-        /// Reseller identifier.
+        /// DelegatedProvider identifier.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

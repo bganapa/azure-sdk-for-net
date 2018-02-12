@@ -23,12 +23,12 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
     using System.Threading.Tasks;
 
     /// <summary>
-    /// ResellerOffersOperations operations.
+    /// DelegatedProviderOffersOperations operations.
     /// </summary>
-    internal partial class ResellerOffersOperations : IServiceOperations<SubscriptionsAdminClient>, IResellerOffersOperations
+    internal partial class DelegatedProviderOffersOperations : IServiceOperations<SubscriptionsAdminClient>, IDelegatedProviderOffersOperations
     {
         /// <summary>
-        /// Initializes a new instance of the ResellerOffersOperations class.
+        /// Initializes a new instance of the DelegatedProviderOffersOperations class.
         /// </summary>
         /// <param name='client'>
         /// Reference to the service client.
@@ -36,7 +36,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal ResellerOffersOperations(SubscriptionsAdminClient client)
+        internal DelegatedProviderOffersOperations(SubscriptionsAdminClient client)
         {
             if (client == null)
             {
@@ -51,10 +51,10 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         public SubscriptionsAdminClient Client { get; private set; }
 
         /// <summary>
-        /// Get the list of delegatedProviders.
+        /// Get the list of delegated provider offers.
         /// </summary>
         /// <param name='delegatedProvider'>
-        /// Reseller identifier.
+        /// DelegatedProvider identifier.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -238,10 +238,10 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         }
 
         /// <summary>
-        /// Get the list of delegatedProviders.
+        /// Get the specified delegated provider offer.
         /// </summary>
         /// <param name='delegatedProvider'>
-        /// Reseller identifier.
+        /// DelegatedProvider identifier.
         /// </param>
         /// <param name='offer'>
         /// Name of an offer.
@@ -434,7 +434,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         }
 
         /// <summary>
-        /// Get the list of delegatedProviders.
+        /// Get the list of delegated provider offers.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

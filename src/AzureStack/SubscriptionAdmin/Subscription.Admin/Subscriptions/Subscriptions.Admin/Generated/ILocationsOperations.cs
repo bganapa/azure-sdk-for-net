@@ -43,8 +43,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// </exception>
         Task<AzureOperationResponse<LocationList>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets a collection of SubscriberUsageAggregates, which are
-        /// UsageAggregates from direct tenants.
+        /// Get the specified location.
         /// </summary>
         /// <param name='location'>
         /// The AzureStack location.

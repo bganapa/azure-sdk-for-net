@@ -22,7 +22,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
     public static partial class OfferDelegationsOperationsExtensions
     {
             /// <summary>
-            /// Get the list of offers.
+            /// Get the list of delegated offers.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -39,7 +39,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             }
 
             /// <summary>
-            /// Get the list of offers.
+            /// Get the list of delegated offers.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -203,7 +203,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             }
 
             /// <summary>
-            /// Get the list of offers.
+            /// Get the list of delegated offers.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -217,7 +217,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             }
 
             /// <summary>
-            /// Get the list of offers.
+            /// Get the list of delegated offers.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.

@@ -52,13 +52,13 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             }
 
             /// <summary>
-            /// Get the list of delegatedProviders.
+            /// Get the list of delegated providers.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='delegatedProvider'>
-            /// Reseller identifier.
+            /// DelegatedProvider identifier.
             /// </param>
             public static Subscription Get(this IDelegatedProvidersOperations operations, string delegatedProvider)
             {
@@ -66,13 +66,13 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             }
 
             /// <summary>
-            /// Get the list of delegatedProviders.
+            /// Get the list of delegated providers.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='delegatedProvider'>
-            /// Reseller identifier.
+            /// DelegatedProvider identifier.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.

@@ -19,15 +19,15 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
     using System.Threading.Tasks;
 
     /// <summary>
-    /// ResellerOffersOperations operations.
+    /// DelegatedProviderOffersOperations operations.
     /// </summary>
-    public partial interface IResellerOffersOperations
+    public partial interface IDelegatedProviderOffersOperations
     {
         /// <summary>
-        /// Get the list of delegatedProviders.
+        /// Get the list of delegated provider offers.
         /// </summary>
         /// <param name='delegatedProvider'>
-        /// Reseller identifier.
+        /// DelegatedProvider identifier.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -46,10 +46,10 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// </exception>
         Task<AzureOperationResponse<IPage<DelegatedProviderOffer>>> ListWithHttpMessagesAsync(string delegatedProvider, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Get the list of delegatedProviders.
+        /// Get the specified delegated provider offer.
         /// </summary>
         /// <param name='delegatedProvider'>
-        /// Reseller identifier.
+        /// DelegatedProvider identifier.
         /// </param>
         /// <param name='offer'>
         /// Name of an offer.
@@ -71,7 +71,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// </exception>
         Task<AzureOperationResponse<DelegatedProviderOffer>> GetWithHttpMessagesAsync(string delegatedProvider, string offer, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Get the list of delegatedProviders.
+        /// Get the list of delegated provider offers.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

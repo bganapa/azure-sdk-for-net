@@ -229,8 +229,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         }
 
         /// <summary>
-        /// Gets a collection of SubscriberUsageAggregates, which are UsageAggregates
-        /// from direct tenants.
+        /// Get the specified location.
         /// </summary>
         /// <param name='location'>
         /// The AzureStack location.
@@ -349,7 +348,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 200)
+            if ((int)_statusCode != 200 && (int)_statusCode != 404)
             {
                 var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try

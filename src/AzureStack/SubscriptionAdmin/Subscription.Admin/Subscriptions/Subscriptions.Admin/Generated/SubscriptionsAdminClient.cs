@@ -88,6 +88,16 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         public virtual IAcquiredPlansOperations AcquiredPlans { get; private set; }
 
         /// <summary>
+        /// Gets the IDelegatedProvidersOperations.
+        /// </summary>
+        public virtual IDelegatedProvidersOperations DelegatedProviders { get; private set; }
+
+        /// <summary>
+        /// Gets the IDelegatedProviderOffersOperations.
+        /// </summary>
+        public virtual IDelegatedProviderOffersOperations DelegatedProviderOffers { get; private set; }
+
+        /// <summary>
         /// Gets the IDirectoryTenantsOperations.
         /// </summary>
         public virtual IDirectoryTenantsOperations DirectoryTenants { get; private set; }
@@ -116,16 +126,6 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// Gets the IQuotasOperations.
         /// </summary>
         public virtual IQuotasOperations Quotas { get; private set; }
-
-        /// <summary>
-        /// Gets the IDelegatedProvidersOperations.
-        /// </summary>
-        public virtual IDelegatedProvidersOperations DelegatedProviders { get; private set; }
-
-        /// <summary>
-        /// Gets the IResellerOffersOperations.
-        /// </summary>
-        public virtual IResellerOffersOperations ResellerOffers { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the SubscriptionsAdminClient class.
@@ -330,14 +330,14 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         {
             Subscriptions = new SubscriptionsOperations(this);
             AcquiredPlans = new AcquiredPlansOperations(this);
+            DelegatedProviders = new DelegatedProvidersOperations(this);
+            DelegatedProviderOffers = new DelegatedProviderOffersOperations(this);
             DirectoryTenants = new DirectoryTenantsOperations(this);
             Locations = new LocationsOperations(this);
             Offers = new OffersOperations(this);
             OfferDelegations = new OfferDelegationsOperations(this);
             Plans = new PlansOperations(this);
             Quotas = new QuotasOperations(this);
-            DelegatedProviders = new DelegatedProvidersOperations(this);
-            ResellerOffers = new ResellerOffersOperations(this);
             BaseUri = new System.Uri("https://adminmanagement.local.azurestack.external");
             ApiVersion = "2015-11-01";
             AcceptLanguage = "en-US";
@@ -704,7 +704,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         }
 
         /// <summary>
-        /// Get the list of subscriptions.
+        /// Restores the data
         /// </summary>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.

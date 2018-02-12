@@ -10,53 +10,42 @@
 
 namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
 {
-    using Microsoft.Rest;
-    using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// A plan represents a package of quotas and capabilities that are offered
-    /// tenants. A tenant can acquire this plan through an offer to upgrade his
-    /// access to underlying cloud services.
+    /// Properties of a plan.
     /// </summary>
-    [Rest.Serialization.JsonTransformation]
-    public partial class Plan : Resource
+    public partial class PlanProperties2
     {
         /// <summary>
-        /// Initializes a new instance of the Plan class.
+        /// Initializes a new instance of the PlanProperties2 class.
         /// </summary>
-        public Plan()
+        public PlanProperties2()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the Plan class.
+        /// Initializes a new instance of the PlanProperties2 class.
         /// </summary>
-        /// <param name="id">URI of the resource.</param>
-        /// <param name="name">Name of the resource.</param>
-        /// <param name="type">Type of resource.</param>
-        /// <param name="location">Location where resource is location.</param>
-        /// <param name="tags">List of key-value pairs.</param>
         /// <param name="description">Description of the plan.</param>
         /// <param name="displayName">Display name.</param>
         /// <param name="externalReferenceId">External reference
         /// identifier.</param>
         /// <param name="quotaIds">Quota identifiers under the plan.</param>
-        /// <param name="planName">Name of the plan.</param>
+        /// <param name="name">Name of the plan.</param>
         /// <param name="subscriptionCount">Subscription count.</param>
         /// <param name="skuIds">SKU identifiers.</param>
-        public Plan(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string description = default(string), string displayName = default(string), string externalReferenceId = default(string), IList<string> quotaIds = default(IList<string>), string planName = default(string), int? subscriptionCount = default(int?), IList<string> skuIds = default(IList<string>))
-            : base(id, name, type, location, tags)
+        public PlanProperties2(string description = default(string), string displayName = default(string), string externalReferenceId = default(string), IList<string> quotaIds = default(IList<string>), string name = default(string), int? subscriptionCount = default(int?), IList<string> skuIds = default(IList<string>))
         {
             Description = description;
             DisplayName = displayName;
             ExternalReferenceId = externalReferenceId;
             QuotaIds = quotaIds;
-            PlanName = planName;
+            Name = name;
             SubscriptionCount = subscriptionCount;
             SkuIds = skuIds;
             CustomInit();
@@ -70,43 +59,43 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
         /// <summary>
         /// Gets or sets description of the plan.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.description")]
+        [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
 
         /// <summary>
         /// Gets or sets display name.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.displayName")]
+        [JsonProperty(PropertyName = "displayName")]
         public string DisplayName { get; set; }
 
         /// <summary>
         /// Gets or sets external reference identifier.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.externalReferenceId")]
+        [JsonProperty(PropertyName = "externalReferenceId")]
         public string ExternalReferenceId { get; set; }
 
         /// <summary>
         /// Gets or sets quota identifiers under the plan.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.quotaIds")]
+        [JsonProperty(PropertyName = "quotaIds")]
         public IList<string> QuotaIds { get; set; }
 
         /// <summary>
         /// Gets or sets name of the plan.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.name")]
-        public string PlanName { get; set; }
+        [JsonProperty(PropertyName = "name")]
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets subscription count.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.subscriptionCount")]
+        [JsonProperty(PropertyName = "subscriptionCount")]
         public int? SubscriptionCount { get; set; }
 
         /// <summary>
         /// Gets or sets SKU identifiers.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.skuIds")]
+        [JsonProperty(PropertyName = "skuIds")]
         public IList<string> SkuIds { get; set; }
 
     }

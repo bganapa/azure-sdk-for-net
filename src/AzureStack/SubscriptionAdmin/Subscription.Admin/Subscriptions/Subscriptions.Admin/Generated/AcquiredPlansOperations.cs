@@ -51,8 +51,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         public SubscriptionsAdminClient Client { get; private set; }
 
         /// <summary>
-        /// Gets a collection of SubscriberUsageAggregates, which are UsageAggregates
-        /// from direct tenants.
+        /// Get a collection of all acquired plans that subscription has access to.
         /// </summary>
         /// <param name='targetSubscription'>
         /// The target subscription.
@@ -105,7 +104,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/subscriptions/{targetSubscription}/acquiredPlans").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/subscriptions/{targetSubscriptionId}/acquiredPlans").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             _url = _url.Replace("{targetSubscription}", System.Uri.EscapeDataString(targetSubscription));
             List<string> _queryParameters = new List<string>();
@@ -300,7 +299,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/subscriptions/{targetSubscription}/acquiredPlans/{plan}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/subscriptions/{targetSubscriptionId}/acquiredPlans/{plan}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             _url = _url.Replace("{targetSubscription}", System.Uri.EscapeDataString(targetSubscription));
             _url = _url.Replace("{plan}", System.Uri.EscapeDataString(plan));
@@ -435,8 +434,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         }
 
         /// <summary>
-        /// Gets a collection of SubscriberUsageAggregates, which are UsageAggregates
-        /// from direct tenants.
+        /// Deletes an acquired plan.
         /// </summary>
         /// <param name='targetSubscription'>
         /// The target subscription.
@@ -494,7 +492,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/subscriptions/{targetSubscription}/acquiredPlans/{plan}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/subscriptions/{targetSubscriptionId}/acquiredPlans/{plan}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             _url = _url.Replace("{targetSubscription}", System.Uri.EscapeDataString(targetSubscription));
             _url = _url.Replace("{plan}", System.Uri.EscapeDataString(plan));
@@ -561,7 +559,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 200)
+            if ((int)_statusCode != 200 && (int)_statusCode != 204)
             {
                 var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
@@ -680,7 +678,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/subscriptions/{targetSubscription}/acquiredPlans/{plan}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/subscriptions/{targetSubscriptionId}/acquiredPlans/{plan}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             _url = _url.Replace("{targetSubscription}", System.Uri.EscapeDataString(targetSubscription));
             _url = _url.Replace("{plan}", System.Uri.EscapeDataString(plan));
@@ -753,7 +751,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 200)
+            if ((int)_statusCode != 200 && (int)_statusCode != 201)
             {
                 var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
@@ -813,6 +811,24 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
                     throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
                 }
             }
+            // Deserialize Response
+            if ((int)_statusCode == 201)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<AcquiredPlan>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
             if (_shouldTrace)
             {
                 ServiceClientTracing.Exit(_invocationId, _result);
@@ -821,8 +837,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         }
 
         /// <summary>
-        /// Gets a collection of SubscriberUsageAggregates, which are UsageAggregates
-        /// from direct tenants.
+        /// Get a collection of all acquired plans that subscription has access to.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

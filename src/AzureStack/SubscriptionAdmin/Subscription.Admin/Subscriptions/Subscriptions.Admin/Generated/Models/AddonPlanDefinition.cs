@@ -31,8 +31,8 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
         /// Initializes a new instance of the AddonPlanDefinition class.
         /// </summary>
         /// <param name="planId">Plan identifier.</param>
-        /// <param name="maxAcquisitionCount">maximum number of instances that
-        /// can be acquired by a single subscription.  If not specified, the
+        /// <param name="maxAcquisitionCount">Maximum number of instances that
+        /// can be acquired by a single subscription. If not specified, the
         /// assumed value is 1.</param>
         public AddonPlanDefinition(string planId = default(string), int? maxAcquisitionCount = default(int?))
         {
@@ -54,7 +54,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
 
         /// <summary>
         /// Gets or sets maximum number of instances that can be acquired by a
-        /// single subscription.  If not specified, the assumed value is 1.
+        /// single subscription. If not specified, the assumed value is 1.
         /// </summary>
         [JsonProperty(PropertyName = "maxAcquisitionCount")]
         public int? MaxAcquisitionCount { get; set; }

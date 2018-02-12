@@ -57,6 +57,40 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='offer'>
+            /// Check name availability parameter
+            /// </param>
+            public static CheckNameAvailabilityResponse CheckNameAvailability(this ISubscriptionsOperations operations, CheckNameAvailabilityDefinition offer)
+            {
+                return operations.CheckNameAvailabilityAsync(offer).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Get the list of subscriptions.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='offer'>
+            /// Check name availability parameter
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<CheckNameAvailabilityResponse> CheckNameAvailabilityAsync(this ISubscriptionsOperations operations, CheckNameAvailabilityDefinition offer, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CheckNameAvailabilityWithHttpMessagesAsync(offer, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Get a specified subscription.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
             /// <param name='subscription'>
             /// Subscription parameter.
             /// </param>
@@ -66,7 +100,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             }
 
             /// <summary>
-            /// Get the list of subscriptions.
+            /// Get a specified subscription.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.

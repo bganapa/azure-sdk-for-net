@@ -38,7 +38,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
         /// <param name="name">Name of the resource.</param>
         /// <param name="type">Type of resource.</param>
         /// <param name="location">Location where resource is location.</param>
-        /// <param name="tags">List of key value pairs.</param>
+        /// <param name="tags">List of key-value pairs.</param>
         /// <param name="acquisitionId">Acquisition identifier.</param>
         /// <param name="planId">Plan identifier in the tenant subscription
         /// context.</param>

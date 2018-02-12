@@ -39,7 +39,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
         /// <param name="name">Name of the resource.</param>
         /// <param name="type">Type of resource.</param>
         /// <param name="location">Location where resource is location.</param>
-        /// <param name="tags">List of key value pairs.</param>
+        /// <param name="tags">List of key-value pairs.</param>
         /// <param name="displayName">Display name of offer.</param>
         /// <param name="description">Description of offer.</param>
         /// <param name="externalReferenceId">External reference
@@ -50,7 +50,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
         /// <param name="maxSubscriptionsPerAccount">Maximum subscriptions per
         /// account.</param>
         /// <param name="basePlanIds">Identifiers of the base plans that become
-        /// available to tenant immediately when a tenant subscribes to the
+        /// available to the tenant immediately when a tenant subscribes to the
         /// offer.</param>
         /// <param name="addonPlanDefinition">References to add-on plans that a
         /// tenant can optionally acquire as a part of the offer.</param>
@@ -112,7 +112,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
 
         /// <summary>
         /// Gets or sets identifiers of the base plans that become available to
-        /// tenant immediately when a tenant subscribes to the offer.
+        /// the tenant immediately when a tenant subscribes to the offer.
         /// </summary>
         [JsonProperty(PropertyName = "properties.basePlanIds")]
         public IList<string> BasePlanIds { get; set; }

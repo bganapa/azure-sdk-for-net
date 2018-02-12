@@ -24,8 +24,8 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
     public partial interface IAcquiredPlansOperations
     {
         /// <summary>
-        /// Gets a collection of SubscriberUsageAggregates, which are
-        /// UsageAggregates from direct tenants.
+        /// Get a collection of all acquired plans that subscription has access
+        /// to.
         /// </summary>
         /// <param name='targetSubscription'>
         /// The target subscription.
@@ -72,8 +72,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// </exception>
         Task<AzureOperationResponse<AcquiredPlan>> GetWithHttpMessagesAsync(string targetSubscription, string plan, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets a collection of SubscriberUsageAggregates, which are
-        /// UsageAggregates from direct tenants.
+        /// Deletes an acquired plan.
         /// </summary>
         /// <param name='targetSubscription'>
         /// The target subscription.
@@ -123,8 +122,8 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// </exception>
         Task<AzureOperationResponse<AcquiredPlan>> CreateWithHttpMessagesAsync(string targetSubscription, string plan, AcquiredPlanProperties newAcquiredPlan, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets a collection of SubscriberUsageAggregates, which are
-        /// UsageAggregates from direct tenants.
+        /// Get a collection of all acquired plans that subscription has access
+        /// to.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

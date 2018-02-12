@@ -38,10 +38,10 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
         /// <param name="name">Name of the resource.</param>
         /// <param name="type">Type of resource.</param>
         /// <param name="location">Location where resource is location.</param>
-        /// <param name="tags">List of key value pairs.</param>
+        /// <param name="tags">List of key-value pairs.</param>
         /// <param name="resourceTags">Resource tags.</param>
-        /// <param name="resellerSubscriptionId">Identifier of the reseller
-        /// subscription that delegated the offer.</param>
+        /// <param name="delegatedProviderSubscriptionId">Identifier of the
+        /// DelegatedProvider subscription that delegated the offer.</param>
         /// <param name="offerName">Name of the base admin offer.</param>
         /// <param name="offerDisplayName">Display name of the base admin
         /// offer.</param>
@@ -49,32 +49,33 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
         /// offer.</param>
         /// <param name="offerResourceGroupName">Resource group name of the
         /// base admin offer.</param>
-        /// <param name="resellerOfferName">Name of the base reseller offer
-        /// (when the reseller is not the admin subscription).</param>
-        /// <param name="resellerOfferDisplayName">Display name of the base
-        /// reseller offer (when the reseller is not the admin
-        /// subscription).</param>
-        /// <param name="resellerOfferDescription">Description of the base
-        /// reseller offer (when the reseller is not the admin
-        /// subscription).</param>
-        /// <param name="resellerOfferResourceGroupName">Resource group name of
-        /// the base reseller offer (when the reseller is not the admin
-        /// subscription).</param>
+        /// <param name="delegatedProviderOfferName">Name of the base
+        /// DelegatedProvider offer (when the DelegatedProvider is not the
+        /// admin subscription).</param>
+        /// <param name="delegatedProviderOfferDisplayName">Display name of the
+        /// base DelegatedProvider offer (when the DelegatedProvider is not the
+        /// admin subscription).</param>
+        /// <param name="delegatedProviderOfferDescription">Description of the
+        /// base DelegatedProvider offer (when the DelegatedProvider is not the
+        /// admin subscription).</param>
+        /// <param name="delegatedProviderOfferResourceGroupName">Resource
+        /// group name of the base DelegatedProvider offer (when the
+        /// DelegatedProvider is not the admin subscription).</param>
         /// <param name="subscriptionId">Identifier of the subscription
         /// receiving the delegated offer.</param>
-        public DelegatedOffer(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IDictionary<string, string> resourceTags = default(IDictionary<string, string>), string resellerSubscriptionId = default(string), string offerName = default(string), string offerDisplayName = default(string), string offerDescription = default(string), string offerResourceGroupName = default(string), string resellerOfferName = default(string), string resellerOfferDisplayName = default(string), string resellerOfferDescription = default(string), string resellerOfferResourceGroupName = default(string), string subscriptionId = default(string))
+        public DelegatedOffer(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IDictionary<string, string> resourceTags = default(IDictionary<string, string>), string delegatedProviderSubscriptionId = default(string), string offerName = default(string), string offerDisplayName = default(string), string offerDescription = default(string), string offerResourceGroupName = default(string), string delegatedProviderOfferName = default(string), string delegatedProviderOfferDisplayName = default(string), string delegatedProviderOfferDescription = default(string), string delegatedProviderOfferResourceGroupName = default(string), string subscriptionId = default(string))
             : base(id, name, type, location, tags)
         {
             ResourceTags = resourceTags;
-            ResellerSubscriptionId = resellerSubscriptionId;
+            DelegatedProviderSubscriptionId = delegatedProviderSubscriptionId;
             OfferName = offerName;
             OfferDisplayName = offerDisplayName;
             OfferDescription = offerDescription;
             OfferResourceGroupName = offerResourceGroupName;
-            ResellerOfferName = resellerOfferName;
-            ResellerOfferDisplayName = resellerOfferDisplayName;
-            ResellerOfferDescription = resellerOfferDescription;
-            ResellerOfferResourceGroupName = resellerOfferResourceGroupName;
+            DelegatedProviderOfferName = delegatedProviderOfferName;
+            DelegatedProviderOfferDisplayName = delegatedProviderOfferDisplayName;
+            DelegatedProviderOfferDescription = delegatedProviderOfferDescription;
+            DelegatedProviderOfferResourceGroupName = delegatedProviderOfferResourceGroupName;
             SubscriptionId = subscriptionId;
             CustomInit();
         }
@@ -91,11 +92,11 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
         public IDictionary<string, string> ResourceTags { get; set; }
 
         /// <summary>
-        /// Gets or sets identifier of the reseller subscription that delegated
-        /// the offer.
+        /// Gets or sets identifier of the DelegatedProvider subscription that
+        /// delegated the offer.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.resellerSubscriptionId")]
-        public string ResellerSubscriptionId { get; set; }
+        [JsonProperty(PropertyName = "properties.delegatedProviderSubscriptionId")]
+        public string DelegatedProviderSubscriptionId { get; set; }
 
         /// <summary>
         /// Gets or sets name of the base admin offer.
@@ -122,32 +123,32 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
         public string OfferResourceGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets name of the base reseller offer (when the reseller is
-        /// not the admin subscription).
+        /// Gets or sets name of the base DelegatedProvider offer (when the
+        /// DelegatedProvider is not the admin subscription).
         /// </summary>
-        [JsonProperty(PropertyName = "properties.resellerOfferName")]
-        public string ResellerOfferName { get; set; }
+        [JsonProperty(PropertyName = "properties.delegatedProviderOfferName")]
+        public string DelegatedProviderOfferName { get; set; }
 
         /// <summary>
-        /// Gets or sets display name of the base reseller offer (when the
-        /// reseller is not the admin subscription).
+        /// Gets or sets display name of the base DelegatedProvider offer (when
+        /// the DelegatedProvider is not the admin subscription).
         /// </summary>
-        [JsonProperty(PropertyName = "properties.resellerOfferDisplayName")]
-        public string ResellerOfferDisplayName { get; set; }
+        [JsonProperty(PropertyName = "properties.delegatedProviderOfferDisplayName")]
+        public string DelegatedProviderOfferDisplayName { get; set; }
 
         /// <summary>
-        /// Gets or sets description of the base reseller offer (when the
-        /// reseller is not the admin subscription).
+        /// Gets or sets description of the base DelegatedProvider offer (when
+        /// the DelegatedProvider is not the admin subscription).
         /// </summary>
-        [JsonProperty(PropertyName = "properties.resellerOfferDescription")]
-        public string ResellerOfferDescription { get; set; }
+        [JsonProperty(PropertyName = "properties.delegatedProviderOfferDescription")]
+        public string DelegatedProviderOfferDescription { get; set; }
 
         /// <summary>
-        /// Gets or sets resource group name of the base reseller offer (when
-        /// the reseller is not the admin subscription).
+        /// Gets or sets resource group name of the base DelegatedProvider
+        /// offer (when the DelegatedProvider is not the admin subscription).
         /// </summary>
-        [JsonProperty(PropertyName = "properties.resellerOfferResourceGroupName")]
-        public string ResellerOfferResourceGroupName { get; set; }
+        [JsonProperty(PropertyName = "properties.delegatedProviderOfferResourceGroupName")]
+        public string DelegatedProviderOfferResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets identifier of the subscription receiving the delegated

@@ -31,7 +31,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
         /// </summary>
         /// <param name="display">Display information for the
         /// operation.</param>
-        /// <param name="name">name of the operation being performed on an
+        /// <param name="name">Name of the operation being performed on an
         /// object.</param>
         /// <param name="origin">Origin for the operation.</param>
         public Operation(OperationDisplay display = default(OperationDisplay), string name = default(string), string origin = default(string))

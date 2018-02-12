@@ -75,7 +75,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             }
 
             /// <summary>
-            /// Get the list of subscriptions.
+            /// Restores the data
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -86,7 +86,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             }
 
             /// <summary>
-            /// Get the list of subscriptions.
+            /// Restores the data
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.

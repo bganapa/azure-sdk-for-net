@@ -50,7 +50,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             }
 
             /// <summary>
-            /// Get the list of offers.
+            /// Get the list of offers under a resource group.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -64,7 +64,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             }
 
             /// <summary>
-            /// Get the list of offers.
+            /// Get the list of offers under a resource group.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -84,7 +84,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             }
 
             /// <summary>
-            /// Get the list of offers.
+            /// Get the specified offer.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -101,7 +101,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             }
 
             /// <summary>
-            /// Get the list of offers.
+            /// Get the specified offer.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -124,7 +124,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             }
 
             /// <summary>
-            /// Get the list of offers.
+            /// Create or update the offer.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -144,7 +144,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             }
 
             /// <summary>
-            /// Get the list of offers.
+            /// Create or update the offer.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -170,7 +170,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             }
 
             /// <summary>
-            /// Get the list of offers.
+            /// Delete the specified offer.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -187,7 +187,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             }
 
             /// <summary>
-            /// Get the list of offers.
+            /// Delete the specified offer.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -207,7 +207,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             }
 
             /// <summary>
-            /// Get subscription metrics.
+            /// Get the offer metrics.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -224,7 +224,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             }
 
             /// <summary>
-            /// Get subscription metrics.
+            /// Get the offer metrics.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -247,7 +247,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             }
 
             /// <summary>
-            /// Get the list of offers.
+            /// Get the metric definitions.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -264,7 +264,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             }
 
             /// <summary>
-            /// Get the list of offers.
+            /// Get the metric definitions.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -287,7 +287,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             }
 
             /// <summary>
-            /// Get the list of offers.
+            /// Links a plan to an offer.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -307,7 +307,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             }
 
             /// <summary>
-            /// Get the list of offers.
+            /// Links a plan to an offer.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -330,7 +330,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             }
 
             /// <summary>
-            /// Get the list of offers.
+            /// Unlink a plan from an offer.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -350,7 +350,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             }
 
             /// <summary>
-            /// Get the list of offers.
+            /// Unlink a plan from an offer.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -407,7 +407,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             }
 
             /// <summary>
-            /// Get the list of offers.
+            /// Get the list of offers under a resource group.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -421,7 +421,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             }
 
             /// <summary>
-            /// Get the list of offers.
+            /// Get the list of offers under a resource group.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.

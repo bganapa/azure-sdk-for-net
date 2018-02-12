@@ -18,7 +18,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
     using System.Linq;
 
     /// <summary>
-    /// I don't know.
+    /// The delegated provider offer.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class DelegatedProviderOffer : Resource
@@ -38,8 +38,8 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
         /// <param name="name">Name of the resource.</param>
         /// <param name="type">Type of resource.</param>
         /// <param name="location">Location where resource is location.</param>
-        /// <param name="tags">List of key value pairs.</param>
-        /// <param name="subscriptionId">Subscription id of tenant using
+        /// <param name="tags">List of key-value pairs.</param>
+        /// <param name="subscriptionId">Subscription ID of tenant using
         /// plan.</param>
         /// <param name="usageStartTime">UTC start time for the usage bucket to
         /// which this usage aggregate belongs.</param>
@@ -69,7 +69,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets subscription id of tenant using plan.
+        /// Gets or sets subscription ID of tenant using plan.
         /// </summary>
         [JsonProperty(PropertyName = "properties.subscriptionId")]
         public string SubscriptionId { get; set; }

@@ -22,8 +22,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
     public static partial class AcquiredPlansOperationsExtensions
     {
             /// <summary>
-            /// Gets a collection of SubscriberUsageAggregates, which are UsageAggregates
-            /// from direct tenants.
+            /// Get a collection of all acquired plans that subscription has access to.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -37,8 +36,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             }
 
             /// <summary>
-            /// Gets a collection of SubscriberUsageAggregates, which are UsageAggregates
-            /// from direct tenants.
+            /// Get a collection of all acquired plans that subscription has access to.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -98,8 +96,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             }
 
             /// <summary>
-            /// Gets a collection of SubscriberUsageAggregates, which are UsageAggregates
-            /// from direct tenants.
+            /// Deletes an acquired plan.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -116,8 +113,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             }
 
             /// <summary>
-            /// Gets a collection of SubscriberUsageAggregates, which are UsageAggregates
-            /// from direct tenants.
+            /// Deletes an acquired plan.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -183,8 +179,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             }
 
             /// <summary>
-            /// Gets a collection of SubscriberUsageAggregates, which are UsageAggregates
-            /// from direct tenants.
+            /// Get a collection of all acquired plans that subscription has access to.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -198,8 +193,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             }
 
             /// <summary>
-            /// Gets a collection of SubscriberUsageAggregates, which are UsageAggregates
-            /// from direct tenants.
+            /// Get a collection of all acquired plans that subscription has access to.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.

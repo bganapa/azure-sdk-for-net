@@ -229,7 +229,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         }
 
         /// <summary>
-        /// Get the list of offers.
+        /// Get the list of offers under a resource group.
         /// </summary>
         /// <param name='resourceGroup'>
         /// The resource group the resource is located under.
@@ -416,7 +416,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         }
 
         /// <summary>
-        /// Get the list of offers.
+        /// Get the specified offer.
         /// </summary>
         /// <param name='resourceGroup'>
         /// The resource group the resource is located under.
@@ -612,7 +612,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         }
 
         /// <summary>
-        /// Get the list of offers.
+        /// Create or update the offer.
         /// </summary>
         /// <param name='resourceGroup'>
         /// The resource group the resource is located under.
@@ -754,7 +754,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 200)
+            if ((int)_statusCode != 200 && (int)_statusCode != 201)
             {
                 var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
@@ -814,6 +814,24 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
                     throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
                 }
             }
+            // Deserialize Response
+            if ((int)_statusCode == 201)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Offer>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
             if (_shouldTrace)
             {
                 ServiceClientTracing.Exit(_invocationId, _result);
@@ -822,7 +840,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         }
 
         /// <summary>
-        /// Get the list of offers.
+        /// Delete the specified offer.
         /// </summary>
         /// <param name='resourceGroup'>
         /// The resource group the resource is located under.
@@ -947,7 +965,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 200)
+            if ((int)_statusCode != 200 && (int)_statusCode != 204)
             {
                 var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
@@ -997,7 +1015,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         }
 
         /// <summary>
-        /// Get subscription metrics.
+        /// Get the offer metrics.
         /// </summary>
         /// <param name='resourceGroup'>
         /// The resource group the resource is located under.
@@ -1193,7 +1211,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         }
 
         /// <summary>
-        /// Get the list of offers.
+        /// Get the metric definitions.
         /// </summary>
         /// <param name='resourceGroup'>
         /// The resource group the resource is located under.
@@ -1389,7 +1407,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         }
 
         /// <summary>
-        /// Get the list of offers.
+        /// Links a plan to an offer.
         /// </summary>
         /// <param name='resourceGroup'>
         /// The resource group the resource is located under.
@@ -1578,7 +1596,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         }
 
         /// <summary>
-        /// Get the list of offers.
+        /// Unlink a plan from an offer.
         /// </summary>
         /// <param name='resourceGroup'>
         /// The resource group the resource is located under.
@@ -1940,7 +1958,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         }
 
         /// <summary>
-        /// Get the list of offers.
+        /// Get the list of offers under a resource group.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

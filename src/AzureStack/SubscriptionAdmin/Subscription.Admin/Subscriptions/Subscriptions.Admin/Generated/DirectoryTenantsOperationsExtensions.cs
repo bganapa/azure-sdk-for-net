@@ -135,8 +135,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             }
 
             /// <summary>
-            /// Gets a collection of SubscriberUsageAggregates, which are UsageAggregates
-            /// from direct tenants.
+            /// Create or updates a directory tenant.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -156,8 +155,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             }
 
             /// <summary>
-            /// Gets a collection of SubscriberUsageAggregates, which are UsageAggregates
-            /// from direct tenants.
+            /// Create or updates a directory tenant.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.

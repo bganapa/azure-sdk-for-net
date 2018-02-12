@@ -94,8 +94,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// </exception>
         Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroup, string tenant, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets a collection of SubscriberUsageAggregates, which are
-        /// UsageAggregates from direct tenants.
+        /// Create or updates a directory tenant.
         /// </summary>
         /// <param name='resourceGroup'>
         /// The resource group the resource is located under.

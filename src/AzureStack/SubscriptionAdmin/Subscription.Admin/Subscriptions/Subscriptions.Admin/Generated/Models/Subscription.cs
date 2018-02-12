@@ -35,9 +35,9 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
         /// <param name="name">Name of the resource.</param>
         /// <param name="type">Type of resource.</param>
         /// <param name="location">Location where resource is location.</param>
-        /// <param name="tags">List of key value pairs.</param>
-        /// <param name="delegatedProviderSubscriptionId">Parent reseller
-        /// subscription identifier.</param>
+        /// <param name="tags">List of key-value pairs.</param>
+        /// <param name="delegatedProviderSubscriptionId">Parent
+        /// DelegatedProvider subscription identifier.</param>
         /// <param name="displayName">Subscription name.</param>
         /// <param name="externalReferenceId">External reference
         /// identifier.</param>
@@ -72,7 +72,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets parent reseller subscription identifier.
+        /// Gets or sets parent DelegatedProvider subscription identifier.
         /// </summary>
         [JsonProperty(PropertyName = "delegatedProviderSubscriptionId")]
         public string DelegatedProviderSubscriptionId { get; set; }

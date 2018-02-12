@@ -229,10 +229,10 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         }
 
         /// <summary>
-        /// Get the list of delegatedProviders.
+        /// Get the list of delegated providers.
         /// </summary>
         /// <param name='delegatedProvider'>
-        /// Reseller identifier.
+        /// DelegatedProvider identifier.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.

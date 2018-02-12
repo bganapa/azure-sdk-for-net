@@ -85,6 +85,16 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         IAcquiredPlansOperations AcquiredPlans { get; }
 
         /// <summary>
+        /// Gets the IDelegatedProvidersOperations.
+        /// </summary>
+        IDelegatedProvidersOperations DelegatedProviders { get; }
+
+        /// <summary>
+        /// Gets the IDelegatedProviderOffersOperations.
+        /// </summary>
+        IDelegatedProviderOffersOperations DelegatedProviderOffers { get; }
+
+        /// <summary>
         /// Gets the IDirectoryTenantsOperations.
         /// </summary>
         IDirectoryTenantsOperations DirectoryTenants { get; }
@@ -115,16 +125,6 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         IQuotasOperations Quotas { get; }
 
         /// <summary>
-        /// Gets the IDelegatedProvidersOperations.
-        /// </summary>
-        IDelegatedProvidersOperations DelegatedProviders { get; }
-
-        /// <summary>
-        /// Gets the IResellerOffersOperations.
-        /// </summary>
-        IResellerOffersOperations ResellerOffers { get; }
-
-        /// <summary>
         /// Get the list of subscriptions.
         /// </summary>
         /// <param name='customHeaders'>
@@ -147,7 +147,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         Task<AzureOperationResponse> UpdateEncryptionWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// Get the list of subscriptions.
+        /// Restores the data
         /// </summary>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

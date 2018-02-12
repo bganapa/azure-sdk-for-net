@@ -24,7 +24,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
     public partial interface IOfferDelegationsOperations
     {
         /// <summary>
-        /// Get the list of offers.
+        /// Get the list of delegated offers.
         /// </summary>
         /// <param name='resourceGroup'>
         /// The resource group the resource is located under.
@@ -133,7 +133,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// </exception>
         Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroup, string offer, string delegatedOffer, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Get the list of offers.
+        /// Get the list of delegated offers.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
