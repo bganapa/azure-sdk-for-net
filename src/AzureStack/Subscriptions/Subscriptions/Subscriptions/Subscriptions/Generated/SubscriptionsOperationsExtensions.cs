@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.AzureStack.Management.Subscriptions.Admin
+namespace Microsoft.AzureStack.Management.Subscriptions
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
@@ -52,28 +52,37 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             }
 
             /// <summary>
-            /// Get a specified subscription.
+            /// Gets details about particular subscription.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static void Get(this ISubscriptionsOperations operations)
+            /// <param name='subscriptionId'>
+            /// Id of the subscription.
+            /// </param>
+            public static Subscription Get(this ISubscriptionsOperations operations, string subscriptionId)
             {
-                operations.GetAsync().GetAwaiter().GetResult();
+                return operations.GetAsync(subscriptionId).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Get a specified subscription.
+            /// Gets details about particular subscription.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
+            /// </param>
+            /// <param name='subscriptionId'>
+            /// Id of the subscription.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task GetAsync(this ISubscriptionsOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Subscription> GetAsync(this ISubscriptionsOperations operations, string subscriptionId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.GetWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.GetWithHttpMessagesAsync(subscriptionId, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
             }
 
             /// <summary>
@@ -82,12 +91,15 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='subscriptionId'>
+            /// Id of the subscription.
+            /// </param>
             /// <param name='newSubscription'>
             /// Subscription parameter.
             /// </param>
-            public static Subscription CreateOrUpdate(this ISubscriptionsOperations operations, Subscription newSubscription)
+            public static Subscription CreateOrUpdate(this ISubscriptionsOperations operations, string subscriptionId, Subscription newSubscription)
             {
-                return operations.CreateOrUpdateAsync(newSubscription).GetAwaiter().GetResult();
+                return operations.CreateOrUpdateAsync(subscriptionId, newSubscription).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -96,15 +108,18 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='subscriptionId'>
+            /// Id of the subscription.
+            /// </param>
             /// <param name='newSubscription'>
             /// Subscription parameter.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Subscription> CreateOrUpdateAsync(this ISubscriptionsOperations operations, Subscription newSubscription, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Subscription> CreateOrUpdateAsync(this ISubscriptionsOperations operations, string subscriptionId, Subscription newSubscription, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(newSubscription, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(subscriptionId, newSubscription, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -116,9 +131,12 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static void Delete(this ISubscriptionsOperations operations)
+            /// <param name='subscriptionId'>
+            /// Id of the subscription.
+            /// </param>
+            public static void Delete(this ISubscriptionsOperations operations, string subscriptionId)
             {
-                operations.DeleteAsync().GetAwaiter().GetResult();
+                operations.DeleteAsync(subscriptionId).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -127,12 +145,15 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='subscriptionId'>
+            /// Id of the subscription.
+            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteAsync(this ISubscriptionsOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteAsync(this ISubscriptionsOperations operations, string subscriptionId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.DeleteWithHttpMessagesAsync(subscriptionId, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
     }

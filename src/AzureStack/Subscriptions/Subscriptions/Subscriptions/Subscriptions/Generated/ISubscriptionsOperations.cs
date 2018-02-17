@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.AzureStack.Management.Subscriptions.Admin
+namespace Microsoft.AzureStack.Management.Subscriptions
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
@@ -19,12 +19,12 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
     using System.Threading.Tasks;
 
     /// <summary>
-    /// DelegatedProviderOffersOperations operations.
+    /// SubscriptionsOperations operations.
     /// </summary>
-    public partial interface IDelegatedProviderOffersOperations
+    public partial interface ISubscriptionsOperations
     {
         /// <summary>
-        /// Get the list of public offers.
+        /// Get the list of subscriptions.
         /// </summary>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -41,10 +41,13 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<DelegatedProviderOffer>>> ListAllWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IEnumerable<Subscription>>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Get the specified public offer.
+        /// Gets details about particular subscription.
         /// </summary>
+        /// <param name='subscriptionId'>
+        /// Id of the subscription.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -60,12 +63,15 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<DelegatedProviderOffer>> GetWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<Subscription>> GetWithHttpMessagesAsync(string subscriptionId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Get the list of public offers.
+        /// Create or updates a subscription.
         /// </summary>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
+        /// <param name='subscriptionId'>
+        /// Id of the subscription.
+        /// </param>
+        /// <param name='newSubscription'>
+        /// Subscription parameter.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -82,6 +88,25 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<DelegatedProviderOffer>>> ListAllNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<Subscription>> CreateOrUpdateWithHttpMessagesAsync(string subscriptionId, Subscription newSubscription, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Delete the specifed subscription.
+        /// </summary>
+        /// <param name='subscriptionId'>
+        /// Id of the subscription.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string subscriptionId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

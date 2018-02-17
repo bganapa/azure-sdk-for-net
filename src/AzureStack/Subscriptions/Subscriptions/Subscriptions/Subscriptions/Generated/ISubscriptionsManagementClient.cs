@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.AzureStack.Management.Subscriptions.Admin
+namespace Microsoft.AzureStack.Management.Subscriptions
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
@@ -16,9 +16,9 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
     using Newtonsoft.Json;
 
     /// <summary>
-    /// Subscriptions Admin Client
+    /// Subscriptions Management Client
     /// </summary>
-    public partial interface ISubscriptionsAdminClient : System.IDisposable
+    public partial interface ISubscriptionsManagementClient : System.IDisposable
     {
         /// <summary>
         /// The base URI of the service.
@@ -79,6 +79,11 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// Gets the IDelegatedProviderOffersOperations.
         /// </summary>
         IDelegatedProviderOffersOperations DelegatedProviderOffers { get; }
+
+        /// <summary>
+        /// Gets the IOffersOperations.
+        /// </summary>
+        IOffersOperations Offers { get; }
 
     }
 }

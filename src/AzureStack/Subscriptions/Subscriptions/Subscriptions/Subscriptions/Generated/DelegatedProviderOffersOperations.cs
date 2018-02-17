@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.AzureStack.Management.Subscriptions.Admin
+namespace Microsoft.AzureStack.Management.Subscriptions
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
@@ -23,12 +23,12 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
     using System.Threading.Tasks;
 
     /// <summary>
-    /// SubscriptionsOperations operations.
+    /// DelegatedProviderOffersOperations operations.
     /// </summary>
-    internal partial class SubscriptionsOperations : IServiceOperations<SubscriptionsAdminClient>, ISubscriptionsOperations
+    internal partial class DelegatedProviderOffersOperations : IServiceOperations<SubscriptionsManagementClient>, IDelegatedProviderOffersOperations
     {
         /// <summary>
-        /// Initializes a new instance of the SubscriptionsOperations class.
+        /// Initializes a new instance of the DelegatedProviderOffersOperations class.
         /// </summary>
         /// <param name='client'>
         /// Reference to the service client.
@@ -36,7 +36,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal SubscriptionsOperations(SubscriptionsAdminClient client)
+        internal DelegatedProviderOffersOperations(SubscriptionsManagementClient client)
         {
             if (client == null)
             {
@@ -46,13 +46,16 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         }
 
         /// <summary>
-        /// Gets a reference to the SubscriptionsAdminClient
+        /// Gets a reference to the SubscriptionsManagementClient
         /// </summary>
-        public SubscriptionsAdminClient Client { get; private set; }
+        public SubscriptionsManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Get the list of subscriptions.
+        /// Get the list of offers for the specified delegated provider.
         /// </summary>
+        /// <param name='delegatedProviderId'>
+        /// Id of the delegated provider.
+        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -74,8 +77,12 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IEnumerable<Subscription>>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<Offer>>> ListWithHttpMessagesAsync(string delegatedProviderId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (delegatedProviderId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "delegatedProviderId");
+            }
             if (Client.ApiVersion == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
@@ -87,12 +94,14 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("delegatedProviderId", delegatedProviderId);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "List", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "providers/Microsoft.Subscriptions/subscriptions").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "delegatedProviders/{delegatedProviderId}/offers").ToString();
+            _url = _url.Replace("{delegatedProviderId}", System.Uri.EscapeDataString(delegatedProviderId));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
             {
@@ -191,7 +200,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<IEnumerable<Subscription>>();
+            var _result = new AzureOperationResponse<IPage<Offer>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -204,7 +213,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<Subscription>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<Offer>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -224,8 +233,14 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         }
 
         /// <summary>
-        /// Get a specified subscription.
+        /// Get the list of offers for the specified delegated provider.
         /// </summary>
+        /// <param name='delegatedProviderId'>
+        /// Id of the delegated provider.
+        /// </param>
+        /// <param name='offerName'>
+        /// Name of the offer.
+        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -234,6 +249,9 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// </param>
         /// <exception cref="CloudException">
         /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
         /// </exception>
         /// <exception cref="ValidationException">
         /// Thrown when a required parameter is null
@@ -244,11 +262,15 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse> GetWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<Offer>> GetWithHttpMessagesAsync(string delegatedProviderId, string offerName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (Client.SubscriptionId == null)
+            if (delegatedProviderId == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+                throw new ValidationException(ValidationRules.CannotBeNull, "delegatedProviderId");
+            }
+            if (offerName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "offerName");
             }
             if (Client.ApiVersion == null)
             {
@@ -261,13 +283,16 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("delegatedProviderId", delegatedProviderId);
+                tracingParameters.Add("offerName", offerName);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "providers/Microsoft.Subscriptions/subscriptions/{subscriptionid}").ToString();
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "delegatedProviders/{delegatedProviderId}/offers/{offerName}").ToString();
+            _url = _url.Replace("{delegatedProviderId}", System.Uri.EscapeDataString(delegatedProviderId));
+            _url = _url.Replace("{offerName}", System.Uri.EscapeDataString(offerName));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
             {
@@ -331,7 +356,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 200 && (int)_statusCode != 404)
+            if ((int)_statusCode != 200)
             {
                 var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
@@ -366,12 +391,30 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse();
+            var _result = new AzureOperationResponse<Offer>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Offer>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
             }
             if (_shouldTrace)
             {
@@ -381,10 +424,10 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         }
 
         /// <summary>
-        /// Create or updates a subscription.
+        /// Get the list of offers for the specified delegated provider.
         /// </summary>
-        /// <param name='newSubscription'>
-        /// Subscription parameter.
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -407,19 +450,11 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<Subscription>> CreateOrUpdateWithHttpMessagesAsync(Subscription newSubscription, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<Offer>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (Client.SubscriptionId == null)
+            if (nextPageLink == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-            if (newSubscription == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "newSubscription");
-            }
-            if (Client.ApiVersion == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+                throw new ValidationException(ValidationRules.CannotBeNull, "nextPageLink");
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -428,19 +463,14 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("newSubscription", newSubscription);
+                tracingParameters.Add("nextPageLink", nextPageLink);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "CreateOrUpdate", tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, "ListNext", tracingParameters);
             }
             // Construct URL
-            var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "providers/Microsoft.Subscriptions/subscriptions/{subscriptionid}").ToString();
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            string _url = "{nextLink}";
+            _url = _url.Replace("{nextLink}", nextPageLink);
             List<string> _queryParameters = new List<string>();
-            if (Client.ApiVersion != null)
-            {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
-            }
             if (_queryParameters.Count > 0)
             {
                 _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
@@ -448,7 +478,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             // Create HTTP transport objects
             var _httpRequest = new HttpRequestMessage();
             HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new HttpMethod("PUT");
+            _httpRequest.Method = new HttpMethod("GET");
             _httpRequest.RequestUri = new System.Uri(_url);
             // Set Headers
             if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
@@ -479,12 +509,6 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
 
             // Serialize Request
             string _requestContent = null;
-            if(newSubscription != null)
-            {
-                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(newSubscription, Client.SerializationSettings);
-                _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
-                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
-            }
             // Set Credentials
             if (Client.Credentials != null)
             {
@@ -505,7 +529,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 200 && (int)_statusCode != 201)
+            if ((int)_statusCode != 200)
             {
                 var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
@@ -540,7 +564,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<Subscription>();
+            var _result = new AzureOperationResponse<IPage<Offer>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -553,25 +577,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Subscription>(_responseContent, Client.DeserializationSettings);
-                }
-                catch (JsonException ex)
-                {
-                    _httpRequest.Dispose();
-                    if (_httpResponse != null)
-                    {
-                        _httpResponse.Dispose();
-                    }
-                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
-                }
-            }
-            // Deserialize Response
-            if ((int)_statusCode == 201)
-            {
-                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
-                {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Subscription>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<Offer>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -591,8 +597,11 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         }
 
         /// <summary>
-        /// Delete the specifed subscription.
+        /// Get the list of offers for the specified delegated provider.
         /// </summary>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -601,6 +610,9 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// </param>
         /// <exception cref="CloudException">
         /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
         /// </exception>
         /// <exception cref="ValidationException">
         /// Thrown when a required parameter is null
@@ -611,15 +623,11 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<Offer>> GetNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (Client.SubscriptionId == null)
+            if (nextPageLink == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-            if (Client.ApiVersion == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+                throw new ValidationException(ValidationRules.CannotBeNull, "nextPageLink");
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -628,18 +636,14 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("nextPageLink", nextPageLink);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "Delete", tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, "GetNext", tracingParameters);
             }
             // Construct URL
-            var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "providers/Microsoft.Subscriptions/subscriptions/{subscriptionid}").ToString();
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            string _url = "{nextLink}";
+            _url = _url.Replace("{nextLink}", nextPageLink);
             List<string> _queryParameters = new List<string>();
-            if (Client.ApiVersion != null)
-            {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
-            }
             if (_queryParameters.Count > 0)
             {
                 _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
@@ -647,7 +651,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             // Create HTTP transport objects
             var _httpRequest = new HttpRequestMessage();
             HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new HttpMethod("DELETE");
+            _httpRequest.Method = new HttpMethod("GET");
             _httpRequest.RequestUri = new System.Uri(_url);
             // Set Headers
             if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
@@ -698,7 +702,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 200 && (int)_statusCode != 204)
+            if ((int)_statusCode != 200)
             {
                 var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
@@ -733,12 +737,30 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse();
+            var _result = new AzureOperationResponse<Offer>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Offer>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
             }
             if (_shouldTrace)
             {

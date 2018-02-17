@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.AzureStack.Management.Subscriptions.Admin
+namespace Microsoft.AzureStack.Management.Subscriptions
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
@@ -22,9 +22,9 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
     using System.Net.Http;
 
     /// <summary>
-    /// Subscriptions Admin Client
+    /// Subscriptions Management Client
     /// </summary>
-    public partial class SubscriptionsAdminClient : ServiceClient<SubscriptionsAdminClient>, ISubscriptionsAdminClient, IAzureClient
+    public partial class SubscriptionsManagementClient : ServiceClient<SubscriptionsManagementClient>, ISubscriptionsManagementClient, IAzureClient
     {
         /// <summary>
         /// The base URI of the service.
@@ -86,18 +86,23 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         public virtual IDelegatedProviderOffersOperations DelegatedProviderOffers { get; private set; }
 
         /// <summary>
-        /// Initializes a new instance of the SubscriptionsAdminClient class.
+        /// Gets the IOffersOperations.
+        /// </summary>
+        public virtual IOffersOperations Offers { get; private set; }
+
+        /// <summary>
+        /// Initializes a new instance of the SubscriptionsManagementClient class.
         /// </summary>
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        protected SubscriptionsAdminClient(params DelegatingHandler[] handlers) : base(handlers)
+        protected SubscriptionsManagementClient(params DelegatingHandler[] handlers) : base(handlers)
         {
             Initialize();
         }
 
         /// <summary>
-        /// Initializes a new instance of the SubscriptionsAdminClient class.
+        /// Initializes a new instance of the SubscriptionsManagementClient class.
         /// </summary>
         /// <param name='rootHandler'>
         /// Optional. The http client handler used to handle http transport.
@@ -105,13 +110,13 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        protected SubscriptionsAdminClient(HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : base(rootHandler, handlers)
+        protected SubscriptionsManagementClient(HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : base(rootHandler, handlers)
         {
             Initialize();
         }
 
         /// <summary>
-        /// Initializes a new instance of the SubscriptionsAdminClient class.
+        /// Initializes a new instance of the SubscriptionsManagementClient class.
         /// </summary>
         /// <param name='baseUri'>
         /// Optional. The base URI of the service.
@@ -122,7 +127,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        protected SubscriptionsAdminClient(System.Uri baseUri, params DelegatingHandler[] handlers) : this(handlers)
+        protected SubscriptionsManagementClient(System.Uri baseUri, params DelegatingHandler[] handlers) : this(handlers)
         {
             if (baseUri == null)
             {
@@ -132,7 +137,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         }
 
         /// <summary>
-        /// Initializes a new instance of the SubscriptionsAdminClient class.
+        /// Initializes a new instance of the SubscriptionsManagementClient class.
         /// </summary>
         /// <param name='baseUri'>
         /// Optional. The base URI of the service.
@@ -146,7 +151,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        protected SubscriptionsAdminClient(System.Uri baseUri, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
+        protected SubscriptionsManagementClient(System.Uri baseUri, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
         {
             if (baseUri == null)
             {
@@ -156,7 +161,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         }
 
         /// <summary>
-        /// Initializes a new instance of the SubscriptionsAdminClient class.
+        /// Initializes a new instance of the SubscriptionsManagementClient class.
         /// </summary>
         /// <param name='credentials'>
         /// Required. Credentials needed for the client to connect to Azure.
@@ -167,7 +172,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public SubscriptionsAdminClient(ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : this(handlers)
+        public SubscriptionsManagementClient(ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : this(handlers)
         {
             if (credentials == null)
             {
@@ -181,7 +186,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         }
 
         /// <summary>
-        /// Initializes a new instance of the SubscriptionsAdminClient class.
+        /// Initializes a new instance of the SubscriptionsManagementClient class.
         /// </summary>
         /// <param name='credentials'>
         /// Required. Credentials needed for the client to connect to Azure.
@@ -195,7 +200,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public SubscriptionsAdminClient(ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
+        public SubscriptionsManagementClient(ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
         {
             if (credentials == null)
             {
@@ -209,7 +214,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         }
 
         /// <summary>
-        /// Initializes a new instance of the SubscriptionsAdminClient class.
+        /// Initializes a new instance of the SubscriptionsManagementClient class.
         /// </summary>
         /// <param name='baseUri'>
         /// Optional. The base URI of the service.
@@ -223,7 +228,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public SubscriptionsAdminClient(System.Uri baseUri, ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : this(handlers)
+        public SubscriptionsManagementClient(System.Uri baseUri, ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : this(handlers)
         {
             if (baseUri == null)
             {
@@ -242,7 +247,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         }
 
         /// <summary>
-        /// Initializes a new instance of the SubscriptionsAdminClient class.
+        /// Initializes a new instance of the SubscriptionsManagementClient class.
         /// </summary>
         /// <param name='baseUri'>
         /// Optional. The base URI of the service.
@@ -259,7 +264,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public SubscriptionsAdminClient(System.Uri baseUri, ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
+        public SubscriptionsManagementClient(System.Uri baseUri, ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
         {
             if (baseUri == null)
             {
@@ -288,7 +293,8 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         {
             Subscriptions = new SubscriptionsOperations(this);
             DelegatedProviderOffers = new DelegatedProviderOffersOperations(this);
-            BaseUri = new System.Uri("https://adminmanagement.local.azurestack.external");
+            Offers = new OffersOperations(this);
+            BaseUri = new System.Uri("https://management.local.azurestack.external");
             ApiVersion = "2015-11-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
@@ -306,7 +312,6 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
                         new Iso8601TimeSpanConverter()
                     }
             };
-            SerializationSettings.Converters.Add(new TransformationJsonConverter());
             DeserializationSettings = new JsonSerializerSettings
             {
                 DateFormatHandling = Newtonsoft.Json.DateFormatHandling.IsoDateFormat,
@@ -320,7 +325,6 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
                     }
             };
             CustomInitialize();
-            DeserializationSettings.Converters.Add(new TransformationJsonConverter());
             DeserializationSettings.Converters.Add(new CloudErrorJsonConverter());
         }
     }

@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
+namespace Microsoft.AzureStack.Management.Subscriptions.Models
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;

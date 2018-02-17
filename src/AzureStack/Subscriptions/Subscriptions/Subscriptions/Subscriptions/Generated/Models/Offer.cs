@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
+namespace Microsoft.AzureStack.Management.Subscriptions.Models
 {
     using Newtonsoft.Json;
     using System.Linq;
@@ -17,24 +17,24 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
     /// Represents an offering of services against which a subscription can be
     /// created.
     /// </summary>
-    public partial class DelegatedProviderOffer
+    public partial class Offer
     {
         /// <summary>
-        /// Initializes a new instance of the DelegatedProviderOffer class.
+        /// Initializes a new instance of the Offer class.
         /// </summary>
-        public DelegatedProviderOffer()
+        public Offer()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the DelegatedProviderOffer class.
+        /// Initializes a new instance of the Offer class.
         /// </summary>
         /// <param name="displayName">Display name of offer.</param>
         /// <param name="description">Description of offer.</param>
         /// <param name="name">The name of the offer.</param>
         /// <param name="id">The offer ID</param>
-        public DelegatedProviderOffer(string displayName = default(string), string description = default(string), string name = default(string), string id = default(string))
+        public Offer(string displayName = default(string), string description = default(string), string name = default(string), string id = default(string))
         {
             DisplayName = displayName;
             Description = description;
