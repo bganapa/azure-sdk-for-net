@@ -15,11 +15,9 @@
     <Compile Remove="src\DirectoryTenantTests.cs" />
     <Compile Remove="src\LocationTests.cs" />
     <Compile Remove="src\OfferDelegationTests.cs" />
-    <Compile Remove="src\OfferTests.cs" />
     <Compile Remove="src\PlanTests.cs" />
     <Compile Remove="src\QuotaTests.cs" />
     <Compile Remove="src\ResellerOfferTests.cs" />
-    <Compile Remove="src\SubscriptionTests.cs" />
   </ItemGroup>
 
   <ItemGroup>

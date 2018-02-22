@@ -3,107 +3,57 @@
 // license information.
 //
 
-using Microsoft.AzureStack.Management.Subscriptions.Admin;
-using Microsoft.AzureStack.Management.Subscriptions.Admin.Models;
-using System.Linq;
+using Microsoft.AzureStack.Management.Subscriptions;
+using Microsoft.AzureStack.Management.Subscriptions.Models;
+using System;
 using Xunit;
 
 namespace Subscriptions.Tests
 {
     public class OfferTests : SubscriptionsTestBase
     {
- 
-        private void ValidateOffer(Offer ua) {
-            // Resource
-            Assert.NotNull(ua);
-            Assert.NotNull(ua.Id);
-            Assert.NotNull(ua.Location);
-            Assert.NotNull(ua.Name);
-            Assert.NotNull(ua.Type);
 
-            // Offer
-        }
-
-        private void AssertSame(Offer expected, Offer given) {
-            // Resource
-            Assert.Equal(expected.Id, given.Id);
-            Assert.Equal(expected.Location, given.Location);
-            Assert.Equal(expected.Name, given.Name);
-            Assert.Equal(expected.Type, given.Type);
-
-            // Offer
-        }
-
-        public void TestListAllOffers() {
-            RunTest((client) => {
-                var allOffers = client.Offers.ListAll();
-                allOffers.ForEach(client.Offers.ListAllNext, ValidateOffer);
-            });
-            }
-
-        [Fact]
-        public void TestListOffers() {
-            RunTest((client) => {
-                var allOffers = client.Offers.ListAll();
-                var resourceGroups = new System.Collections.Generic.HashSet<string>();
-                allOffers.ForEach(client.Offers.ListAllNext, (offer) => {
-                    resourceGroups.Add(Common.GetResourceGroupFromId(offer.Id));
-                });
-
-                resourceGroups.ForEach((rg) => {
-                    var offers = client.Offers.List(rg);
-                    offers.ForEach(client.Offers.ListNext, ValidateOffer);
-                });
-
-            });
+        private void ValidateOffer(Offer offer) {
+            // Subscription
+            Assert.NotNull(offer);
+            Assert.NotNull(offer.Id);
+            Assert.NotNull(offer.Name);
+            Assert.NotNull(offer.DisplayName);
         }
         
-        [Fact]
-        public void TestGetAllOffers() {
-            RunTest((client) => {
-                var allOffers = client.Offers.ListAll();
-                var resourceGroups = new System.Collections.Generic.HashSet<string>();
-                allOffers.ForEach(client.Offers.ListAllNext, (offer) => {
-                    resourceGroups.Add(Common.GetResourceGroupFromId(offer.Id));
-                });
-
-                resourceGroups.ForEach((rg) => {
-                    client.Offers.List(rg).ForEach(client.Offers.ListNext, (offer) => {
-                        var result = client.Offers.Get(rg, offer.Name);
-                        AssertSame(offer, result);
-                    });
-                });
-            });
+        private void AssertSame(Offer expected, Offer given) {
+            Assert.Equal(expected.Id, given.Id);
+            Assert.Equal(expected.Name, given.Name);
+            Assert.Equal(expected.DisplayName, given.DisplayName);
+            Assert.Equal(expected.Description, given.Description);
         }
 
-        [Fact]
-        public void TestGetOffer() {
-            RunTest((client) => {
-                var offer = client.Offers.ListAll().GetFirst();
-                var rg = Common.GetResourceGroupFromId(offer.Id);
-                var result = client.Offers.Get(rg, offer.Name);
-                AssertSame(offer, result);
-            });
-        }
+        //[Fact]
+        //public void TestListRootOffers() {
+        //    RunTest((client) => {
+        //        client.Offers.List().ForEach(ValidateOffer);
+        //    });
+        //}
 
-        [Fact]
-        public void TestCreateUpdateThenDeleteOffer() {
-            RunTest((client) => {
-                var offerName = "testOffer";
-                var plan = client.Plans.ListAll().First();
-                var offer = new Offer()
-                {
-                    Description = "This is a test Offer",
-                    DisplayName = "Test Offer",
-                    MaxSubscriptionsPerAccount = 100,
-                    BasePlanIds = new System.Collections.Generic.List<string>() {plan.Id}
-                };
-                
-                var result = client.Offers.CreateOrUpdate("TestOffer", offerName, offer);
-                client.Offers.Delete("TestOffer", offerName);
 
-                
-            });
-        }
+        //[Fact]
+        //public void TestListDelegatedProviderOffers()
+        //{
+        //    RunTest((client) => {
+        //        client.DelegatedProviderOffers.List("default").ForEach(ValidateOffer);
+        //    });
+        //}
+
+        //[Fact]
+        //public void TestGetDelegatedProviderOffers()
+        //{
+        //    RunTest((client) => {
+        //        var offerFromList = client.DelegatedProviderOffers.List("default").GetFirst();
+
+        //        var offerFromGet = client.DelegatedProviderOffers.Get("default", offerFromList.Name);
+        //        ValidateOffer(offerFromGet);
+        //        AssertSame(offerFromList, offerFromGet);
+        //    });
+        //}
     }
 }

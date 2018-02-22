@@ -1,0 +1,11 @@
+2018-02-17 21:36:49 UTC
+
+1) azure-rest-api-specs repository information
+GitHub user: bganapa
+Branch:      stack-admin
+Commit:      6c462b8e6b8cabf1e1f60f6a90ec62267284ba68
+
+2) AutoRest information
+Requested version: latest
+Bootstrapper version:    C:\Users\bganapa\AppData\Roaming\npm `-- autorest@2.0.4245  
+Latest installed version:    
