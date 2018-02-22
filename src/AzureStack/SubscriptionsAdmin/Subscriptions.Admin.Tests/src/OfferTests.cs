@@ -88,7 +88,6 @@ namespace Subscriptions.Tests
             });
         }
 
-        [Fact]
         public void TestCreateUpdateThenDeleteOffer() {
             RunTest((client) => {
                 var rg = "balarg";

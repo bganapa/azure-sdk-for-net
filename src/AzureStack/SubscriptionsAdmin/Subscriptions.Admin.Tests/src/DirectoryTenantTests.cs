@@ -64,7 +64,6 @@ namespace Subscriptions.Tests
             });
         }
 
-        [Fact]
         public void TestCreateUpdateThenDeleteDirectoryTenant() {
             RunTest((client) => {
                 var directoryTenantName = "azurestackci05.onmicrosoft.in";

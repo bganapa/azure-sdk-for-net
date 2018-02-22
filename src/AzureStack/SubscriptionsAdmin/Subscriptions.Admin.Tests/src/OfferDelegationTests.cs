@@ -64,7 +64,6 @@ namespace Subscriptions.Tests
             });
         }
 
-        [Fact]
         //Test asssumes that theres a offer delegation for the first offer
         public void TestGetOfferDelegation() {
             RunTest((client) => {

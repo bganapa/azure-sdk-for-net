@@ -68,7 +68,6 @@ namespace Subscriptions.Tests
             });
         }
 
-        [Fact]
         public void TestGetAcquiredPlan() {
             RunTest((client) => {
                 var subscription = client.Subscriptions.List().FirstOrDefault();
@@ -78,7 +77,6 @@ namespace Subscriptions.Tests
             });
         }
 
-        [Fact]
         public void TestCreateThenDeleteAcquiredPlan() {
             RunTest((client) => {
                 var subscription = client.Subscriptions.List().FirstOrDefault();

@@ -9,6 +9,9 @@
   <PropertyGroup>
     <TargetFrameworks>netcoreapp1.1</TargetFrameworks>
   </PropertyGroup>
+  <ItemGroup>
+    <None Remove="setEnvironment.cmd_1" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Subscriptions.Admin\Microsoft.AzureStack.Management.Subscriptions.Admin.csproj" />
