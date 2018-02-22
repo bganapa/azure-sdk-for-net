@@ -28,32 +28,36 @@ namespace Subscriptions.Tests
             Assert.Equal(expected.Description, given.Description);
         }
 
-        //[Fact]
-        //public void TestListRootOffers() {
-        //    RunTest((client) => {
-        //        client.Offers.List().ForEach(ValidateOffer);
-        //    });
-        //}
+        [Fact]
+        public void TestListRootOffers()
+        {
+            RunTest((client) =>
+            {
+                client.Offers.List().ForEach(ValidateOffer);
+            });
+        }
 
 
-        //[Fact]
-        //public void TestListDelegatedProviderOffers()
-        //{
-        //    RunTest((client) => {
-        //        client.DelegatedProviderOffers.List("default").ForEach(ValidateOffer);
-        //    });
-        //}
+        [Fact]
+        public void TestListDelegatedProviderOffers()
+        {
+            RunTest((client) =>
+            {
+                client.DelegatedProviderOffers.List("default").ForEach(ValidateOffer);
+            });
+        }
 
-        //[Fact]
-        //public void TestGetDelegatedProviderOffers()
-        //{
-        //    RunTest((client) => {
-        //        var offerFromList = client.DelegatedProviderOffers.List("default").GetFirst();
+        [Fact]
+        public void TestGetDelegatedProviderOffers()
+        {
+            RunTest((client) =>
+            {
+                var offerFromList = client.DelegatedProviderOffers.List("default").GetFirst();
 
-        //        var offerFromGet = client.DelegatedProviderOffers.Get("default", offerFromList.Name);
-        //        ValidateOffer(offerFromGet);
-        //        AssertSame(offerFromList, offerFromGet);
-        //    });
-        //}
+                var offerFromGet = client.DelegatedProviderOffers.Get("default", offerFromList.Name);
+                ValidateOffer(offerFromGet);
+                AssertSame(offerFromList, offerFromGet);
+            });
+        }
     }
 }

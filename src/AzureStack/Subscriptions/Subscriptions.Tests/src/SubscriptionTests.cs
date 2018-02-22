@@ -17,49 +17,44 @@ namespace Subscriptions.Tests
             // Subscription
             Assert.NotNull(subscription);
             Assert.NotNull(subscription.Id);
-            Assert.NotNull(subscription.Name);
+            Assert.NotNull(subscription.DisplayName);
             Assert.NotNull(subscription.SubscriptionId);
             Assert.NotNull(subscription.TenantId);
             Assert.NotNull(subscription.State);
             Assert.NotNull(subscription.OfferId);
         }
-        
-        private void AssertSame(Subscription expected, Subscription given) {
-            // Resource
-            Assert.Equal(expected.Id, given.Id);
-            Assert.Equal(expected.Location, given.Location);
-            Assert.Equal(expected.Name, given.Name);
-            Assert.Equal(expected.Type, given.Type);
 
-            // Subscription
+        [Fact]
+        public void TestListSubscriptions()
+        {
+            RunTest((client) =>
+            {
+                var subscriptions = client.Subscriptions.List();
+
+                subscriptions.ForEach(ValidateSubscription);
+            });
         }
 
-        //[Fact]
-        //public void TestListSubscriptions() {
-        //    RunTest((client) => {
-        //        var subscriptions = client.Subscriptions.List();
-
-        //        subscriptions.ForEach(ValidateSubscription);
-        //    });
-        //}
-
-        //[Fact]
-        //public void TestGetSubscription()
-        //{
-        //    RunTest((client) => {
-        //        var subscriptions = client.Subscriptions.List();
-        //        subscriptions.ForEach(subscription => {
-        //            ValidateSubscription(subscription);
-        //            client.Subscriptions.Get(subscription.SubscriptionId);
-        //            });
-        //    });
-        //}
+        [Fact]
+        public void TestGetSubscription()
+        {
+            RunTest((client) =>
+            {
+                var subscriptions = client.Subscriptions.List();
+                subscriptions.ForEach(subscription =>
+                {
+                    ValidateSubscription(subscription);
+                    client.Subscriptions.Get(subscription.SubscriptionId);
+                });
+            });
+        }
 
 
         //[Fact]
         //public void TestCreateUpdateAndThenDeleteSubscription()
         //{
-        //    RunTest((client) => {
+        //    RunTest((client) =>
+        //    {
         //        var subscriptionId = Guid.NewGuid().ToString();
         //        var offer = client.Offers.List().GetFirst();
 
@@ -69,8 +64,8 @@ namespace Subscriptions.Tests
         //                name: "TestSubscription",
         //                displayName: "Test Subscription",
         //                offerId: offer.Id,
-        //                subscriptionId:subscriptionId,
-        //                state:SubscriptionState.Enabled));
+        //                subscriptionId: subscriptionId,
+        //                state: SubscriptionState.Enabled));
 
         //        var createdSubscription = client.Subscriptions.Get(subscriptionId);
 
