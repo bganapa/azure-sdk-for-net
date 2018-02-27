@@ -64,12 +64,12 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='offer'>
+            /// <param name='nameAvailabilityDefinition'>
             /// Check name availability parameter
             /// </param>
-            public static CheckNameAvailabilityResponse CheckNameAvailability(this ISubscriptionsOperations operations, CheckNameAvailabilityDefinition offer)
+            public static CheckNameAvailabilityResponse CheckNameAvailability(this ISubscriptionsOperations operations, CheckNameAvailabilityDefinition nameAvailabilityDefinition)
             {
-                return operations.CheckNameAvailabilityAsync(offer).GetAwaiter().GetResult();
+                return operations.CheckNameAvailabilityAsync(nameAvailabilityDefinition).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -78,15 +78,15 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='offer'>
+            /// <param name='nameAvailabilityDefinition'>
             /// Check name availability parameter
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<CheckNameAvailabilityResponse> CheckNameAvailabilityAsync(this ISubscriptionsOperations operations, CheckNameAvailabilityDefinition offer, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<CheckNameAvailabilityResponse> CheckNameAvailabilityAsync(this ISubscriptionsOperations operations, CheckNameAvailabilityDefinition nameAvailabilityDefinition, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CheckNameAvailabilityWithHttpMessagesAsync(offer, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CheckNameAvailabilityWithHttpMessagesAsync(nameAvailabilityDefinition, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

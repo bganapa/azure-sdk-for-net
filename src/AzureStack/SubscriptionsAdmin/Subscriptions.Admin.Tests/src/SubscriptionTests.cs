@@ -42,6 +42,15 @@ namespace Subscriptions.Tests
         }
 
         [Fact]
+        public void CheckNameAvailability()
+        {
+            RunTest((client) =>
+            {
+
+            });
+        }
+
+        [Fact]
         public void ListAdminOperations() {
             RunTest((client) => {
                 client.ListOperations();

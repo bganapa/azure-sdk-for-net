@@ -13,7 +13,6 @@ namespace Subscriptions.Tests
 {
     public class OfferDelegationTests : SubscriptionsTestBase
     {
-
         private void ValidateOfferDelegation(OfferDelegation item) {
             // Resource
             Assert.NotNull(item);

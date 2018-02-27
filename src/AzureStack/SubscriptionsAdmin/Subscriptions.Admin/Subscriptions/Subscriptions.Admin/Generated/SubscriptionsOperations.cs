@@ -244,7 +244,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <summary>
         /// Get the list of subscriptions.
         /// </summary>
-        /// <param name='offer'>
+        /// <param name='nameAvailabilityDefinition'>
         /// Check name availability parameter
         /// </param>
         /// <param name='customHeaders'>
@@ -268,7 +268,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<CheckNameAvailabilityResponse>> CheckNameAvailabilityWithHttpMessagesAsync(CheckNameAvailabilityDefinition offer, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<CheckNameAvailabilityResponse>> CheckNameAvailabilityWithHttpMessagesAsync(CheckNameAvailabilityDefinition nameAvailabilityDefinition, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -278,9 +278,9 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
-            if (offer == null)
+            if (nameAvailabilityDefinition == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "offer");
+                throw new ValidationException(ValidationRules.CannotBeNull, "nameAvailabilityDefinition");
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -289,7 +289,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("offer", offer);
+                tracingParameters.Add("nameAvailabilityDefinition", nameAvailabilityDefinition);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "CheckNameAvailability", tracingParameters);
             }
@@ -340,9 +340,9 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
 
             // Serialize Request
             string _requestContent = null;
-            if(offer != null)
+            if(nameAvailabilityDefinition != null)
             {
-                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(offer, Client.SerializationSettings);
+                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(nameAvailabilityDefinition, Client.SerializationSettings);
                 _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
                 _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
