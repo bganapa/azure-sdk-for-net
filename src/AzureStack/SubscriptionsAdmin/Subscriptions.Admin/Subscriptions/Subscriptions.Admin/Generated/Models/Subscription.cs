@@ -48,7 +48,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
         /// type. Possible values include: 'Default', 'Admin'</param>
         /// <param name="state">Subscription state. Possible values include:
         /// 'NotDefined', 'Enabled', 'Warned', 'PastDue', 'Disabled',
-        /// 'Deleted'</param>
+        /// 'Deleted', 'Deleting', 'PartiallyDeleted'</param>
         /// <param name="subscriptionId">Subscription identifier.</param>
         /// <param name="tenantId">Directory tenant identifier.</param>
         public Subscription(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string delegatedProviderSubscriptionId = default(string), string displayName = default(string), string externalReferenceId = default(string), string offerId = default(string), string owner = default(string), string routingResourceManagerType = default(string), string state = default(string), string subscriptionId = default(string), string tenantId = default(string))
@@ -111,7 +111,8 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
 
         /// <summary>
         /// Gets or sets subscription state. Possible values include:
-        /// 'NotDefined', 'Enabled', 'Warned', 'PastDue', 'Disabled', 'Deleted'
+        /// 'NotDefined', 'Enabled', 'Warned', 'PastDue', 'Disabled',
+        /// 'Deleted', 'Deleting', 'PartiallyDeleted'
         /// </summary>
         [JsonProperty(PropertyName = "state")]
         public string State { get; set; }

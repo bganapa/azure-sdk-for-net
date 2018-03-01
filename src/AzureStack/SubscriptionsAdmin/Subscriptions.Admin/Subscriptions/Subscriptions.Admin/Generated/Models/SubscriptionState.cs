@@ -22,5 +22,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
         public const string PastDue = "PastDue";
         public const string Disabled = "Disabled";
         public const string Deleted = "Deleted";
+        public const string Deleting = "Deleting";
+        public const string PartiallyDeleted = "PartiallyDeleted";
     }
 }
