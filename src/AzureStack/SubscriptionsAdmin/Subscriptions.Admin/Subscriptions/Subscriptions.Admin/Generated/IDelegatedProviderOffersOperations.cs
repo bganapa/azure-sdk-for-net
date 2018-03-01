@@ -26,8 +26,8 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <summary>
         /// Get the list of delegated provider offers.
         /// </summary>
-        /// <param name='delegatedProvider'>
-        /// DelegatedProvider identifier.
+        /// <param name='delegatedProviderSubscriptionId'>
+        /// Delegated provider subscription identifier.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -44,12 +44,12 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<DelegatedProviderOffer>>> ListWithHttpMessagesAsync(string delegatedProvider, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<DelegatedProviderOffer>>> ListWithHttpMessagesAsync(string delegatedProviderSubscriptionId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get the specified delegated provider offer.
         /// </summary>
-        /// <param name='delegatedProvider'>
-        /// DelegatedProvider identifier.
+        /// <param name='delegatedProviderSubscriptionId'>
+        /// Delegated provider subscription identifier.
         /// </param>
         /// <param name='offer'>
         /// Name of an offer.
@@ -69,7 +69,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<DelegatedProviderOffer>> GetWithHttpMessagesAsync(string delegatedProvider, string offer, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<DelegatedProviderOffer>> GetWithHttpMessagesAsync(string delegatedProviderSubscriptionId, string offer, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get the list of delegated provider offers.
         /// </summary>

@@ -53,8 +53,8 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <summary>
         /// Get the list of delegated provider offers.
         /// </summary>
-        /// <param name='delegatedProvider'>
-        /// DelegatedProvider identifier.
+        /// <param name='delegatedProviderSubscriptionId'>
+        /// Delegated provider subscription identifier.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -77,15 +77,15 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<DelegatedProviderOffer>>> ListWithHttpMessagesAsync(string delegatedProvider, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<DelegatedProviderOffer>>> ListWithHttpMessagesAsync(string delegatedProviderSubscriptionId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            if (delegatedProvider == null)
+            if (delegatedProviderSubscriptionId == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "delegatedProvider");
+                throw new ValidationException(ValidationRules.CannotBeNull, "delegatedProviderSubscriptionId");
             }
             if (Client.ApiVersion == null)
             {
@@ -98,15 +98,15 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("delegatedProvider", delegatedProvider);
+                tracingParameters.Add("delegatedProviderSubscriptionId", delegatedProviderSubscriptionId);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "List", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/delegatedProviders/{delegatedProvider}/offers").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/delegatedProviders/{delegatedProviderSubscriptionId}/offers").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
-            _url = _url.Replace("{delegatedProvider}", System.Uri.EscapeDataString(delegatedProvider));
+            _url = _url.Replace("{delegatedProviderSubscriptionId}", System.Uri.EscapeDataString(delegatedProviderSubscriptionId));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
             {
@@ -240,8 +240,8 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <summary>
         /// Get the specified delegated provider offer.
         /// </summary>
-        /// <param name='delegatedProvider'>
-        /// DelegatedProvider identifier.
+        /// <param name='delegatedProviderSubscriptionId'>
+        /// Delegated provider subscription identifier.
         /// </param>
         /// <param name='offer'>
         /// Name of an offer.
@@ -267,15 +267,15 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<DelegatedProviderOffer>> GetWithHttpMessagesAsync(string delegatedProvider, string offer, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<DelegatedProviderOffer>> GetWithHttpMessagesAsync(string delegatedProviderSubscriptionId, string offer, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            if (delegatedProvider == null)
+            if (delegatedProviderSubscriptionId == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "delegatedProvider");
+                throw new ValidationException(ValidationRules.CannotBeNull, "delegatedProviderSubscriptionId");
             }
             if (offer == null)
             {
@@ -292,16 +292,16 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("delegatedProvider", delegatedProvider);
+                tracingParameters.Add("delegatedProviderSubscriptionId", delegatedProviderSubscriptionId);
                 tracingParameters.Add("offer", offer);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/delegatedProviders/{delegatedProvider}/offers/{offer}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/delegatedProviders/{delegatedProviderSubscriptionId}/offers/{offer}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
-            _url = _url.Replace("{delegatedProvider}", System.Uri.EscapeDataString(delegatedProvider));
+            _url = _url.Replace("{delegatedProviderSubscriptionId}", System.Uri.EscapeDataString(delegatedProviderSubscriptionId));
             _url = _url.Replace("{offer}", System.Uri.EscapeDataString(offer));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)

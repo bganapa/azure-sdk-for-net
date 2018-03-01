@@ -27,12 +27,12 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='delegatedProvider'>
-            /// DelegatedProvider identifier.
+            /// <param name='delegatedProviderSubscriptionId'>
+            /// Delegated provider subscription identifier.
             /// </param>
-            public static IPage<DelegatedProviderOffer> List(this IDelegatedProviderOffersOperations operations, string delegatedProvider)
+            public static IPage<DelegatedProviderOffer> List(this IDelegatedProviderOffersOperations operations, string delegatedProviderSubscriptionId)
             {
-                return operations.ListAsync(delegatedProvider).GetAwaiter().GetResult();
+                return operations.ListAsync(delegatedProviderSubscriptionId).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -41,15 +41,15 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='delegatedProvider'>
-            /// DelegatedProvider identifier.
+            /// <param name='delegatedProviderSubscriptionId'>
+            /// Delegated provider subscription identifier.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<DelegatedProviderOffer>> ListAsync(this IDelegatedProviderOffersOperations operations, string delegatedProvider, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<DelegatedProviderOffer>> ListAsync(this IDelegatedProviderOffersOperations operations, string delegatedProviderSubscriptionId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(delegatedProvider, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithHttpMessagesAsync(delegatedProviderSubscriptionId, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -61,15 +61,15 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='delegatedProvider'>
-            /// DelegatedProvider identifier.
+            /// <param name='delegatedProviderSubscriptionId'>
+            /// Delegated provider subscription identifier.
             /// </param>
             /// <param name='offer'>
             /// Name of an offer.
             /// </param>
-            public static DelegatedProviderOffer Get(this IDelegatedProviderOffersOperations operations, string delegatedProvider, string offer)
+            public static DelegatedProviderOffer Get(this IDelegatedProviderOffersOperations operations, string delegatedProviderSubscriptionId, string offer)
             {
-                return operations.GetAsync(delegatedProvider, offer).GetAwaiter().GetResult();
+                return operations.GetAsync(delegatedProviderSubscriptionId, offer).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -78,8 +78,8 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='delegatedProvider'>
-            /// DelegatedProvider identifier.
+            /// <param name='delegatedProviderSubscriptionId'>
+            /// Delegated provider subscription identifier.
             /// </param>
             /// <param name='offer'>
             /// Name of an offer.
@@ -87,9 +87,9 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DelegatedProviderOffer> GetAsync(this IDelegatedProviderOffersOperations operations, string delegatedProvider, string offer, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DelegatedProviderOffer> GetAsync(this IDelegatedProviderOffersOperations operations, string delegatedProviderSubscriptionId, string offer, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(delegatedProvider, offer, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(delegatedProviderSubscriptionId, offer, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
