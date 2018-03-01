@@ -36,7 +36,7 @@ namespace Subscriptions.Tests
             Assert.Equal(expected.AllowCustomPortalBranding, given.AllowCustomPortalBranding);
 
         }
-        [Fact]
+        //[Fact]
         public void TestListQuotas() {
             RunTest((client) => {
                 client.Quotas.List("local");

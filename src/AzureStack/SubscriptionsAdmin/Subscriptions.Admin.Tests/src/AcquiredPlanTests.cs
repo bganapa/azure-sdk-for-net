@@ -43,7 +43,7 @@ namespace Subscriptions.Tests
             Assert.Equal(expected.ProvisioningState, given.ProvisioningState);
         }
 
-        [Fact]
+        ////[Fact]
         public void TestListAcquiredPlans() {
             RunTest((client) => {
                 var subscriptions = client.Subscriptions.List();
@@ -53,7 +53,7 @@ namespace Subscriptions.Tests
             });
         }
 
-        [Fact]
+        ////[Fact]
         public void TestGetAllAcquiredPlans() {
             RunTest((client) => {
                 var subscriptions = client.Subscriptions.List();

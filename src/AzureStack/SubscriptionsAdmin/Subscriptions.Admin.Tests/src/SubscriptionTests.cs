@@ -34,23 +34,23 @@ namespace Subscriptions.Tests
             // Subscription
         }
 
-        [Fact]
+        //[Fact]
         public void TestListSubscriptions() {
             RunTest((client) => {
                 var subscriptions = client.Subscriptions.List();
             });
         }
 
-        [Fact]
+        //[Fact]
         public void CheckNameAvailability()
         {
             RunTest((client) =>
             {
-
+                client.Subscriptions.CheckNameAvailability(new CheckNameAvailabilityDefinition());
             });
         }
 
-        [Fact]
+        //[Fact]
         public void ListAdminOperations() {
             RunTest((client) => {
                 client.ListOperations();

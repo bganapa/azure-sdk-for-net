@@ -34,7 +34,7 @@ namespace Subscriptions.Tests
             // DelegatedProviderOffer
 
         }
-        [Fact]
+        //[Fact]
         public void TestListDelegatedProviderOffers() {
             RunTest((client) => {
                 var providers = client.DelegatedProviders.List();

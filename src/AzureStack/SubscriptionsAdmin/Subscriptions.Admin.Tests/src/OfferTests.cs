@@ -42,7 +42,7 @@ namespace Subscriptions.Tests
             });
             }
 
-        [Fact]
+        //[Fact]
         public void TestListOffers() {
             RunTest((client) => {
                 var allOffers = client.Offers.ListAll();
@@ -60,7 +60,7 @@ namespace Subscriptions.Tests
             });
         }
         
-        [Fact]
+        //[Fact]
         public void TestGetAllOffers() {
             RunTest((client) => {
                 var allOffers = client.Offers.ListAll();
@@ -78,7 +78,7 @@ namespace Subscriptions.Tests
             });
         }
 
-        [Fact]
+        //[Fact]
         public void TestGetOffer() {
             RunTest((client) => {
                 var offer = client.Offers.ListAll().GetFirst();

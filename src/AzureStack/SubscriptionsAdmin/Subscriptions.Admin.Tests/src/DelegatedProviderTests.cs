@@ -49,7 +49,7 @@ namespace Subscriptions.Tests
             Assert.Equal(expected.TenantId, given.TenantId);
         }
 
-        [Fact]
+        ////[Fact]
         public void TestListDelegatedProviders() {
             RunTest((client) => {
                 var delegatedProviders = client.DelegatedProviders.List();
@@ -57,7 +57,7 @@ namespace Subscriptions.Tests
             });
         }
 
-        [Fact]
+        //[Fact]
         public void TestGetAllDelegatedProviders() {
             RunTest((client) => {
                 var delegatedProviders = client.DelegatedProviders.List();
@@ -68,7 +68,7 @@ namespace Subscriptions.Tests
             });
         }
 
-        [Fact]
+        //[Fact]
         public void TestGetDelegatedProvider() {
             RunTest((client) => {
                 var provider = client.DelegatedProviders.List().First();

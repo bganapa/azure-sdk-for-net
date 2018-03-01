@@ -30,7 +30,7 @@ namespace Subscriptions.Tests
             Assert.Equal(expected.Longitude, given.Longitude);
         }
 
-        //[Fact]
+        ////[Fact]
         //public void TestListLocations() {
         //    RunTest((client) => {
         //        var locations = client.Locations.List();
@@ -38,7 +38,7 @@ namespace Subscriptions.Tests
         //    });
         //}
 
-        //[Fact]
+        ////[Fact]
         //public void TestGetAllLocations() {
         //    RunTest((client) => {
         //        var locations = client.Locations.List();
@@ -49,7 +49,7 @@ namespace Subscriptions.Tests
         //    });
         //}
 
-        //[Fact]
+        ////[Fact]
         //public void TestGetLocation() {
         //    RunTest((client) => {
         //        var loc = client.Locations.List().First();

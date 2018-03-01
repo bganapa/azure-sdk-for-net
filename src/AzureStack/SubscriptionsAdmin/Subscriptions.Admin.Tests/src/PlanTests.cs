@@ -40,7 +40,7 @@ namespace Subscriptions.Tests
 
         }
 
-        [Fact]
+        //[Fact]
         public void TestListPlans() {
             RunTest((client) => {
                 var allPlans = client.Plans.ListAll();
@@ -56,7 +56,7 @@ namespace Subscriptions.Tests
             });
         }
 
-        [Fact]
+        //[Fact]
         public void TestCreateUpdateThenDeletePlan()
         {
             RunTest((client) => {
