@@ -103,6 +103,7 @@ namespace Subscriptions.Tests
                     BasePlanIds = new List<string>() {plan.Id}
                 };
                 
+
                 var result = client.Offers.CreateOrUpdate(rg, offerName, offer);
 
                 offer = client.Offers.Get("balarg", offerName);

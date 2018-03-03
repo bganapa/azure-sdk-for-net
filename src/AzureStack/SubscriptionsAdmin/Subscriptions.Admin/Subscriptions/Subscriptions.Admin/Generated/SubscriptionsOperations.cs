@@ -600,7 +600,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         }
 
         /// <summary>
-        /// Get the list of subscriptions.
+        /// Creates a new subscription.
         /// </summary>
         /// <param name='subscription'>
         /// Subscription parameter.

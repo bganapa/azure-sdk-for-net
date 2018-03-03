@@ -17,9 +17,6 @@ namespace Subscriptions.Tests
             // Resource
             Assert.NotNull(ua);
             Assert.NotNull(ua.Id);
-            Assert.NotNull(ua.Location);
-            Assert.NotNull(ua.Name);
-            Assert.NotNull(ua.Type);
 
             // Subscription
         }
@@ -27,9 +24,6 @@ namespace Subscriptions.Tests
         private void AssertSame(Subscription expected, Subscription given) {
             // Resource
             Assert.Equal(expected.Id, given.Id);
-            Assert.Equal(expected.Location, given.Location);
-            Assert.Equal(expected.Name, given.Name);
-            Assert.Equal(expected.Type, given.Type);
 
             // Subscription
         }

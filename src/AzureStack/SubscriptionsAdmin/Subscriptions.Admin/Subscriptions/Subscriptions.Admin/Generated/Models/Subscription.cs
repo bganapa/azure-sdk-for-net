@@ -11,14 +11,12 @@
 namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
 {
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
     /// List of supported operations.
     /// </summary>
-    public partial class Subscription : Resource
+    public partial class Subscription
     {
         /// <summary>
         /// Initializes a new instance of the Subscription class.
@@ -31,14 +29,10 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
         /// <summary>
         /// Initializes a new instance of the Subscription class.
         /// </summary>
-        /// <param name="id">URI of the resource.</param>
-        /// <param name="name">Name of the resource.</param>
-        /// <param name="type">Type of resource.</param>
-        /// <param name="location">Location where resource is location.</param>
-        /// <param name="tags">List of key-value pairs.</param>
         /// <param name="delegatedProviderSubscriptionId">Parent
         /// DelegatedProvider subscription identifier.</param>
         /// <param name="displayName">Subscription name.</param>
+        /// <param name="id">Fully qualified identifier.</param>
         /// <param name="externalReferenceId">External reference
         /// identifier.</param>
         /// <param name="offerId">Identifier of the offer under the scope of a
@@ -51,11 +45,11 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
         /// 'Deleted', 'Deleting', 'PartiallyDeleted'</param>
         /// <param name="subscriptionId">Subscription identifier.</param>
         /// <param name="tenantId">Directory tenant identifier.</param>
-        public Subscription(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string delegatedProviderSubscriptionId = default(string), string displayName = default(string), string externalReferenceId = default(string), string offerId = default(string), string owner = default(string), string routingResourceManagerType = default(string), string state = default(string), string subscriptionId = default(string), string tenantId = default(string))
-            : base(id, name, type, location, tags)
+        public Subscription(string delegatedProviderSubscriptionId = default(string), string displayName = default(string), string id = default(string), string externalReferenceId = default(string), string offerId = default(string), string owner = default(string), string routingResourceManagerType = default(string), string state = default(string), string subscriptionId = default(string), string tenantId = default(string))
         {
             DelegatedProviderSubscriptionId = delegatedProviderSubscriptionId;
             DisplayName = displayName;
+            Id = id;
             ExternalReferenceId = externalReferenceId;
             OfferId = offerId;
             Owner = owner;
@@ -82,6 +76,12 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
         /// </summary>
         [JsonProperty(PropertyName = "displayName")]
         public string DisplayName { get; set; }
+
+        /// <summary>
+        /// Gets or sets fully qualified identifier.
+        /// </summary>
+        [JsonProperty(PropertyName = "id")]
+        public string Id { get; set; }
 
         /// <summary>
         /// Gets or sets external reference identifier.

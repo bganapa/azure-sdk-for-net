@@ -88,7 +88,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// </exception>
         Task<AzureOperationResponse> GetWithHttpMessagesAsync(string subscription, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Get the list of subscriptions.
+        /// Creates a new subscription.
         /// </summary>
         /// <param name='subscription'>
         /// Subscription parameter.
