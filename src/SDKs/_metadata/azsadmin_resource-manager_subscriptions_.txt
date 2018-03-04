@@ -1,9 +1,8 @@
-2018-02-17 21:36:49 UTC
+2018-03-04 02:19:59 UTC
 
 1) azure-rest-api-specs repository information
 GitHub user: bganapa
 Branch:      stack-admin
-Commit:      6c462b8e6b8cabf1e1f60f6a90ec62267284ba68
 
 2) AutoRest information
 Requested version: latest
