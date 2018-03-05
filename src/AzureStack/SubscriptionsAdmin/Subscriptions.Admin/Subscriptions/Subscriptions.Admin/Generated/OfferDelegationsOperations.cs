@@ -53,7 +53,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <summary>
         /// Get the list of delegated offers.
         /// </summary>
-        /// <param name='resourceGroup'>
+        /// <param name='resourceGroupName'>
         /// The resource group the resource is located under.
         /// </param>
         /// <param name='offer'>
@@ -80,15 +80,15 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<OfferDelegation>>> ListWithHttpMessagesAsync(string resourceGroup, string offer, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<OfferDelegation>>> ListWithHttpMessagesAsync(string resourceGroupName, string offer, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            if (resourceGroup == null)
+            if (resourceGroupName == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroup");
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
             }
             if (offer == null)
             {
@@ -105,7 +105,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("resourceGroup", resourceGroup);
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("offer", offer);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "List", tracingParameters);
@@ -114,7 +114,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             var _baseUrl = Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/offers/{offer}/offerDelegations").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
-            _url = _url.Replace("{resourceGroup}", System.Uri.EscapeDataString(resourceGroup));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{offer}", System.Uri.EscapeDataString(offer));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
@@ -249,7 +249,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <summary>
         /// Get the list of offers.
         /// </summary>
-        /// <param name='resourceGroup'>
+        /// <param name='resourceGroupName'>
         /// The resource group the resource is located under.
         /// </param>
         /// <param name='offer'>
@@ -279,15 +279,15 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<OfferDelegation>> GetWithHttpMessagesAsync(string resourceGroup, string offer, string offerDelegationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<OfferDelegation>> GetWithHttpMessagesAsync(string resourceGroupName, string offer, string offerDelegationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            if (resourceGroup == null)
+            if (resourceGroupName == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroup");
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
             }
             if (offer == null)
             {
@@ -308,7 +308,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("resourceGroup", resourceGroup);
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("offer", offer);
                 tracingParameters.Add("offerDelegationName", offerDelegationName);
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -318,7 +318,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             var _baseUrl = Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/offers/{offer}/offerDelegations/{offerDelegationName}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
-            _url = _url.Replace("{resourceGroup}", System.Uri.EscapeDataString(resourceGroup));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{offer}", System.Uri.EscapeDataString(offer));
             _url = _url.Replace("{offerDelegationName}", System.Uri.EscapeDataString(offerDelegationName));
             List<string> _queryParameters = new List<string>();
@@ -454,7 +454,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <summary>
         /// Get the list of offers.
         /// </summary>
-        /// <param name='resourceGroup'>
+        /// <param name='resourceGroupName'>
         /// The resource group the resource is located under.
         /// </param>
         /// <param name='offer'>
@@ -487,15 +487,15 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<OfferDelegation>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroup, string offer, string offerDelegationName, OfferDelegation newOfferDelegation, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<OfferDelegation>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string offer, string offerDelegationName, OfferDelegation newOfferDelegation, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            if (resourceGroup == null)
+            if (resourceGroupName == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroup");
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
             }
             if (offer == null)
             {
@@ -520,7 +520,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("resourceGroup", resourceGroup);
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("offer", offer);
                 tracingParameters.Add("offerDelegationName", offerDelegationName);
                 tracingParameters.Add("newOfferDelegation", newOfferDelegation);
@@ -531,7 +531,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             var _baseUrl = Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/offers/{offer}/offerDelegations/{offerDelegationName}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
-            _url = _url.Replace("{resourceGroup}", System.Uri.EscapeDataString(resourceGroup));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{offer}", System.Uri.EscapeDataString(offer));
             _url = _url.Replace("{offerDelegationName}", System.Uri.EscapeDataString(offerDelegationName));
             List<string> _queryParameters = new List<string>();
@@ -691,7 +691,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <summary>
         /// Get the list of offers.
         /// </summary>
-        /// <param name='resourceGroup'>
+        /// <param name='resourceGroupName'>
         /// The resource group the resource is located under.
         /// </param>
         /// <param name='offer'>
@@ -718,15 +718,15 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroup, string offer, string offerDelegationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string offer, string offerDelegationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            if (resourceGroup == null)
+            if (resourceGroupName == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroup");
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
             }
             if (offer == null)
             {
@@ -747,7 +747,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("resourceGroup", resourceGroup);
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("offer", offer);
                 tracingParameters.Add("offerDelegationName", offerDelegationName);
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -757,7 +757,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             var _baseUrl = Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/offers/{offer}/offerDelegations/{offerDelegationName}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
-            _url = _url.Replace("{resourceGroup}", System.Uri.EscapeDataString(resourceGroup));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{offer}", System.Uri.EscapeDataString(offer));
             _url = _url.Replace("{offerDelegationName}", System.Uri.EscapeDataString(offerDelegationName));
             List<string> _queryParameters = new List<string>();

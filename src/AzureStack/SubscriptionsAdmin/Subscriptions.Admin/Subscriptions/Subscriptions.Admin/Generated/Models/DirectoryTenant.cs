@@ -37,7 +37,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
         /// <param name="id">URI of the resource.</param>
         /// <param name="name">Name of the resource.</param>
         /// <param name="type">Type of resource.</param>
-        /// <param name="location">Location where resource is location.</param>
+        /// <param name="location">Location of the resource</param>
         /// <param name="tags">List of key-value pairs.</param>
         /// <param name="tenantId">Tenant unique identifier.</param>
         public DirectoryTenant(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string tenantId = default(string))

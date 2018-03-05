@@ -26,7 +26,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <summary>
         /// Get the list of delegated offers.
         /// </summary>
-        /// <param name='resourceGroup'>
+        /// <param name='resourceGroupName'>
         /// The resource group the resource is located under.
         /// </param>
         /// <param name='offer'>
@@ -47,11 +47,11 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<OfferDelegation>>> ListWithHttpMessagesAsync(string resourceGroup, string offer, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<OfferDelegation>>> ListWithHttpMessagesAsync(string resourceGroupName, string offer, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get the list of offers.
         /// </summary>
-        /// <param name='resourceGroup'>
+        /// <param name='resourceGroupName'>
         /// The resource group the resource is located under.
         /// </param>
         /// <param name='offer'>
@@ -75,11 +75,11 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<OfferDelegation>> GetWithHttpMessagesAsync(string resourceGroup, string offer, string offerDelegationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<OfferDelegation>> GetWithHttpMessagesAsync(string resourceGroupName, string offer, string offerDelegationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get the list of offers.
         /// </summary>
-        /// <param name='resourceGroup'>
+        /// <param name='resourceGroupName'>
         /// The resource group the resource is located under.
         /// </param>
         /// <param name='offer'>
@@ -106,11 +106,11 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<OfferDelegation>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroup, string offer, string offerDelegationName, OfferDelegation newOfferDelegation, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<OfferDelegation>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string offer, string offerDelegationName, OfferDelegation newOfferDelegation, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get the list of offers.
         /// </summary>
-        /// <param name='resourceGroup'>
+        /// <param name='resourceGroupName'>
         /// The resource group the resource is located under.
         /// </param>
         /// <param name='offer'>
@@ -131,7 +131,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroup, string offer, string offerDelegationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string offer, string offerDelegationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get the list of delegated offers.
         /// </summary>

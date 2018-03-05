@@ -45,7 +45,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <summary>
         /// Get the list of offers under a resource group.
         /// </summary>
-        /// <param name='resourceGroup'>
+        /// <param name='resourceGroupName'>
         /// The resource group the resource is located under.
         /// </param>
         /// <param name='customHeaders'>
@@ -63,11 +63,11 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<Offer>>> ListWithHttpMessagesAsync(string resourceGroup, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<Offer>>> ListWithHttpMessagesAsync(string resourceGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get the specified offer.
         /// </summary>
-        /// <param name='resourceGroup'>
+        /// <param name='resourceGroupName'>
         /// The resource group the resource is located under.
         /// </param>
         /// <param name='offer'>
@@ -88,11 +88,11 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<Offer>> GetWithHttpMessagesAsync(string resourceGroup, string offer, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<Offer>> GetWithHttpMessagesAsync(string resourceGroupName, string offer, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Create or update the offer.
         /// </summary>
-        /// <param name='resourceGroup'>
+        /// <param name='resourceGroupName'>
         /// The resource group the resource is located under.
         /// </param>
         /// <param name='offer'>
@@ -116,11 +116,11 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<Offer>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroup, string offer, Offer newOffer, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<Offer>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string offer, Offer newOffer, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Delete the specified offer.
         /// </summary>
-        /// <param name='resourceGroup'>
+        /// <param name='resourceGroupName'>
         /// The resource group the resource is located under.
         /// </param>
         /// <param name='offer'>
@@ -138,11 +138,11 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroup, string offer, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string offer, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get the offer metrics.
         /// </summary>
-        /// <param name='resourceGroup'>
+        /// <param name='resourceGroupName'>
         /// The resource group the resource is located under.
         /// </param>
         /// <param name='offer'>
@@ -163,11 +163,11 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<MetricList>> ListMetricsWithHttpMessagesAsync(string resourceGroup, string offer, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<MetricList>> ListMetricsWithHttpMessagesAsync(string resourceGroupName, string offer, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get the metric definitions.
         /// </summary>
-        /// <param name='resourceGroup'>
+        /// <param name='resourceGroupName'>
         /// The resource group the resource is located under.
         /// </param>
         /// <param name='offer'>
@@ -188,11 +188,11 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<MetricDefinitionList>> ListMetricDefinitionsWithHttpMessagesAsync(string resourceGroup, string offer, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<MetricDefinitionList>> ListMetricDefinitionsWithHttpMessagesAsync(string resourceGroupName, string offer, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Links a plan to an offer.
         /// </summary>
-        /// <param name='resourceGroup'>
+        /// <param name='resourceGroupName'>
         /// The resource group the resource is located under.
         /// </param>
         /// <param name='offer'>
@@ -213,11 +213,11 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> LinkWithHttpMessagesAsync(string resourceGroup, string offer, PlanLinkDefinition planLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> LinkWithHttpMessagesAsync(string resourceGroupName, string offer, PlanLinkDefinition planLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Unlink a plan from an offer.
         /// </summary>
-        /// <param name='resourceGroup'>
+        /// <param name='resourceGroupName'>
         /// The resource group the resource is located under.
         /// </param>
         /// <param name='offer'>
@@ -238,7 +238,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> UnlinkWithHttpMessagesAsync(string resourceGroup, string offer, PlanLinkDefinition planLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> UnlinkWithHttpMessagesAsync(string resourceGroupName, string offer, PlanLinkDefinition planLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get the list of offers.
         /// </summary>

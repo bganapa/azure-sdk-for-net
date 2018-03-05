@@ -54,7 +54,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// Lists all the directory tenants under the current subscription and given
         /// resource group name.
         /// </summary>
-        /// <param name='resourceGroup'>
+        /// <param name='resourceGroupName'>
         /// The resource group the resource is located under.
         /// </param>
         /// <param name='customHeaders'>
@@ -78,15 +78,15 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<DirectoryTenant>>> ListWithHttpMessagesAsync(string resourceGroup, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<DirectoryTenant>>> ListWithHttpMessagesAsync(string resourceGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            if (resourceGroup == null)
+            if (resourceGroupName == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroup");
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
             }
             if (Client.ApiVersion == null)
             {
@@ -99,7 +99,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("resourceGroup", resourceGroup);
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "List", tracingParameters);
             }
@@ -107,7 +107,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             var _baseUrl = Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/directoryTenants").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
-            _url = _url.Replace("{resourceGroup}", System.Uri.EscapeDataString(resourceGroup));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
             {
@@ -241,7 +241,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <summary>
         /// Get a directory tenant by name.
         /// </summary>
-        /// <param name='resourceGroup'>
+        /// <param name='resourceGroupName'>
         /// The resource group the resource is located under.
         /// </param>
         /// <param name='tenant'>
@@ -268,15 +268,15 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<DirectoryTenant>> GetWithHttpMessagesAsync(string resourceGroup, string tenant, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<DirectoryTenant>> GetWithHttpMessagesAsync(string resourceGroupName, string tenant, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            if (resourceGroup == null)
+            if (resourceGroupName == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroup");
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
             }
             if (tenant == null)
             {
@@ -293,7 +293,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("resourceGroup", resourceGroup);
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("tenant", tenant);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
@@ -302,7 +302,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             var _baseUrl = Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/directoryTenants/{tenant}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
-            _url = _url.Replace("{resourceGroup}", System.Uri.EscapeDataString(resourceGroup));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{tenant}", System.Uri.EscapeDataString(tenant));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
@@ -437,7 +437,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <summary>
         /// Delete a directory tenant under a resource group.
         /// </summary>
-        /// <param name='resourceGroup'>
+        /// <param name='resourceGroupName'>
         /// The resource group the resource is located under.
         /// </param>
         /// <param name='tenant'>
@@ -461,15 +461,15 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroup, string tenant, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string tenant, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            if (resourceGroup == null)
+            if (resourceGroupName == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroup");
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
             }
             if (tenant == null)
             {
@@ -486,7 +486,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("resourceGroup", resourceGroup);
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("tenant", tenant);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Delete", tracingParameters);
@@ -495,7 +495,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             var _baseUrl = Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/directoryTenants/{tenant}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
-            _url = _url.Replace("{resourceGroup}", System.Uri.EscapeDataString(resourceGroup));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{tenant}", System.Uri.EscapeDataString(tenant));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
@@ -612,7 +612,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <summary>
         /// Create or updates a directory tenant.
         /// </summary>
-        /// <param name='resourceGroup'>
+        /// <param name='resourceGroupName'>
         /// The resource group the resource is located under.
         /// </param>
         /// <param name='tenant'>
@@ -642,15 +642,15 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<DirectoryTenant>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroup, string tenant, DirectoryTenant newTenant, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<DirectoryTenant>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string tenant, DirectoryTenant newTenant, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            if (resourceGroup == null)
+            if (resourceGroupName == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroup");
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
             }
             if (tenant == null)
             {
@@ -671,7 +671,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("resourceGroup", resourceGroup);
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("tenant", tenant);
                 tracingParameters.Add("newTenant", newTenant);
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -681,7 +681,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             var _baseUrl = Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/directoryTenants/{tenant}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
-            _url = _url.Replace("{resourceGroup}", System.Uri.EscapeDataString(resourceGroup));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{tenant}", System.Uri.EscapeDataString(tenant));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)

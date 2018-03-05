@@ -55,12 +55,12 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroup'>
+            /// <param name='resourceGroupName'>
             /// The resource group the resource is located under.
             /// </param>
-            public static IPage<Plan> List(this IPlansOperations operations, string resourceGroup)
+            public static IPage<Plan> List(this IPlansOperations operations, string resourceGroupName)
             {
-                return operations.ListAsync(resourceGroup).GetAwaiter().GetResult();
+                return operations.ListAsync(resourceGroupName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -69,15 +69,15 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroup'>
+            /// <param name='resourceGroupName'>
             /// The resource group the resource is located under.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<Plan>> ListAsync(this IPlansOperations operations, string resourceGroup, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<Plan>> ListAsync(this IPlansOperations operations, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroup, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -89,15 +89,15 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroup'>
+            /// <param name='resourceGroupName'>
             /// The resource group the resource is located under.
             /// </param>
             /// <param name='plan'>
             /// Name of the plan.
             /// </param>
-            public static Plan Get(this IPlansOperations operations, string resourceGroup, string plan)
+            public static Plan Get(this IPlansOperations operations, string resourceGroupName, string plan)
             {
-                return operations.GetAsync(resourceGroup, plan).GetAwaiter().GetResult();
+                return operations.GetAsync(resourceGroupName, plan).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -106,7 +106,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroup'>
+            /// <param name='resourceGroupName'>
             /// The resource group the resource is located under.
             /// </param>
             /// <param name='plan'>
@@ -115,9 +115,9 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Plan> GetAsync(this IPlansOperations operations, string resourceGroup, string plan, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Plan> GetAsync(this IPlansOperations operations, string resourceGroupName, string plan, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroup, plan, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, plan, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -129,7 +129,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroup'>
+            /// <param name='resourceGroupName'>
             /// The resource group the resource is located under.
             /// </param>
             /// <param name='plan'>
@@ -138,9 +138,9 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='newPlan'>
             /// New plan.
             /// </param>
-            public static Plan CreateOrUpdate(this IPlansOperations operations, string resourceGroup, string plan, Plan newPlan)
+            public static Plan CreateOrUpdate(this IPlansOperations operations, string resourceGroupName, string plan, Plan newPlan)
             {
-                return operations.CreateOrUpdateAsync(resourceGroup, plan, newPlan).GetAwaiter().GetResult();
+                return operations.CreateOrUpdateAsync(resourceGroupName, plan, newPlan).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -149,7 +149,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroup'>
+            /// <param name='resourceGroupName'>
             /// The resource group the resource is located under.
             /// </param>
             /// <param name='plan'>
@@ -161,9 +161,9 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Plan> CreateOrUpdateAsync(this IPlansOperations operations, string resourceGroup, string plan, Plan newPlan, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Plan> CreateOrUpdateAsync(this IPlansOperations operations, string resourceGroupName, string plan, Plan newPlan, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroup, plan, newPlan, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, plan, newPlan, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -175,15 +175,15 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroup'>
+            /// <param name='resourceGroupName'>
             /// The resource group the resource is located under.
             /// </param>
             /// <param name='plan'>
             /// Name of the plan.
             /// </param>
-            public static void Delete(this IPlansOperations operations, string resourceGroup, string plan)
+            public static void Delete(this IPlansOperations operations, string resourceGroupName, string plan)
             {
-                operations.DeleteAsync(resourceGroup, plan).GetAwaiter().GetResult();
+                operations.DeleteAsync(resourceGroupName, plan).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -192,7 +192,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroup'>
+            /// <param name='resourceGroupName'>
             /// The resource group the resource is located under.
             /// </param>
             /// <param name='plan'>
@@ -201,9 +201,9 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteAsync(this IPlansOperations operations, string resourceGroup, string plan, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteAsync(this IPlansOperations operations, string resourceGroupName, string plan, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroup, plan, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, plan, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -212,15 +212,15 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroup'>
+            /// <param name='resourceGroupName'>
             /// The resource group the resource is located under.
             /// </param>
             /// <param name='plan'>
             /// Name of the plan.
             /// </param>
-            public static MetricList ListMetrics(this IPlansOperations operations, string resourceGroup, string plan)
+            public static MetricList ListMetrics(this IPlansOperations operations, string resourceGroupName, string plan)
             {
-                return operations.ListMetricsAsync(resourceGroup, plan).GetAwaiter().GetResult();
+                return operations.ListMetricsAsync(resourceGroupName, plan).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -229,7 +229,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroup'>
+            /// <param name='resourceGroupName'>
             /// The resource group the resource is located under.
             /// </param>
             /// <param name='plan'>
@@ -238,9 +238,9 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<MetricList> ListMetricsAsync(this IPlansOperations operations, string resourceGroup, string plan, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<MetricList> ListMetricsAsync(this IPlansOperations operations, string resourceGroupName, string plan, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListMetricsWithHttpMessagesAsync(resourceGroup, plan, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListMetricsWithHttpMessagesAsync(resourceGroupName, plan, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -252,15 +252,15 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroup'>
+            /// <param name='resourceGroupName'>
             /// The resource group the resource is located under.
             /// </param>
             /// <param name='plan'>
             /// Name of the plan.
             /// </param>
-            public static MetricDefinitionList ListMetricDefinitions(this IPlansOperations operations, string resourceGroup, string plan)
+            public static MetricDefinitionList ListMetricDefinitions(this IPlansOperations operations, string resourceGroupName, string plan)
             {
-                return operations.ListMetricDefinitionsAsync(resourceGroup, plan).GetAwaiter().GetResult();
+                return operations.ListMetricDefinitionsAsync(resourceGroupName, plan).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -269,7 +269,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroup'>
+            /// <param name='resourceGroupName'>
             /// The resource group the resource is located under.
             /// </param>
             /// <param name='plan'>
@@ -278,9 +278,9 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<MetricDefinitionList> ListMetricDefinitionsAsync(this IPlansOperations operations, string resourceGroup, string plan, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<MetricDefinitionList> ListMetricDefinitionsAsync(this IPlansOperations operations, string resourceGroupName, string plan, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListMetricDefinitionsWithHttpMessagesAsync(resourceGroup, plan, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListMetricDefinitionsWithHttpMessagesAsync(resourceGroupName, plan, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

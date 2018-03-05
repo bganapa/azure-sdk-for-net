@@ -28,12 +28,12 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroup'>
+            /// <param name='resourceGroupName'>
             /// The resource group the resource is located under.
             /// </param>
-            public static IPage<DirectoryTenant> List(this IDirectoryTenantsOperations operations, string resourceGroup)
+            public static IPage<DirectoryTenant> List(this IDirectoryTenantsOperations operations, string resourceGroupName)
             {
-                return operations.ListAsync(resourceGroup).GetAwaiter().GetResult();
+                return operations.ListAsync(resourceGroupName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -43,15 +43,15 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroup'>
+            /// <param name='resourceGroupName'>
             /// The resource group the resource is located under.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<DirectoryTenant>> ListAsync(this IDirectoryTenantsOperations operations, string resourceGroup, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<DirectoryTenant>> ListAsync(this IDirectoryTenantsOperations operations, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroup, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -63,15 +63,15 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroup'>
+            /// <param name='resourceGroupName'>
             /// The resource group the resource is located under.
             /// </param>
             /// <param name='tenant'>
             /// Directory tenant name.
             /// </param>
-            public static DirectoryTenant Get(this IDirectoryTenantsOperations operations, string resourceGroup, string tenant)
+            public static DirectoryTenant Get(this IDirectoryTenantsOperations operations, string resourceGroupName, string tenant)
             {
-                return operations.GetAsync(resourceGroup, tenant).GetAwaiter().GetResult();
+                return operations.GetAsync(resourceGroupName, tenant).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -80,7 +80,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroup'>
+            /// <param name='resourceGroupName'>
             /// The resource group the resource is located under.
             /// </param>
             /// <param name='tenant'>
@@ -89,9 +89,9 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DirectoryTenant> GetAsync(this IDirectoryTenantsOperations operations, string resourceGroup, string tenant, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DirectoryTenant> GetAsync(this IDirectoryTenantsOperations operations, string resourceGroupName, string tenant, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroup, tenant, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, tenant, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -103,15 +103,15 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroup'>
+            /// <param name='resourceGroupName'>
             /// The resource group the resource is located under.
             /// </param>
             /// <param name='tenant'>
             /// Directory tenant name.
             /// </param>
-            public static void Delete(this IDirectoryTenantsOperations operations, string resourceGroup, string tenant)
+            public static void Delete(this IDirectoryTenantsOperations operations, string resourceGroupName, string tenant)
             {
-                operations.DeleteAsync(resourceGroup, tenant).GetAwaiter().GetResult();
+                operations.DeleteAsync(resourceGroupName, tenant).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -120,7 +120,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroup'>
+            /// <param name='resourceGroupName'>
             /// The resource group the resource is located under.
             /// </param>
             /// <param name='tenant'>
@@ -129,9 +129,9 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteAsync(this IDirectoryTenantsOperations operations, string resourceGroup, string tenant, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteAsync(this IDirectoryTenantsOperations operations, string resourceGroupName, string tenant, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroup, tenant, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, tenant, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -140,7 +140,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroup'>
+            /// <param name='resourceGroupName'>
             /// The resource group the resource is located under.
             /// </param>
             /// <param name='tenant'>
@@ -149,9 +149,9 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='newTenant'>
             /// New directory tenant properties.
             /// </param>
-            public static DirectoryTenant CreateOrUpdate(this IDirectoryTenantsOperations operations, string resourceGroup, string tenant, DirectoryTenant newTenant)
+            public static DirectoryTenant CreateOrUpdate(this IDirectoryTenantsOperations operations, string resourceGroupName, string tenant, DirectoryTenant newTenant)
             {
-                return operations.CreateOrUpdateAsync(resourceGroup, tenant, newTenant).GetAwaiter().GetResult();
+                return operations.CreateOrUpdateAsync(resourceGroupName, tenant, newTenant).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -160,7 +160,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroup'>
+            /// <param name='resourceGroupName'>
             /// The resource group the resource is located under.
             /// </param>
             /// <param name='tenant'>
@@ -172,9 +172,9 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DirectoryTenant> CreateOrUpdateAsync(this IDirectoryTenantsOperations operations, string resourceGroup, string tenant, DirectoryTenant newTenant, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DirectoryTenant> CreateOrUpdateAsync(this IDirectoryTenantsOperations operations, string resourceGroupName, string tenant, DirectoryTenant newTenant, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroup, tenant, newTenant, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, tenant, newTenant, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

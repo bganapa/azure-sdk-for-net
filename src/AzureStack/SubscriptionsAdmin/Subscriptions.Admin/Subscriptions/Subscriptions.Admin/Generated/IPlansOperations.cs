@@ -45,7 +45,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <summary>
         /// Get the list of plans.
         /// </summary>
-        /// <param name='resourceGroup'>
+        /// <param name='resourceGroupName'>
         /// The resource group the resource is located under.
         /// </param>
         /// <param name='customHeaders'>
@@ -63,11 +63,11 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<Plan>>> ListWithHttpMessagesAsync(string resourceGroup, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<Plan>>> ListWithHttpMessagesAsync(string resourceGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get the list of plans.
         /// </summary>
-        /// <param name='resourceGroup'>
+        /// <param name='resourceGroupName'>
         /// The resource group the resource is located under.
         /// </param>
         /// <param name='plan'>
@@ -88,11 +88,11 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<Plan>> GetWithHttpMessagesAsync(string resourceGroup, string plan, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<Plan>> GetWithHttpMessagesAsync(string resourceGroupName, string plan, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get the list of plans.
         /// </summary>
-        /// <param name='resourceGroup'>
+        /// <param name='resourceGroupName'>
         /// The resource group the resource is located under.
         /// </param>
         /// <param name='plan'>
@@ -116,11 +116,11 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<Plan>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroup, string plan, Plan newPlan, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<Plan>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string plan, Plan newPlan, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get the list of plans.
         /// </summary>
-        /// <param name='resourceGroup'>
+        /// <param name='resourceGroupName'>
         /// The resource group the resource is located under.
         /// </param>
         /// <param name='plan'>
@@ -138,36 +138,11 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroup, string plan, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string plan, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get the list of plans.
         /// </summary>
-        /// <param name='resourceGroup'>
-        /// The resource group the resource is located under.
-        /// </param>
-        /// <param name='plan'>
-        /// Name of the plan.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<MetricList>> ListMetricsWithHttpMessagesAsync(string resourceGroup, string plan, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Get the list of plans.
-        /// </summary>
-        /// <param name='resourceGroup'>
+        /// <param name='resourceGroupName'>
         /// The resource group the resource is located under.
         /// </param>
         /// <param name='plan'>
@@ -188,7 +163,32 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<MetricDefinitionList>> ListMetricDefinitionsWithHttpMessagesAsync(string resourceGroup, string plan, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<MetricList>> ListMetricsWithHttpMessagesAsync(string resourceGroupName, string plan, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Get the list of plans.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The resource group the resource is located under.
+        /// </param>
+        /// <param name='plan'>
+        /// Name of the plan.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<MetricDefinitionList>> ListMetricDefinitionsWithHttpMessagesAsync(string resourceGroupName, string plan, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// List all plans across all subscriptions.
         /// </summary>

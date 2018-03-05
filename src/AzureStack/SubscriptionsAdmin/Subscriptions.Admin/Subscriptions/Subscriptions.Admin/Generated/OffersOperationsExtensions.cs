@@ -55,12 +55,12 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroup'>
+            /// <param name='resourceGroupName'>
             /// The resource group the resource is located under.
             /// </param>
-            public static IPage<Offer> List(this IOffersOperations operations, string resourceGroup)
+            public static IPage<Offer> List(this IOffersOperations operations, string resourceGroupName)
             {
-                return operations.ListAsync(resourceGroup).GetAwaiter().GetResult();
+                return operations.ListAsync(resourceGroupName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -69,15 +69,15 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroup'>
+            /// <param name='resourceGroupName'>
             /// The resource group the resource is located under.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<Offer>> ListAsync(this IOffersOperations operations, string resourceGroup, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<Offer>> ListAsync(this IOffersOperations operations, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroup, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -89,15 +89,15 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroup'>
+            /// <param name='resourceGroupName'>
             /// The resource group the resource is located under.
             /// </param>
             /// <param name='offer'>
             /// Name of an offer.
             /// </param>
-            public static Offer Get(this IOffersOperations operations, string resourceGroup, string offer)
+            public static Offer Get(this IOffersOperations operations, string resourceGroupName, string offer)
             {
-                return operations.GetAsync(resourceGroup, offer).GetAwaiter().GetResult();
+                return operations.GetAsync(resourceGroupName, offer).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -106,7 +106,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroup'>
+            /// <param name='resourceGroupName'>
             /// The resource group the resource is located under.
             /// </param>
             /// <param name='offer'>
@@ -115,9 +115,9 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Offer> GetAsync(this IOffersOperations operations, string resourceGroup, string offer, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Offer> GetAsync(this IOffersOperations operations, string resourceGroupName, string offer, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroup, offer, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, offer, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -129,7 +129,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroup'>
+            /// <param name='resourceGroupName'>
             /// The resource group the resource is located under.
             /// </param>
             /// <param name='offer'>
@@ -138,9 +138,9 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='newOffer'>
             /// New offer.
             /// </param>
-            public static Offer CreateOrUpdate(this IOffersOperations operations, string resourceGroup, string offer, Offer newOffer)
+            public static Offer CreateOrUpdate(this IOffersOperations operations, string resourceGroupName, string offer, Offer newOffer)
             {
-                return operations.CreateOrUpdateAsync(resourceGroup, offer, newOffer).GetAwaiter().GetResult();
+                return operations.CreateOrUpdateAsync(resourceGroupName, offer, newOffer).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -149,7 +149,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroup'>
+            /// <param name='resourceGroupName'>
             /// The resource group the resource is located under.
             /// </param>
             /// <param name='offer'>
@@ -161,9 +161,9 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Offer> CreateOrUpdateAsync(this IOffersOperations operations, string resourceGroup, string offer, Offer newOffer, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Offer> CreateOrUpdateAsync(this IOffersOperations operations, string resourceGroupName, string offer, Offer newOffer, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroup, offer, newOffer, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, offer, newOffer, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -175,15 +175,15 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroup'>
+            /// <param name='resourceGroupName'>
             /// The resource group the resource is located under.
             /// </param>
             /// <param name='offer'>
             /// Name of an offer.
             /// </param>
-            public static void Delete(this IOffersOperations operations, string resourceGroup, string offer)
+            public static void Delete(this IOffersOperations operations, string resourceGroupName, string offer)
             {
-                operations.DeleteAsync(resourceGroup, offer).GetAwaiter().GetResult();
+                operations.DeleteAsync(resourceGroupName, offer).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -192,7 +192,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroup'>
+            /// <param name='resourceGroupName'>
             /// The resource group the resource is located under.
             /// </param>
             /// <param name='offer'>
@@ -201,9 +201,9 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteAsync(this IOffersOperations operations, string resourceGroup, string offer, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteAsync(this IOffersOperations operations, string resourceGroupName, string offer, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroup, offer, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, offer, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -212,15 +212,15 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroup'>
+            /// <param name='resourceGroupName'>
             /// The resource group the resource is located under.
             /// </param>
             /// <param name='offer'>
             /// Name of an offer.
             /// </param>
-            public static MetricList ListMetrics(this IOffersOperations operations, string resourceGroup, string offer)
+            public static MetricList ListMetrics(this IOffersOperations operations, string resourceGroupName, string offer)
             {
-                return operations.ListMetricsAsync(resourceGroup, offer).GetAwaiter().GetResult();
+                return operations.ListMetricsAsync(resourceGroupName, offer).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -229,7 +229,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroup'>
+            /// <param name='resourceGroupName'>
             /// The resource group the resource is located under.
             /// </param>
             /// <param name='offer'>
@@ -238,9 +238,9 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<MetricList> ListMetricsAsync(this IOffersOperations operations, string resourceGroup, string offer, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<MetricList> ListMetricsAsync(this IOffersOperations operations, string resourceGroupName, string offer, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListMetricsWithHttpMessagesAsync(resourceGroup, offer, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListMetricsWithHttpMessagesAsync(resourceGroupName, offer, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -252,15 +252,15 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroup'>
+            /// <param name='resourceGroupName'>
             /// The resource group the resource is located under.
             /// </param>
             /// <param name='offer'>
             /// Name of an offer.
             /// </param>
-            public static MetricDefinitionList ListMetricDefinitions(this IOffersOperations operations, string resourceGroup, string offer)
+            public static MetricDefinitionList ListMetricDefinitions(this IOffersOperations operations, string resourceGroupName, string offer)
             {
-                return operations.ListMetricDefinitionsAsync(resourceGroup, offer).GetAwaiter().GetResult();
+                return operations.ListMetricDefinitionsAsync(resourceGroupName, offer).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -269,7 +269,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroup'>
+            /// <param name='resourceGroupName'>
             /// The resource group the resource is located under.
             /// </param>
             /// <param name='offer'>
@@ -278,9 +278,9 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<MetricDefinitionList> ListMetricDefinitionsAsync(this IOffersOperations operations, string resourceGroup, string offer, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<MetricDefinitionList> ListMetricDefinitionsAsync(this IOffersOperations operations, string resourceGroupName, string offer, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListMetricDefinitionsWithHttpMessagesAsync(resourceGroup, offer, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListMetricDefinitionsWithHttpMessagesAsync(resourceGroupName, offer, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -292,7 +292,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroup'>
+            /// <param name='resourceGroupName'>
             /// The resource group the resource is located under.
             /// </param>
             /// <param name='offer'>
@@ -301,9 +301,9 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='planLink'>
             /// New plan link.
             /// </param>
-            public static void Link(this IOffersOperations operations, string resourceGroup, string offer, PlanLinkDefinition planLink)
+            public static void Link(this IOffersOperations operations, string resourceGroupName, string offer, PlanLinkDefinition planLink)
             {
-                operations.LinkAsync(resourceGroup, offer, planLink).GetAwaiter().GetResult();
+                operations.LinkAsync(resourceGroupName, offer, planLink).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -312,7 +312,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroup'>
+            /// <param name='resourceGroupName'>
             /// The resource group the resource is located under.
             /// </param>
             /// <param name='offer'>
@@ -324,9 +324,9 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task LinkAsync(this IOffersOperations operations, string resourceGroup, string offer, PlanLinkDefinition planLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task LinkAsync(this IOffersOperations operations, string resourceGroupName, string offer, PlanLinkDefinition planLink, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.LinkWithHttpMessagesAsync(resourceGroup, offer, planLink, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.LinkWithHttpMessagesAsync(resourceGroupName, offer, planLink, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -335,7 +335,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroup'>
+            /// <param name='resourceGroupName'>
             /// The resource group the resource is located under.
             /// </param>
             /// <param name='offer'>
@@ -344,9 +344,9 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='planLink'>
             /// New plan link.
             /// </param>
-            public static void Unlink(this IOffersOperations operations, string resourceGroup, string offer, PlanLinkDefinition planLink)
+            public static void Unlink(this IOffersOperations operations, string resourceGroupName, string offer, PlanLinkDefinition planLink)
             {
-                operations.UnlinkAsync(resourceGroup, offer, planLink).GetAwaiter().GetResult();
+                operations.UnlinkAsync(resourceGroupName, offer, planLink).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -355,7 +355,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroup'>
+            /// <param name='resourceGroupName'>
             /// The resource group the resource is located under.
             /// </param>
             /// <param name='offer'>
@@ -367,9 +367,9 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task UnlinkAsync(this IOffersOperations operations, string resourceGroup, string offer, PlanLinkDefinition planLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task UnlinkAsync(this IOffersOperations operations, string resourceGroupName, string offer, PlanLinkDefinition planLink, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.UnlinkWithHttpMessagesAsync(resourceGroup, offer, planLink, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.UnlinkWithHttpMessagesAsync(resourceGroupName, offer, planLink, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
