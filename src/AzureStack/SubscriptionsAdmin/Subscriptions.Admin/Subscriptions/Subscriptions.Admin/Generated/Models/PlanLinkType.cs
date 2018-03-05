@@ -12,9 +12,9 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
 {
 
     /// <summary>
-    /// Defines values for PlanLink.
+    /// Defines values for PlanLinkType.
     /// </summary>
-    public static class PlanLink
+    public static class PlanLinkType
     {
         public const string None = "None";
         public const string Base = "Base";

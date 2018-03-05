@@ -199,7 +199,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// Name of an offer.
         /// </param>
         /// <param name='planLink'>
-        /// New plan link. Possible values include: 'None', 'Base', 'Addon'
+        /// New plan link.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -213,7 +213,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> LinkWithHttpMessagesAsync(string resourceGroup, string offer, string planLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> LinkWithHttpMessagesAsync(string resourceGroup, string offer, PlanLinkDefinition planLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Unlink a plan from an offer.
         /// </summary>
@@ -224,7 +224,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// Name of an offer.
         /// </param>
         /// <param name='planLink'>
-        /// New plan link. Possible values include: 'None', 'Base', 'Addon'
+        /// New plan link.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -238,7 +238,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> UnlinkWithHttpMessagesAsync(string resourceGroup, string offer, string planLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> UnlinkWithHttpMessagesAsync(string resourceGroup, string offer, PlanLinkDefinition planLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get the list of offers.
         /// </summary>

@@ -299,9 +299,9 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// Name of an offer.
             /// </param>
             /// <param name='planLink'>
-            /// New plan link. Possible values include: 'None', 'Base', 'Addon'
+            /// New plan link.
             /// </param>
-            public static void Link(this IOffersOperations operations, string resourceGroup, string offer, string planLink)
+            public static void Link(this IOffersOperations operations, string resourceGroup, string offer, PlanLinkDefinition planLink)
             {
                 operations.LinkAsync(resourceGroup, offer, planLink).GetAwaiter().GetResult();
             }
@@ -319,12 +319,12 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// Name of an offer.
             /// </param>
             /// <param name='planLink'>
-            /// New plan link. Possible values include: 'None', 'Base', 'Addon'
+            /// New plan link.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task LinkAsync(this IOffersOperations operations, string resourceGroup, string offer, string planLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task LinkAsync(this IOffersOperations operations, string resourceGroup, string offer, PlanLinkDefinition planLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.LinkWithHttpMessagesAsync(resourceGroup, offer, planLink, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
@@ -342,9 +342,9 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// Name of an offer.
             /// </param>
             /// <param name='planLink'>
-            /// New plan link. Possible values include: 'None', 'Base', 'Addon'
+            /// New plan link.
             /// </param>
-            public static void Unlink(this IOffersOperations operations, string resourceGroup, string offer, string planLink)
+            public static void Unlink(this IOffersOperations operations, string resourceGroup, string offer, PlanLinkDefinition planLink)
             {
                 operations.UnlinkAsync(resourceGroup, offer, planLink).GetAwaiter().GetResult();
             }
@@ -362,12 +362,12 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// Name of an offer.
             /// </param>
             /// <param name='planLink'>
-            /// New plan link. Possible values include: 'None', 'Base', 'Addon'
+            /// New plan link.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task UnlinkAsync(this IOffersOperations operations, string resourceGroup, string offer, string planLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task UnlinkAsync(this IOffersOperations operations, string resourceGroup, string offer, PlanLinkDefinition planLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.UnlinkWithHttpMessagesAsync(resourceGroup, offer, planLink, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
