@@ -85,5 +85,76 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
                 }
             }
 
+            /// <summary>
+            /// Updates the specified location.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='location'>
+            /// The AzureStack location.
+            /// </param>
+            /// <param name='newLocation'>
+            /// The new location
+            /// </param>
+            public static Location CreateOrUpdate(this ILocationsOperations operations, string location, Location newLocation)
+            {
+                return operations.CreateOrUpdateAsync(location, newLocation).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Updates the specified location.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='location'>
+            /// The AzureStack location.
+            /// </param>
+            /// <param name='newLocation'>
+            /// The new location
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<Location> CreateOrUpdateAsync(this ILocationsOperations operations, string location, Location newLocation, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(location, newLocation, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Deletes the specified location.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='location'>
+            /// The AzureStack location.
+            /// </param>
+            public static void Delete(this ILocationsOperations operations, string location)
+            {
+                operations.DeleteAsync(location).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Deletes the specified location.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='location'>
+            /// The AzureStack location.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task DeleteAsync(this ILocationsOperations operations, string location, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.DeleteWithHttpMessagesAsync(location, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
     }
 }

@@ -16,7 +16,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
     using System.Linq;
 
     /// <summary>
-    /// Holds an array of usage aggregates and the continuation token.
+    /// List of metric definitions.
     /// </summary>
     public partial class MetricDefinitionList
     {
@@ -31,7 +31,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
         /// <summary>
         /// Initializes a new instance of the MetricDefinitionList class.
         /// </summary>
-        /// <param name="value">Array of usage aggregates.</param>
+        /// <param name="value">Array of metric definitions.</param>
         /// <param name="nextLink">Continuation token</param>
         public MetricDefinitionList(IList<MetricDefinition> value = default(IList<MetricDefinition>), string nextLink = default(string))
         {
@@ -46,7 +46,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets array of usage aggregates.
+        /// Gets or sets array of metric definitions.
         /// </summary>
         [JsonProperty(PropertyName = "value")]
         public IList<MetricDefinition> Value { get; set; }

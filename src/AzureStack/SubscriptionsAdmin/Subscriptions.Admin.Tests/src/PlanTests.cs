@@ -84,9 +84,7 @@ namespace Subscriptions.Tests
 
                 client.Plans.Delete(rg, name);
 
-                plan = client.Plans.Get(rg, name);
-
-                Assert.Null(plan);
+                Assert.Throws<Microsoft.Rest.Azure.CloudException>(() => client.Plans.Get(rg, name));
             });
         }
 
