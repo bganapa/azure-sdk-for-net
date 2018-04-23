@@ -53,9 +53,9 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
         /// <param name="basePlanIds">Identifiers of the base plans that become
         /// available to the tenant immediately when a tenant subscribes to the
         /// offer.</param>
-        /// <param name="addonPlanDefinition">References to add-on plans that a
-        /// tenant can optionally acquire as a part of the offer.</param>
-        public Offer(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string offerName = default(string), string displayName = default(string), string description = default(string), string externalReferenceId = default(string), string state = default(string), int? subscriptionCount = default(int?), int? maxSubscriptionsPerAccount = default(int?), IList<string> basePlanIds = default(IList<string>), IList<AddonPlanDefinition> addonPlanDefinition = default(IList<AddonPlanDefinition>))
+        /// <param name="addonPlans">References to add-on plans that a tenant
+        /// can optionally acquire as a part of the offer.</param>
+        public Offer(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string offerName = default(string), string displayName = default(string), string description = default(string), string externalReferenceId = default(string), string state = default(string), int? subscriptionCount = default(int?), int? maxSubscriptionsPerAccount = default(int?), IList<string> basePlanIds = default(IList<string>), IList<AddonPlanDefinition> addonPlans = default(IList<AddonPlanDefinition>))
             : base(id, name, type, location, tags)
         {
             OfferName = offerName;
@@ -66,7 +66,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
             SubscriptionCount = subscriptionCount;
             MaxSubscriptionsPerAccount = maxSubscriptionsPerAccount;
             BasePlanIds = basePlanIds;
-            AddonPlanDefinition = addonPlanDefinition;
+            AddonPlans = addonPlans;
             CustomInit();
         }
 
@@ -129,8 +129,8 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
         /// Gets or sets references to add-on plans that a tenant can
         /// optionally acquire as a part of the offer.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.addonPlanDefinition")]
-        public IList<AddonPlanDefinition> AddonPlanDefinition { get; set; }
+        [JsonProperty(PropertyName = "properties.addonPlans")]
+        public IList<AddonPlanDefinition> AddonPlans { get; set; }
 
     }
 }

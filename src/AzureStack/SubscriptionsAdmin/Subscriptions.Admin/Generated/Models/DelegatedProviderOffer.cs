@@ -39,27 +39,25 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
         /// <param name="type">Type of resource.</param>
         /// <param name="location">Location of the resource</param>
         /// <param name="tags">List of key-value pairs.</param>
-        /// <param name="subscriptionId">Subscription ID of tenant using
-        /// plan.</param>
-        /// <param name="usageStartTime">UTC start time for the usage bucket to
-        /// which this usage aggregate belongs.</param>
-        /// <param name="usageEndTime">UTC end time for the usage bucket to
-        /// which this usage aggregate belongs.</param>
-        /// <param name="instanceData">Key-value pairs of instance details
-        /// represented as a string.</param>
-        /// <param name="quantity">The amount of the resource consumption that
-        /// occurred in this time frame.</param>
-        /// <param name="meterId">Unique ID for the resource that was consumed
-        /// (aka ResourceID).</param>
-        public DelegatedProviderOffer(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string subscriptionId = default(string), System.DateTime? usageStartTime = default(System.DateTime?), System.DateTime? usageEndTime = default(System.DateTime?), string instanceData = default(string), string quantity = default(string), string meterId = default(string))
+        /// <param name="delegatedOfferId">The delegated offer
+        /// identifier.</param>
+        /// <param name="displayName">Display name of offer.</param>
+        /// <param name="description">Description of offer.</param>
+        /// <param name="externalReferenceId">External reference
+        /// identifier.</param>
+        /// <param name="accessibilityState">Offer accessibility state.
+        /// Possible values include: 'Private', 'Public',
+        /// 'Decommissioned'</param>
+        /// <param name="subscriptionCount">Current subscription count.</param>
+        public DelegatedProviderOffer(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string delegatedOfferId = default(string), string displayName = default(string), string description = default(string), string externalReferenceId = default(string), string accessibilityState = default(string), int? subscriptionCount = default(int?))
             : base(id, name, type, location, tags)
         {
-            SubscriptionId = subscriptionId;
-            UsageStartTime = usageStartTime;
-            UsageEndTime = usageEndTime;
-            InstanceData = instanceData;
-            Quantity = quantity;
-            MeterId = meterId;
+            DelegatedOfferId = delegatedOfferId;
+            DisplayName = displayName;
+            Description = description;
+            ExternalReferenceId = externalReferenceId;
+            AccessibilityState = accessibilityState;
+            SubscriptionCount = subscriptionCount;
             CustomInit();
         }
 
@@ -69,45 +67,41 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets subscription ID of tenant using plan.
+        /// Gets or sets the delegated offer identifier.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.subscriptionId")]
-        public string SubscriptionId { get; set; }
+        [JsonProperty(PropertyName = "properties.delegatedOfferId")]
+        public string DelegatedOfferId { get; set; }
 
         /// <summary>
-        /// Gets or sets UTC start time for the usage bucket to which this
-        /// usage aggregate belongs.
+        /// Gets or sets display name of offer.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.usageStartTime")]
-        public System.DateTime? UsageStartTime { get; set; }
+        [JsonProperty(PropertyName = "properties.displayName")]
+        public string DisplayName { get; set; }
 
         /// <summary>
-        /// Gets or sets UTC end time for the usage bucket to which this usage
-        /// aggregate belongs.
+        /// Gets or sets description of offer.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.usageEndTime")]
-        public System.DateTime? UsageEndTime { get; set; }
+        [JsonProperty(PropertyName = "properties.description")]
+        public string Description { get; set; }
 
         /// <summary>
-        /// Gets or sets key-value pairs of instance details represented as a
-        /// string.
+        /// Gets or sets external reference identifier.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.instanceData")]
-        public string InstanceData { get; set; }
+        [JsonProperty(PropertyName = "properties.externalReferenceId")]
+        public string ExternalReferenceId { get; set; }
 
         /// <summary>
-        /// Gets or sets the amount of the resource consumption that occurred
-        /// in this time frame.
+        /// Gets or sets offer accessibility state. Possible values include:
+        /// 'Private', 'Public', 'Decommissioned'
         /// </summary>
-        [JsonProperty(PropertyName = "properties.quantity")]
-        public string Quantity { get; set; }
+        [JsonProperty(PropertyName = "properties.accessibilityState")]
+        public string AccessibilityState { get; set; }
 
         /// <summary>
-        /// Gets or sets unique ID for the resource that was consumed (aka
-        /// ResourceID).
+        /// Gets or sets current subscription count.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.meterId")]
-        public string MeterId { get; set; }
+        [JsonProperty(PropertyName = "properties.subscriptionCount")]
+        public int? SubscriptionCount { get; set; }
 
     }
 }
