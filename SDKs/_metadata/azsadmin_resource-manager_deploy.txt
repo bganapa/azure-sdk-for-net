@@ -1,0 +1,6 @@
+﻿Installing AutoRest version: latest
+AutoRest installed successfully.
+Commencing code generation
+Generating CSharp code
+Executing AutoRest command
+cmd.exe /c autorest.cmd https://github.com/viananth/azure-rest-api-specs/blob/drpadmin/specification/azsadmin/resource-manager/deploy/readme.md --csharp --version=latest --reflect-api-versions --csharp-sdks-folder=D:\github\azure-sdk-for-net\sdk\azurestack\Microsoft.AzureStack.Management.Deployment.Admin\src
