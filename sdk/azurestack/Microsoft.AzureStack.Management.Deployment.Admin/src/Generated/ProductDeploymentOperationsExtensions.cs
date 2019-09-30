@@ -182,6 +182,86 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
             }
 
             /// <summary>
+            /// Unlocks the product subscription
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='location'>
+            /// Location of the resource.
+            /// </param>
+            /// <param name='productId'>
+            /// The product identifier.
+            /// </param>
+            /// <param name='duration'>
+            /// Duration in TimeSpan format(Define which ISO format)
+            /// </param>
+            public static void Unlock(this IProductDeploymentOperations operations, string location, string productId, string duration = default(string))
+            {
+                operations.UnlockAsync(location, productId, duration).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Unlocks the product subscription
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='location'>
+            /// Location of the resource.
+            /// </param>
+            /// <param name='productId'>
+            /// The product identifier.
+            /// </param>
+            /// <param name='duration'>
+            /// Duration in TimeSpan format(Define which ISO format)
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task UnlockAsync(this IProductDeploymentOperations operations, string location, string productId, string duration = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.UnlockWithHttpMessagesAsync(location, productId, duration, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// locks the product subscription
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='location'>
+            /// Location of the resource.
+            /// </param>
+            /// <param name='productId'>
+            /// The product identifier.
+            /// </param>
+            public static void LockOperation(this IProductDeploymentOperations operations, string location, string productId)
+            {
+                operations.LockOperationAsync(location, productId).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// locks the product subscription
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='location'>
+            /// Location of the resource.
+            /// </param>
+            /// <param name='productId'>
+            /// The product identifier.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task LockOperationAsync(this IProductDeploymentOperations operations, string location, string productId, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.LockOperationWithHttpMessagesAsync(location, productId, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
             /// Invokes bootstrap action on the product deployment
             /// </summary>
             /// <param name='operations'>

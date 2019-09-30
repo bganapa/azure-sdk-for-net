@@ -97,11 +97,6 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
         IProductDeploymentOperations ProductDeployment { get; }
 
         /// <summary>
-        /// Gets the IProductSubscriptionOperations.
-        /// </summary>
-        IProductSubscriptionOperations ProductSubscription { get; }
-
-        /// <summary>
         /// Gets the IProductPackagesOperations.
         /// </summary>
         IProductPackagesOperations ProductPackages { get; }

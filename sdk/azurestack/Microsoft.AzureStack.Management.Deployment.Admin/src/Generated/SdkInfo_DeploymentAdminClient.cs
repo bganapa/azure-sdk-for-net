@@ -26,7 +26,6 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
                 new Tuple<string, string, string>("Deployment.Admin", "ProductDeployment", "2019-01-01"),
                 new Tuple<string, string, string>("Deployment.Admin", "ProductPackages", "2019-01-01"),
                 new Tuple<string, string, string>("Deployment.Admin", "ProductSecrets", "2019-01-01"),
-                new Tuple<string, string, string>("Deployment.Admin", "ProductSubscription", "2019-01-01"),
               }.AsEnumerable();
           }
       }

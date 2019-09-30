@@ -118,6 +118,53 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
         /// </exception>
         Task<AzureOperationResponse> RotateSecretsWithHttpMessagesAsync(string location, string productId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Unlocks the product subscription
+        /// </summary>
+        /// <param name='location'>
+        /// Location of the resource.
+        /// </param>
+        /// <param name='productId'>
+        /// The product identifier.
+        /// </param>
+        /// <param name='duration'>
+        /// Duration in TimeSpan format(Define which ISO format)
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> UnlockWithHttpMessagesAsync(string location, string productId, string duration = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// locks the product subscription
+        /// </summary>
+        /// <param name='location'>
+        /// Location of the resource.
+        /// </param>
+        /// <param name='productId'>
+        /// The product identifier.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> LockOperationWithHttpMessagesAsync(string location, string productId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Invokes bootstrap action on the product deployment
         /// </summary>
         /// <param name='location'>

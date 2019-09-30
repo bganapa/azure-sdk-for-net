@@ -102,11 +102,6 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
         public virtual IProductDeploymentOperations ProductDeployment { get; private set; }
 
         /// <summary>
-        /// Gets the IProductSubscriptionOperations.
-        /// </summary>
-        public virtual IProductSubscriptionOperations ProductSubscription { get; private set; }
-
-        /// <summary>
         /// Gets the IProductPackagesOperations.
         /// </summary>
         public virtual IProductPackagesOperations ProductPackages { get; private set; }
@@ -362,7 +357,6 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
             ActionPlanOperation = new ActionPlanOperationOperations(this);
             FileContainers = new FileContainersOperations(this);
             ProductDeployment = new ProductDeploymentOperations(this);
-            ProductSubscription = new ProductSubscriptionOperations(this);
             ProductPackages = new ProductPackagesOperations(this);
             ProductSecrets = new ProductSecretsOperations(this);
             BaseUri = new System.Uri("https://adminmanagement.local.azurestack.external");

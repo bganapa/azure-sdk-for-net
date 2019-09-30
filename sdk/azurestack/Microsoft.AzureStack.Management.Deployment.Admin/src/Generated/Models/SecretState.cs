@@ -64,7 +64,7 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin.Models
         /// <summary>
         /// Gets or sets the secret expiration date.
         /// </summary>
-        [JsonProperty(PropertyName = "ExpirationDate")]
+        [JsonProperty(PropertyName = "expirationDate")]
         public System.DateTime? ExpirationDate { get; set; }
 
     }
