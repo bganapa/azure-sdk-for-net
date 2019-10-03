@@ -27,18 +27,15 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='location'>
-            /// Location of the resource.
-            /// </param>
             /// <param name='productId'>
             /// The product identifier.
             /// </param>
             /// <param name='version'>
             /// Generic Version object
             /// </param>
-            public static void BootStrap(this IProductDeploymentOperations operations, string location, string productId, GenericVersion version = default(GenericVersion))
+            public static void BootStrap(this IProductDeploymentOperations operations, string productId, string version = default(string))
             {
-                operations.BootStrapAsync(location, productId, version).GetAwaiter().GetResult();
+                operations.BootStrapAsync(productId, version).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -47,9 +44,6 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='location'>
-            /// Location of the resource.
-            /// </param>
             /// <param name='productId'>
             /// The product identifier.
             /// </param>
@@ -59,9 +53,9 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BootStrapAsync(this IProductDeploymentOperations operations, string location, string productId, GenericVersion version = default(GenericVersion), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BootStrapAsync(this IProductDeploymentOperations operations, string productId, string version = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BootStrapWithHttpMessagesAsync(location, productId, version, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.BootStrapWithHttpMessagesAsync(productId, version, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -70,18 +64,15 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='location'>
-            /// Location of the resource.
-            /// </param>
             /// <param name='productId'>
             /// The product identifier.
             /// </param>
-            /// <param name='versionString'>
-            /// Version string in the format of integers seperated with dots
+            /// <param name='deployActionParameter'>
+            /// Represents bootstrap action parameter
             /// </param>
-            public static void Deploy(this IProductDeploymentOperations operations, string location, string productId, string versionString = default(string))
+            public static void Deploy(this IProductDeploymentOperations operations, string productId, DeployActionParameters deployActionParameter)
             {
-                operations.DeployAsync(location, productId, versionString).GetAwaiter().GetResult();
+                operations.DeployAsync(productId, deployActionParameter).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -90,21 +81,18 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='location'>
-            /// Location of the resource.
-            /// </param>
             /// <param name='productId'>
             /// The product identifier.
             /// </param>
-            /// <param name='versionString'>
-            /// Version string in the format of integers seperated with dots
+            /// <param name='deployActionParameter'>
+            /// Represents bootstrap action parameter
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeployAsync(this IProductDeploymentOperations operations, string location, string productId, string versionString = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeployAsync(this IProductDeploymentOperations operations, string productId, DeployActionParameters deployActionParameter, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeployWithHttpMessagesAsync(location, productId, versionString, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.DeployWithHttpMessagesAsync(productId, deployActionParameter, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -113,15 +101,12 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='location'>
-            /// Location of the resource.
-            /// </param>
             /// <param name='productId'>
             /// The product identifier.
             /// </param>
-            public static void Remove(this IProductDeploymentOperations operations, string location, string productId)
+            public static void Remove(this IProductDeploymentOperations operations, string productId)
             {
-                operations.RemoveAsync(location, productId).GetAwaiter().GetResult();
+                operations.RemoveAsync(productId).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -130,18 +115,15 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='location'>
-            /// Location of the resource.
-            /// </param>
             /// <param name='productId'>
             /// The product identifier.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task RemoveAsync(this IProductDeploymentOperations operations, string location, string productId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task RemoveAsync(this IProductDeploymentOperations operations, string productId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.RemoveWithHttpMessagesAsync(location, productId, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.RemoveWithHttpMessagesAsync(productId, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -150,15 +132,12 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='location'>
-            /// Location of the resource.
-            /// </param>
             /// <param name='productId'>
             /// The product identifier.
             /// </param>
-            public static void RotateSecrets(this IProductDeploymentOperations operations, string location, string productId)
+            public static void RotateSecrets(this IProductDeploymentOperations operations, string productId)
             {
-                operations.RotateSecretsAsync(location, productId).GetAwaiter().GetResult();
+                operations.RotateSecretsAsync(productId).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -167,18 +146,15 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='location'>
-            /// Location of the resource.
-            /// </param>
             /// <param name='productId'>
             /// The product identifier.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task RotateSecretsAsync(this IProductDeploymentOperations operations, string location, string productId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task RotateSecretsAsync(this IProductDeploymentOperations operations, string productId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.RotateSecretsWithHttpMessagesAsync(location, productId, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.RotateSecretsWithHttpMessagesAsync(productId, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -186,9 +162,6 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='location'>
-            /// Location of the resource.
             /// </param>
             /// <param name='productId'>
             /// The product identifier.
@@ -196,9 +169,9 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
             /// <param name='duration'>
             /// Duration in TimeSpan format(Define which ISO format)
             /// </param>
-            public static void Unlock(this IProductDeploymentOperations operations, string location, string productId, string duration = default(string))
+            public static void Unlock(this IProductDeploymentOperations operations, string productId, string duration = default(string))
             {
-                operations.UnlockAsync(location, productId, duration).GetAwaiter().GetResult();
+                operations.UnlockAsync(productId, duration).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -206,9 +179,6 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='location'>
-            /// Location of the resource.
             /// </param>
             /// <param name='productId'>
             /// The product identifier.
@@ -219,9 +189,9 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task UnlockAsync(this IProductDeploymentOperations operations, string location, string productId, string duration = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task UnlockAsync(this IProductDeploymentOperations operations, string productId, string duration = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.UnlockWithHttpMessagesAsync(location, productId, duration, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.UnlockWithHttpMessagesAsync(productId, duration, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -229,16 +199,13 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='location'>
-            /// Location of the resource.
             /// </param>
             /// <param name='productId'>
             /// The product identifier.
             /// </param>
-            public static void LockOperation(this IProductDeploymentOperations operations, string location, string productId)
+            public static void LockOperation(this IProductDeploymentOperations operations, string productId)
             {
-                operations.LockOperationAsync(location, productId).GetAwaiter().GetResult();
+                operations.LockOperationAsync(productId).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -246,9 +213,6 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='location'>
-            /// Location of the resource.
             /// </param>
             /// <param name='productId'>
             /// The product identifier.
@@ -256,9 +220,9 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task LockOperationAsync(this IProductDeploymentOperations operations, string location, string productId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task LockOperationAsync(this IProductDeploymentOperations operations, string productId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.LockOperationWithHttpMessagesAsync(location, productId, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.LockOperationWithHttpMessagesAsync(productId, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -266,9 +230,6 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='location'>
-            /// Location of the resource.
             /// </param>
             /// <param name='productId'>
             /// The product identifier.
@@ -276,9 +237,9 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
             /// <param name='version'>
             /// Generic Version object
             /// </param>
-            public static void BeginBootStrap(this IProductDeploymentOperations operations, string location, string productId, GenericVersion version = default(GenericVersion))
+            public static void BeginBootStrap(this IProductDeploymentOperations operations, string productId, string version = default(string))
             {
-                operations.BeginBootStrapAsync(location, productId, version).GetAwaiter().GetResult();
+                operations.BeginBootStrapAsync(productId, version).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -286,9 +247,6 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='location'>
-            /// Location of the resource.
             /// </param>
             /// <param name='productId'>
             /// The product identifier.
@@ -299,9 +257,9 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginBootStrapAsync(this IProductDeploymentOperations operations, string location, string productId, GenericVersion version = default(GenericVersion), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginBootStrapAsync(this IProductDeploymentOperations operations, string productId, string version = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginBootStrapWithHttpMessagesAsync(location, productId, version, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.BeginBootStrapWithHttpMessagesAsync(productId, version, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -310,18 +268,15 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='location'>
-            /// Location of the resource.
-            /// </param>
             /// <param name='productId'>
             /// The product identifier.
             /// </param>
-            /// <param name='versionString'>
-            /// Version string in the format of integers seperated with dots
+            /// <param name='deployActionParameter'>
+            /// Represents bootstrap action parameter
             /// </param>
-            public static void BeginDeploy(this IProductDeploymentOperations operations, string location, string productId, string versionString = default(string))
+            public static void BeginDeploy(this IProductDeploymentOperations operations, string productId, DeployActionParameters deployActionParameter)
             {
-                operations.BeginDeployAsync(location, productId, versionString).GetAwaiter().GetResult();
+                operations.BeginDeployAsync(productId, deployActionParameter).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -330,21 +285,18 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='location'>
-            /// Location of the resource.
-            /// </param>
             /// <param name='productId'>
             /// The product identifier.
             /// </param>
-            /// <param name='versionString'>
-            /// Version string in the format of integers seperated with dots
+            /// <param name='deployActionParameter'>
+            /// Represents bootstrap action parameter
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginDeployAsync(this IProductDeploymentOperations operations, string location, string productId, string versionString = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginDeployAsync(this IProductDeploymentOperations operations, string productId, DeployActionParameters deployActionParameter, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginDeployWithHttpMessagesAsync(location, productId, versionString, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.BeginDeployWithHttpMessagesAsync(productId, deployActionParameter, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -353,15 +305,12 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='location'>
-            /// Location of the resource.
-            /// </param>
             /// <param name='productId'>
             /// The product identifier.
             /// </param>
-            public static void BeginRemove(this IProductDeploymentOperations operations, string location, string productId)
+            public static void BeginRemove(this IProductDeploymentOperations operations, string productId)
             {
-                operations.BeginRemoveAsync(location, productId).GetAwaiter().GetResult();
+                operations.BeginRemoveAsync(productId).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -370,18 +319,15 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='location'>
-            /// Location of the resource.
-            /// </param>
             /// <param name='productId'>
             /// The product identifier.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginRemoveAsync(this IProductDeploymentOperations operations, string location, string productId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginRemoveAsync(this IProductDeploymentOperations operations, string productId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginRemoveWithHttpMessagesAsync(location, productId, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.BeginRemoveWithHttpMessagesAsync(productId, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -390,15 +336,12 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='location'>
-            /// Location of the resource.
-            /// </param>
             /// <param name='productId'>
             /// The product identifier.
             /// </param>
-            public static void BeginRotateSecrets(this IProductDeploymentOperations operations, string location, string productId)
+            public static void BeginRotateSecrets(this IProductDeploymentOperations operations, string productId)
             {
-                operations.BeginRotateSecretsAsync(location, productId).GetAwaiter().GetResult();
+                operations.BeginRotateSecretsAsync(productId).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -407,18 +350,15 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='location'>
-            /// Location of the resource.
-            /// </param>
             /// <param name='productId'>
             /// The product identifier.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginRotateSecretsAsync(this IProductDeploymentOperations operations, string location, string productId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginRotateSecretsAsync(this IProductDeploymentOperations operations, string productId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginRotateSecretsWithHttpMessagesAsync(location, productId, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.BeginRotateSecretsWithHttpMessagesAsync(productId, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
     }

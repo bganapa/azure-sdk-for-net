@@ -40,7 +40,7 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin.Models
         /// <param name="endTime">The deployment end time</param>
         /// <param name="error">Error Information</param>
         /// <param name="provisioningState">The provisioning state</param>
-        public ActionPlanAdminProperties(string actionPlanUri = default(string), string resourceGroupName = default(string), string subscriptionId = default(string), string parameters = default(string), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), ExtendedErrorInfo error = default(ExtendedErrorInfo), ProvisioningState provisioningState = default(ProvisioningState))
+        public ActionPlanAdminProperties(string actionPlanUri = default(string), string resourceGroupName = default(string), string subscriptionId = default(string), string parameters = default(string), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), ExtendedErrorInfo error = default(ExtendedErrorInfo), string provisioningState = default(string))
         {
             ActionPlanUri = actionPlanUri;
             ResourceGroupName = resourceGroupName;
@@ -104,7 +104,7 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin.Models
         /// Gets or sets the provisioning state
         /// </summary>
         [JsonProperty(PropertyName = "provisioningState")]
-        public ProvisioningState ProvisioningState { get; set; }
+        public string ProvisioningState { get; set; }
 
     }
 }

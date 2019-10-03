@@ -44,7 +44,7 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin.Models
         /// <param name="error">The error response message.</param>
         /// <param name="provisioningState">Provisioning state of the
         /// resource.</param>
-        public FileContainer(string id = default(string), string name = default(string), string type = default(string), string location = default(string), string fileContainerId = default(string), string sourceUri = default(string), string postCopyAction = default(string), string uri = default(string), ErrorInfo error = default(ErrorInfo), ProvisioningState provisioningState = default(ProvisioningState))
+        public FileContainer(string id = default(string), string name = default(string), string type = default(string), string location = default(string), string fileContainerId = default(string), string sourceUri = default(string), string postCopyAction = default(string), string uri = default(string), ErrorInfo error = default(ErrorInfo), string provisioningState = default(string))
             : base(id, name, type, location)
         {
             FileContainerId = fileContainerId;
@@ -99,7 +99,7 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin.Models
         /// Gets or sets provisioning state of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "provisioningState")]
-        public ProvisioningState ProvisioningState { get; set; }
+        public string ProvisioningState { get; set; }
 
     }
 }

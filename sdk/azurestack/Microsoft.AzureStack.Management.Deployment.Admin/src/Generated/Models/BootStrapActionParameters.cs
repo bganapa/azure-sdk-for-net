@@ -30,7 +30,7 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin.Models
         /// Initializes a new instance of the BootStrapActionParameters class.
         /// </summary>
         /// <param name="version">Generic Version object</param>
-        public BootStrapActionParameters(GenericVersion version = default(GenericVersion))
+        public BootStrapActionParameters(string version = default(string))
         {
             Version = version;
             CustomInit();
@@ -45,7 +45,7 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin.Models
         /// Gets or sets generic Version object
         /// </summary>
         [JsonProperty(PropertyName = "version")]
-        public GenericVersion Version { get; set; }
+        public string Version { get; set; }
 
     }
 }

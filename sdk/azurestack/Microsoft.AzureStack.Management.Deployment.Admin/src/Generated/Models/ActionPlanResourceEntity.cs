@@ -36,7 +36,7 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin.Models
         /// <param name="actionPlanAdminProperties">Action Plan
         /// Properties</param>
         /// <param name="eTag">Entity tag of the resource</param>
-        public ActionPlanResourceEntity(GenericIdentifier actionPlanInstanceId = default(GenericIdentifier), string blobContainerName = default(string), ActionPlanAdminProperties actionPlanAdminProperties = default(ActionPlanAdminProperties), string eTag = default(string))
+        public ActionPlanResourceEntity(string actionPlanInstanceId = default(string), string blobContainerName = default(string), ActionPlanAdminProperties actionPlanAdminProperties = default(ActionPlanAdminProperties), string eTag = default(string))
         {
             ActionPlanInstanceId = actionPlanInstanceId;
             BlobContainerName = blobContainerName;
@@ -54,7 +54,7 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin.Models
         /// Gets or sets action plan instance identifier
         /// </summary>
         [JsonProperty(PropertyName = "actionPlanInstanceId")]
-        public GenericIdentifier ActionPlanInstanceId { get; set; }
+        public string ActionPlanInstanceId { get; set; }
 
         /// <summary>
         /// Gets or sets blob container name storing the deployment data

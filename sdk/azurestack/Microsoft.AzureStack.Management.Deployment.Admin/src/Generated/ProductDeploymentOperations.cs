@@ -53,9 +53,6 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
         /// <summary>
         /// Invokes bootstrap action on the product deployment
         /// </summary>
-        /// <param name='location'>
-        /// Location of the resource.
-        /// </param>
         /// <param name='productId'>
         /// The product identifier.
         /// </param>
@@ -68,24 +65,21 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse> BootStrapWithHttpMessagesAsync(string location, string productId, GenericVersion version = default(GenericVersion), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> BootStrapWithHttpMessagesAsync(string productId, string version = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send request
-            AzureOperationResponse _response = await BeginBootStrapWithHttpMessagesAsync(location, productId, version, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse _response = await BeginBootStrapWithHttpMessagesAsync(productId, version, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
         /// Invokes deploy action on the product
         /// </summary>
-        /// <param name='location'>
-        /// Location of the resource.
-        /// </param>
         /// <param name='productId'>
         /// The product identifier.
         /// </param>
-        /// <param name='versionString'>
-        /// Version string in the format of integers seperated with dots
+        /// <param name='deployActionParameter'>
+        /// Represents bootstrap action parameter
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -93,19 +87,16 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse> DeployWithHttpMessagesAsync(string location, string productId, string versionString = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> DeployWithHttpMessagesAsync(string productId, DeployActionParameters deployActionParameter, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send request
-            AzureOperationResponse _response = await BeginDeployWithHttpMessagesAsync(location, productId, versionString, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse _response = await BeginDeployWithHttpMessagesAsync(productId, deployActionParameter, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
         /// Invokes remove action on the product deployment
         /// </summary>
-        /// <param name='location'>
-        /// Location of the resource.
-        /// </param>
         /// <param name='productId'>
         /// The product identifier.
         /// </param>
@@ -115,19 +106,16 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse> RemoveWithHttpMessagesAsync(string location, string productId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> RemoveWithHttpMessagesAsync(string productId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send request
-            AzureOperationResponse _response = await BeginRemoveWithHttpMessagesAsync(location, productId, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse _response = await BeginRemoveWithHttpMessagesAsync(productId, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
         /// Invokes rotate secrets action on the product deployment
         /// </summary>
-        /// <param name='location'>
-        /// Location of the resource.
-        /// </param>
         /// <param name='productId'>
         /// The product identifier.
         /// </param>
@@ -137,19 +125,16 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse> RotateSecretsWithHttpMessagesAsync(string location, string productId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> RotateSecretsWithHttpMessagesAsync(string productId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send request
-            AzureOperationResponse _response = await BeginRotateSecretsWithHttpMessagesAsync(location, productId, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse _response = await BeginRotateSecretsWithHttpMessagesAsync(productId, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
         /// Unlocks the product subscription
         /// </summary>
-        /// <param name='location'>
-        /// Location of the resource.
-        /// </param>
         /// <param name='productId'>
         /// The product identifier.
         /// </param>
@@ -174,15 +159,11 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse> UnlockWithHttpMessagesAsync(string location, string productId, string duration = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> UnlockWithHttpMessagesAsync(string productId, string duration = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-            if (location == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "location");
             }
             if (productId == null)
             {
@@ -204,7 +185,6 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("location", location);
                 tracingParameters.Add("productId", productId);
                 tracingParameters.Add("unlockActionParameter", unlockActionParameter);
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -212,9 +192,8 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/{location}/productDeployments/{productId}/unlock").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/productDeployments/{productId}/unlock").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
-            _url = _url.Replace("{location}", System.Uri.EscapeDataString(location));
             _url = _url.Replace("{productId}", System.Uri.EscapeDataString(productId));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
@@ -337,9 +316,6 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
         /// <summary>
         /// locks the product subscription
         /// </summary>
-        /// <param name='location'>
-        /// Location of the resource.
-        /// </param>
         /// <param name='productId'>
         /// The product identifier.
         /// </param>
@@ -361,15 +337,11 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse> LockOperationWithHttpMessagesAsync(string location, string productId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> LockOperationWithHttpMessagesAsync(string productId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-            if (location == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "location");
             }
             if (productId == null)
             {
@@ -386,16 +358,14 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("location", location);
                 tracingParameters.Add("productId", productId);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "LockOperation", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/{location}/productDeployments/{productId}/lock").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/productDeployments/{productId}/lock").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
-            _url = _url.Replace("{location}", System.Uri.EscapeDataString(location));
             _url = _url.Replace("{productId}", System.Uri.EscapeDataString(productId));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
@@ -512,9 +482,6 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
         /// <summary>
         /// Invokes bootstrap action on the product deployment
         /// </summary>
-        /// <param name='location'>
-        /// Location of the resource.
-        /// </param>
         /// <param name='productId'>
         /// The product identifier.
         /// </param>
@@ -539,15 +506,11 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse> BeginBootStrapWithHttpMessagesAsync(string location, string productId, GenericVersion version = default(GenericVersion), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> BeginBootStrapWithHttpMessagesAsync(string productId, string version = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-            if (location == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "location");
             }
             if (productId == null)
             {
@@ -569,7 +532,6 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("location", location);
                 tracingParameters.Add("productId", productId);
                 tracingParameters.Add("bootstrapActionParameter", bootstrapActionParameter);
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -577,9 +539,8 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/{location}/productDeployments/{productId}/bootstrap").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/productDeployments/{productId}/bootstrap").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
-            _url = _url.Replace("{location}", System.Uri.EscapeDataString(location));
             _url = _url.Replace("{productId}", System.Uri.EscapeDataString(productId));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
@@ -702,14 +663,11 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
         /// <summary>
         /// Invokes deploy action on the product
         /// </summary>
-        /// <param name='location'>
-        /// Location of the resource.
-        /// </param>
         /// <param name='productId'>
         /// The product identifier.
         /// </param>
-        /// <param name='versionString'>
-        /// Version string in the format of integers seperated with dots
+        /// <param name='deployActionParameter'>
+        /// Represents bootstrap action parameter
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -729,28 +687,23 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse> BeginDeployWithHttpMessagesAsync(string location, string productId, string versionString = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> BeginDeployWithHttpMessagesAsync(string productId, DeployActionParameters deployActionParameter, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            if (location == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "location");
-            }
             if (productId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "productId");
             }
+            if (deployActionParameter == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "deployActionParameter");
+            }
             if (Client.ApiVersion == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-            GenericVersion deployActionParameter = new GenericVersion();
-            if (versionString != null)
-            {
-                deployActionParameter.VersionString = versionString;
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -759,7 +712,6 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("location", location);
                 tracingParameters.Add("productId", productId);
                 tracingParameters.Add("deployActionParameter", deployActionParameter);
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -767,9 +719,8 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/{location}/productDeployments/{productId}/deploy").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/productDeployments/{productId}/deploy").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
-            _url = _url.Replace("{location}", System.Uri.EscapeDataString(location));
             _url = _url.Replace("{productId}", System.Uri.EscapeDataString(productId));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
@@ -892,9 +843,6 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
         /// <summary>
         /// Invokes remove action on the product deployment
         /// </summary>
-        /// <param name='location'>
-        /// Location of the resource.
-        /// </param>
         /// <param name='productId'>
         /// The product identifier.
         /// </param>
@@ -916,15 +864,11 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse> BeginRemoveWithHttpMessagesAsync(string location, string productId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> BeginRemoveWithHttpMessagesAsync(string productId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-            if (location == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "location");
             }
             if (productId == null)
             {
@@ -941,16 +885,14 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("location", location);
                 tracingParameters.Add("productId", productId);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginRemove", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/{location}/productDeployments/{productId}/remove").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/productDeployments/{productId}/remove").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
-            _url = _url.Replace("{location}", System.Uri.EscapeDataString(location));
             _url = _url.Replace("{productId}", System.Uri.EscapeDataString(productId));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
@@ -1067,9 +1009,6 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
         /// <summary>
         /// Invokes rotate secrets action on the product deployment
         /// </summary>
-        /// <param name='location'>
-        /// Location of the resource.
-        /// </param>
         /// <param name='productId'>
         /// The product identifier.
         /// </param>
@@ -1091,15 +1030,11 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse> BeginRotateSecretsWithHttpMessagesAsync(string location, string productId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> BeginRotateSecretsWithHttpMessagesAsync(string productId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-            if (location == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "location");
             }
             if (productId == null)
             {
@@ -1116,16 +1051,14 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("location", location);
                 tracingParameters.Add("productId", productId);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginRotateSecrets", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/{location}/productDeployments/{productId}/rotateSecrets").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/productDeployments/{productId}/rotateSecrets").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
-            _url = _url.Replace("{location}", System.Uri.EscapeDataString(location));
             _url = _url.Replace("{productId}", System.Uri.EscapeDataString(productId));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)

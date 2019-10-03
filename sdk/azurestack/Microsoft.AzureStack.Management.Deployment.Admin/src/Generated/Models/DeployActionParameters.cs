@@ -32,7 +32,7 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin.Models
         /// <param name="version">Generic Version object</param>
         /// <param name="parameters">Deployment parameters, value in
         /// JToken</param>
-        public DeployActionParameters(GenericVersion version = default(GenericVersion), string parameters = default(string))
+        public DeployActionParameters(string version = default(string), string parameters = default(string))
         {
             Version = version;
             Parameters = parameters;
@@ -48,7 +48,7 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin.Models
         /// Gets or sets generic Version object
         /// </summary>
         [JsonProperty(PropertyName = "version")]
-        public GenericVersion Version { get; set; }
+        public string Version { get; set; }
 
         /// <summary>
         /// Gets or sets deployment parameters, value in JToken

@@ -40,7 +40,7 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin.Models
         /// <param name="actionPlanOperationAdminProperties">Action Plan
         /// Properties</param>
         /// <param name="eTag">Entity tag of the resource</param>
-        public ActionPlanOperationResourceEntity(GenericIdentifier actionPlanInstanceId = default(GenericIdentifier), GenericIdentifier actionPlanOperationId = default(GenericIdentifier), string blobContainerName = default(string), ActionPlanOperationAdminProperties actionPlanOperationAdminProperties = default(ActionPlanOperationAdminProperties), string eTag = default(string))
+        public ActionPlanOperationResourceEntity(string actionPlanInstanceId = default(string), string actionPlanOperationId = default(string), string blobContainerName = default(string), ActionPlanOperationAdminProperties actionPlanOperationAdminProperties = default(ActionPlanOperationAdminProperties), string eTag = default(string))
         {
             ActionPlanInstanceId = actionPlanInstanceId;
             ActionPlanOperationId = actionPlanOperationId;
@@ -59,13 +59,13 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin.Models
         /// Gets or sets action plan instance identifier
         /// </summary>
         [JsonProperty(PropertyName = "actionPlanInstanceId")]
-        public GenericIdentifier ActionPlanInstanceId { get; set; }
+        public string ActionPlanInstanceId { get; set; }
 
         /// <summary>
         /// Gets or sets action plan operation identifier
         /// </summary>
         [JsonProperty(PropertyName = "actionPlanOperationId")]
-        public GenericIdentifier ActionPlanOperationId { get; set; }
+        public string ActionPlanOperationId { get; set; }
 
         /// <summary>
         /// Gets or sets blob container name storing the deployment data

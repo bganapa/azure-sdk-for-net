@@ -43,7 +43,7 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin.Models
         /// deployment; null if this version is not installed.</param>
         /// <param name="provisioningState">Provisioning state of the
         /// resource.</param>
-        public ProductPackage(string id = default(string), string name = default(string), string type = default(string), string location = default(string), string fileContainerId = default(string), bool? isDeployable = default(bool?), bool? isUpdatable = default(bool?), string productDeploymentId = default(string), ProvisioningState provisioningState = default(ProvisioningState))
+        public ProductPackage(string id = default(string), string name = default(string), string type = default(string), string location = default(string), string fileContainerId = default(string), bool? isDeployable = default(bool?), bool? isUpdatable = default(bool?), string productDeploymentId = default(string), string provisioningState = default(string))
             : base(id, name, type, location)
         {
             FileContainerId = fileContainerId;
@@ -91,7 +91,7 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin.Models
         /// Gets or sets provisioning state of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "provisioningState")]
-        public ProvisioningState ProvisioningState { get; set; }
+        public string ProvisioningState { get; set; }
 
     }
 }

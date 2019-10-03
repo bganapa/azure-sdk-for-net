@@ -44,7 +44,7 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin.Models
         /// format</param>
         /// <param name="error">Error Information</param>
         /// <param name="provisioningState">The provisioning state</param>
-        public ActionPlanOperationAdminProperties(string title = default(string), string description = default(string), ActionType type = default(ActionType), string subscriptionId = default(string), string parameters = default(string), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string outputs = default(string), ExtendedErrorInfo error = default(ExtendedErrorInfo), ProvisioningState provisioningState = default(ProvisioningState))
+        public ActionPlanOperationAdminProperties(string title = default(string), string description = default(string), ActionType type = default(ActionType), string subscriptionId = default(string), string parameters = default(string), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string outputs = default(string), ExtendedErrorInfo error = default(ExtendedErrorInfo), string provisioningState = default(string))
         {
             Title = title;
             Description = description;
@@ -122,7 +122,7 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin.Models
         /// Gets or sets the provisioning state
         /// </summary>
         [JsonProperty(PropertyName = "provisioningState")]
-        public ProvisioningState ProvisioningState { get; set; }
+        public string ProvisioningState { get; set; }
 
     }
 }

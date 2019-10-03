@@ -53,9 +53,6 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
         /// <summary>
         /// Lists the action plan operations
         /// </summary>
-        /// <param name='location'>
-        /// Location of the resource.
-        /// </param>
         /// <param name='planId'>
         /// Identifier of the action plan.
         /// </param>
@@ -80,15 +77,11 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<ActionPlanOperationResourceEntity>>> ListWithHttpMessagesAsync(string location, string planId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<ActionPlanOperationResourceEntity>>> ListWithHttpMessagesAsync(string planId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-            if (location == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "location");
             }
             if (planId == null)
             {
@@ -105,16 +98,14 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("location", location);
                 tracingParameters.Add("planId", planId);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "List", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/{location}/actionPlans/{planId}/operations").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/actionPlans/{planId}/operations").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
-            _url = _url.Replace("{location}", System.Uri.EscapeDataString(location));
             _url = _url.Replace("{planId}", System.Uri.EscapeDataString(planId));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
@@ -249,9 +240,6 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
         /// <summary>
         /// Gets the specified action plan operation
         /// </summary>
-        /// <param name='location'>
-        /// Location of the resource.
-        /// </param>
         /// <param name='planId'>
         /// Identifier of the action plan.
         /// </param>
@@ -279,15 +267,11 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<ActionPlanOperationResourceEntity>> GetWithHttpMessagesAsync(string location, string planId, string operationId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ActionPlanOperationResourceEntity>> GetWithHttpMessagesAsync(string planId, string operationId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-            if (location == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "location");
             }
             if (planId == null)
             {
@@ -308,7 +292,6 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("location", location);
                 tracingParameters.Add("planId", planId);
                 tracingParameters.Add("operationId", operationId);
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -316,9 +299,8 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/{location}/actionPlans/{planId}/operations/{operationId}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Deployment.Admin/locations/global/actionPlans/{planId}/operations/{operationId}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
-            _url = _url.Replace("{location}", System.Uri.EscapeDataString(location));
             _url = _url.Replace("{planId}", System.Uri.EscapeDataString(planId));
             _url = _url.Replace("{operationId}", System.Uri.EscapeDataString(operationId));
             List<string> _queryParameters = new List<string>();

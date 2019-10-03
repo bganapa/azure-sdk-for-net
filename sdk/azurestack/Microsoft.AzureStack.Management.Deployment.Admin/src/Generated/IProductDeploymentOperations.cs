@@ -26,9 +26,6 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
         /// <summary>
         /// Invokes bootstrap action on the product deployment
         /// </summary>
-        /// <param name='location'>
-        /// Location of the resource.
-        /// </param>
         /// <param name='productId'>
         /// The product identifier.
         /// </param>
@@ -47,18 +44,15 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> BootStrapWithHttpMessagesAsync(string location, string productId, GenericVersion version = default(GenericVersion), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> BootStrapWithHttpMessagesAsync(string productId, string version = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Invokes deploy action on the product
         /// </summary>
-        /// <param name='location'>
-        /// Location of the resource.
-        /// </param>
         /// <param name='productId'>
         /// The product identifier.
         /// </param>
-        /// <param name='versionString'>
-        /// Version string in the format of integers seperated with dots
+        /// <param name='deployActionParameter'>
+        /// Represents bootstrap action parameter
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -72,13 +66,10 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> DeployWithHttpMessagesAsync(string location, string productId, string versionString = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> DeployWithHttpMessagesAsync(string productId, DeployActionParameters deployActionParameter, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Invokes remove action on the product deployment
         /// </summary>
-        /// <param name='location'>
-        /// Location of the resource.
-        /// </param>
         /// <param name='productId'>
         /// The product identifier.
         /// </param>
@@ -94,13 +85,10 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> RemoveWithHttpMessagesAsync(string location, string productId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> RemoveWithHttpMessagesAsync(string productId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Invokes rotate secrets action on the product deployment
         /// </summary>
-        /// <param name='location'>
-        /// Location of the resource.
-        /// </param>
         /// <param name='productId'>
         /// The product identifier.
         /// </param>
@@ -116,13 +104,10 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> RotateSecretsWithHttpMessagesAsync(string location, string productId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> RotateSecretsWithHttpMessagesAsync(string productId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Unlocks the product subscription
         /// </summary>
-        /// <param name='location'>
-        /// Location of the resource.
-        /// </param>
         /// <param name='productId'>
         /// The product identifier.
         /// </param>
@@ -141,13 +126,10 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> UnlockWithHttpMessagesAsync(string location, string productId, string duration = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> UnlockWithHttpMessagesAsync(string productId, string duration = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// locks the product subscription
         /// </summary>
-        /// <param name='location'>
-        /// Location of the resource.
-        /// </param>
         /// <param name='productId'>
         /// The product identifier.
         /// </param>
@@ -163,13 +145,10 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> LockOperationWithHttpMessagesAsync(string location, string productId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> LockOperationWithHttpMessagesAsync(string productId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Invokes bootstrap action on the product deployment
         /// </summary>
-        /// <param name='location'>
-        /// Location of the resource.
-        /// </param>
         /// <param name='productId'>
         /// The product identifier.
         /// </param>
@@ -188,18 +167,15 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> BeginBootStrapWithHttpMessagesAsync(string location, string productId, GenericVersion version = default(GenericVersion), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> BeginBootStrapWithHttpMessagesAsync(string productId, string version = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Invokes deploy action on the product
         /// </summary>
-        /// <param name='location'>
-        /// Location of the resource.
-        /// </param>
         /// <param name='productId'>
         /// The product identifier.
         /// </param>
-        /// <param name='versionString'>
-        /// Version string in the format of integers seperated with dots
+        /// <param name='deployActionParameter'>
+        /// Represents bootstrap action parameter
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -213,13 +189,10 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> BeginDeployWithHttpMessagesAsync(string location, string productId, string versionString = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> BeginDeployWithHttpMessagesAsync(string productId, DeployActionParameters deployActionParameter, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Invokes remove action on the product deployment
         /// </summary>
-        /// <param name='location'>
-        /// Location of the resource.
-        /// </param>
         /// <param name='productId'>
         /// The product identifier.
         /// </param>
@@ -235,13 +208,10 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> BeginRemoveWithHttpMessagesAsync(string location, string productId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> BeginRemoveWithHttpMessagesAsync(string productId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Invokes rotate secrets action on the product deployment
         /// </summary>
-        /// <param name='location'>
-        /// Location of the resource.
-        /// </param>
         /// <param name='productId'>
         /// The product identifier.
         /// </param>
@@ -257,6 +227,6 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> BeginRotateSecretsWithHttpMessagesAsync(string location, string productId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> BeginRotateSecretsWithHttpMessagesAsync(string productId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

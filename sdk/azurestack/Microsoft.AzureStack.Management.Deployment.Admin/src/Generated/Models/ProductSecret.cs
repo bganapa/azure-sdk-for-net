@@ -44,7 +44,7 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin.Models
         /// <param name="secretKind">Specifies the secret kind. Possible values
         /// include: 'AdHoc', 'Certificate', 'Password', 'StorageAccount',
         /// 'SymmetricKey'</param>
-        public ProductSecret(string id = default(string), string name = default(string), string type = default(string), string location = default(string), SecretState secretState = default(SecretState), string secretDescriptor = default(string), System.DateTime? expiresAfter = default(System.DateTime?), string description = default(string), ProvisioningState provisioningState = default(ProvisioningState), string secretKind = default(string))
+        public ProductSecret(string id = default(string), string name = default(string), string type = default(string), string location = default(string), SecretState secretState = default(SecretState), string secretDescriptor = default(string), System.DateTime? expiresAfter = default(System.DateTime?), string description = default(string), string provisioningState = default(string), string secretKind = default(string))
             : base(id, name, type, location)
         {
             SecretState = secretState;
@@ -89,7 +89,7 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin.Models
         /// Gets or sets provisioning state of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "provisioningState")]
-        public ProvisioningState ProvisioningState { get; set; }
+        public string ProvisioningState { get; set; }
 
         /// <summary>
         /// Gets or sets specifies the secret kind. Possible values include:

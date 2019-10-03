@@ -26,9 +26,6 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
         /// <summary>
         /// Lists the action plan operations
         /// </summary>
-        /// <param name='location'>
-        /// Location of the resource.
-        /// </param>
         /// <param name='planId'>
         /// Identifier of the action plan.
         /// </param>
@@ -47,13 +44,10 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<ActionPlanOperationResourceEntity>>> ListWithHttpMessagesAsync(string location, string planId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<ActionPlanOperationResourceEntity>>> ListWithHttpMessagesAsync(string planId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets the specified action plan operation
         /// </summary>
-        /// <param name='location'>
-        /// Location of the resource.
-        /// </param>
         /// <param name='planId'>
         /// Identifier of the action plan.
         /// </param>
@@ -75,7 +69,7 @@ namespace Microsoft.AzureStack.Management.Deployment.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ActionPlanOperationResourceEntity>> GetWithHttpMessagesAsync(string location, string planId, string operationId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ActionPlanOperationResourceEntity>> GetWithHttpMessagesAsync(string planId, string operationId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Lists the action plan operations
         /// </summary>
